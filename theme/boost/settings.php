@@ -27,22 +27,40 @@ if ($ADMIN->fulltree) {
     $page = new admin_settingpage('theme_boost_general', get_string('generalsettings', 'theme_boost'));
 
     // Preset.
-    $name = 'theme_boost/preset';
-    $title = get_string('preset', 'theme_boost');
-    $description = get_string('preset_desc', 'theme_boost');
-    $default = 'default.scss';
+    // $name = 'theme_boost/preset';
+    // $title = get_string('preset', 'theme_boost');
+    // $description = get_string('preset_desc', 'theme_boost');
+    // $default = 'default.scss';
 
-    $context = context_system::instance();
-    $fs = get_file_storage();
-    $files = $fs->get_area_files($context->id, 'theme_boost', 'preset', 0, 'itemid, filepath, filename', false);
+    // $context = context_system::instance();
+    // $fs = get_file_storage();
+    // $files = $fs->get_area_files($context->id, 'theme_boost', 'preset', 0, 'itemid, filepath, filename', false);
 
-    $choices = [];
-    foreach ($files as $file) {
-        $choices[$file->get_filename()] = $file->get_filename();
+    // $choices = [];
+    // foreach ($files as $file) {
+    //     $choices[$file->get_filename()] = $file->get_filename();
+    // }
+    // // These are the built in presets.
+    // $choices['default.scss'] = 'default.scss';
+    // $choices['plain.scss'] = 'plain.scss';
+
+    // $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    // $setting->set_updatedcallback('theme_reset_all_caches');
+    // $page->add($setting);
+
+    // Bootswatch.
+    $name = 'theme_boost/bootswatch';
+    $title = get_string('bootswatch', 'theme_boost');
+    $description = get_string('bootswatch_desc', 'theme_boost');
+    $default = 'moodle';
+
+    $swatches = ['cerulean', 'cosmo', 'cyborg', 'darkly', 'flaty', 'journal', 'litera', 'lumen',
+        'lux', 'materia', 'minty', 'moodle', 'pulse', 'sandstone', 'simplex', 'sketchy', 'slate', 'solar',
+        'spacelab', 'superhero', 'united', 'yeti'];
+
+    foreach ($swatches as $swatch) {
+        $choices[$swatch] = $swatch;
     }
-    // These are the built in presets.
-    $choices['default.scss'] = 'default.scss';
-    $choices['plain.scss'] = 'plain.scss';
 
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');

@@ -1,6 +1,46 @@
 This file describes API changes in /theme/boost
 information provided here is intended especially for theme designers.
 
+=== 3.5 ===
+The Moodle Boost theme has been upgraded to use Bootstrap 4 Stable (BS4S). We are trying to use as much BS4S classes in MDL Templates to reduce the amount of CSS needed to run Moodle. To achieve that core and boost template will be rewritten. 
+
+* this version uses Boostrap 4 stable and contains a number of new ways to use components see https://getbootstrap.com/docs/4.0/components.
+* for more info on all of the changes since 4 - alpha please read https://getbootstrap.com/docs/4.0/migration/
+* Uses a new Grid system based on Flexbox. Reading up on the new Grid system is a must when creating new grid based layouts in child themes.
+
+JavaScript
+----------
+* All Bootstrap javascript has been updated to BS4S
+
+Sass
+----
+* A number of variables are no longer available in Bootstrap 4 Stable. For now a bs4alpha compatibility file has been added, see scss/bs4alphacompat.scss which translates veriable names from the Alpha version to the stable version
+* col-xs-* should be replaced with col-*
+* m-t-* and other spacing utilities should be replaced with mt-*
+
+Grid
+----
+All instances of col-xs-12 have been replaces with col-12
+
+Bootswatches
+------------
+Bootswatches have been added, they should still be considered experimental, however, the aim is to make sure Boost works with bootswatches.
+
+Changed Components
+------------------
+Cards need this structure
+ class='card'
+    class='card-body'
+This used to be 'card-block'
+
+The header.mustache template has been replace by a navbar.mustache template for name consistancy with Bootstrap
+
+A new header.mustache template has been created served from core/core_renderer.php. This should be move to core at some point.
+
+
+
+
+
 === 3.4 ===
 * For improved accessibility, the footer links for boost have been changed to use $bg-inverse-link-color (defaults to white) and
   now have an underline text-decoration. To override the link colour simply set $bg-inverse-link-color in your preset file or

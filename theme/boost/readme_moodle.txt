@@ -30,3 +30,28 @@ Checkout the latest branch of bootstrap to a folder, in that folder run:
 Copy the transpiled files from out/ into the amd/src/ folder for the theme.
 Run grunt to re-compile the JS files.
 
+
+
+Contibuted by Joby Harding:
+
+
+Updating Bootstrap JS files
+---------------------------
+
+The process outlined in `theme/boost/readme_moodle.txt` requires a couple of tweaks to work with v4.0.0 of Bootstrap. Updated package versions based on the Bootstrap package.json. Run the follwing inside the cloned Bootstrap repository:
+
+```
+$ npm install @babel/cli@7.0.0-beta.37 @babel/preset-env@7.0.0-beta.37 babel-plugin-transform-es2015-modules-amd @babel/plugin-proposal-object-rest-spread
+$ ./node_modules/@babel/cli/bin/babel.js --presets @babel/preset-env --plugins transform-es2015-modules-amd,@babel/plugin-proposal-object-rest-spread -d /path/to/your/moodle/dirroot/theme/reboost/amd/src
+```
+
+Popper JS
+---------
+Bootstrap 4 has a peer dependency on [Popper](https://popper.js.org). Note that while popper is included in core `admin/tool/usertours/amd/src/popper.js` it is an older version.
+```
+$ git clone https://github.com/FezVrasta/popper.js.git
+$ git checkout 1.12.9 # or whatever the latest release tag is
+```
+Copy `dist/popper.js` to `path/to/your/moodle/dirroot/theme/reboost/amd/src` then run the amd build task.
+
+Finally update the theme `thirdpartylibs.xml` to reflect the version of Popper.

@@ -236,6 +236,7 @@ img.resize {
     text-decoration: none;
 }
 
+// Edit for Bootstrap 4 Stable, disable white-space: nowrap to allow wrapping in dropdown menus.
 .action-menu {
     white-space: nowrap;
 }

@@ -257,7 +257,7 @@ fieldset.coursesearchbox label {
 }
 .form-autocomplete-selection {
     margin: $input-padding-y-sm;
-    // Padding top and bottom, plus m-b-1 and the 100% lineheight.
+    // Padding top and bottom, plus mb-1 and the 100% lineheight.
     min-height: 2 * $input-padding-y-sm + 2 * $font-size-base;
 }
 
@@ -326,6 +326,7 @@ select[size],
 select[multiple] {
     overflow: auto;
 }
+
 select[size="1"] {
     overflow: visible;
 }
