@@ -30,18 +30,27 @@
         }
     }
 }}
-
+<div class="action-menu {{classes}} d-inline"{{#attributes}} {{name}}="{{value}}"{{/attributes}}>
     {{#primary}}
 
-        <span class="{{classes}}"{{#attributes}} {{name}}="{{value}}"{{/attributes}}>
+        <div class="{{classes}} d-flex justify-content-end "{{#attributes}} {{name}}="{{value}}"{{/attributes}}>
 
-            {{#prioritise}}{{> core/action_menu_trigger }}{{/prioritise}}{{!
+            {{#prioritise}}{{> core/action_menu_trigger }}{{/prioritise}}
 
-            }}{{#items}}{{> core/action_menu_item }}{{/items}}{{!
+            {{#items}}
+                <div>
+                    {{> core/action_menu_item }}
+                </div>
+            {{/items}}
 
-            }}{{^prioritise}}{{> core/action_menu_trigger }}{{/prioritise}}
+            {{^prioritise}}
+                <div>
+                    {{> core/action_menu_trigger }}
+                </div>
+            {{/prioritise}}
 
-        </span>
+        </div>
 
     {{/primary}}
+</div>
 
