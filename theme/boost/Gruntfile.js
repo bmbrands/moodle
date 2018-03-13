@@ -92,7 +92,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'style/boost.css': 'scss/boost.scss'
+                    'style/boost.css': 'scss/boost-grunt.scss'
                 }
             }
         },
