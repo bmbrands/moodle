@@ -31,7 +31,7 @@
                         {{#courses}} {{> block_myoverview/course-item }} {{/courses}}
                     </ul>
                 {{/pages}}
-                <div class="text-xs-center text-center m-t-1">
+                <div class="justify-content-center text-center mt-3">
                     <button type="button" class="btn btn-secondary" data-action="more-courses">
                         {{#str}} morecourses, block_myoverview {{/str}}
                         <span class="hidden" data-region="loading-icon-container">
@@ -41,22 +41,22 @@
                 </div>
             {{/haspages}}
             {{^haspages}}
-                <div class="text-xs-center text-center m-t-3">
+                <div class="justify-content-center text-center mt-5">
                     <img class="empty-placeholder-image-lg"
                          src="{{urls.noevents}}"
                          alt="{{#str}} nocoursesinprogress, block_myoverview {{/str}}"
                          role="presentation">
-                    <p class="text-muted m-t-1">{{#str}} nocoursesinprogress, block_myoverview {{/str}}</p>
+                    <p class="text-muted mt-3">{{#str}} nocoursesinprogress, block_myoverview {{/str}}</p>
                 </div>
             {{/haspages}}
         {{/inprogress}}
         {{^inprogress}}
-            <div class="text-xs-center text-center m-t-3">
+            <div class="justify-content-center text-center mt-5">
                 <img class="empty-placeholder-image-lg"
                      src="{{urls.noevents}}"
                      alt="{{#str}} nocoursesinprogress, block_myoverview {{/str}}"
                      role="presentation">
-                <p class="text-muted m-t-1">{{#str}} nocoursesinprogress, block_myoverview {{/str}}</p>
+                <p class="text-muted mt-3">{{#str}} nocoursesinprogress, block_myoverview {{/str}}</p>
             </div>
         {{/inprogress}}
     {{/coursesview}}
