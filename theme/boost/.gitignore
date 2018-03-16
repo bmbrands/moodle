@@ -1,8 +1,0 @@
-.DS_Store
-style
-node_modules
-*.swp
-Gruntfile
-npm-shrinkwrap.json
-package.json
-postcss.js

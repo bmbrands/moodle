@@ -65,6 +65,7 @@ class courses_view implements renderable, templatable {
     public function export_for_template(renderer_base $output) {
         global $CFG;
         require_once($CFG->dirroot.'/course/lib.php');
+        require_once($CFG->dirroot.'/lib/coursecatlib.php');
 
         // Build courses view data structure.
         $coursesview = [
@@ -82,6 +83,26 @@ class courses_view implements renderable, templatable {
             $exportedcourse = $exporter->export($output);
             // Convert summary to plain text.
             $exportedcourse->summary = content_to_text($exportedcourse->summary, $exportedcourse->summaryformat);
+
+            $course = new \course_in_list($course);
+            foreach ($course->get_course_overviewfiles() as $file) {
+                $isimage = $file->is_valid_image();
+                if ($isimage) {
+                    $url = file_encode_url("$CFG->wwwroot/pluginfile.php",
+                        '/'. $file->get_contextid(). '/'. $file->get_component(). '/'.
+                        $file->get_filearea(). $file->get_filepath(). $file->get_filename(), !$isimage);
+                    $exportedcourse->courseimage = $url;
+                    $exportedcourse->classes = 'courseimage';
+                    continue;
+                }
+            }
+
+            if (!isset($exportedcourse->courseimage)) {
+                $pattern = new \core_geopattern();
+                $pattern->patternbyid($courseid);
+                $exportedcourse->classes = 'coursepattern';
+                $exportedcourse->courseimage = $pattern->datauri();
+            }
 
             // Include course visibility.
             $exportedcourse->visible = (bool)$course->visible;

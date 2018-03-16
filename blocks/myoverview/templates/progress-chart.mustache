@@ -25,26 +25,11 @@
         "progress": "60"
     }
 }}
-<div class="progress-chart-container mb-3">
-    {{#hasprogress}}
-    <div class="progress-doughnut">
-        <div class="progress-text {{#progress}}has-percent{{/progress}}">{{progress}}&#37;</div>
-        <div class="progress-indicator">
-            <svg xmlns="http://www.w3.org/2000/svg">
-                <g>
-                    <title aria-hidden="true">{{progress}}&#37;</title>
-                    <circle class="circle percent-{{progress}}"
-                            r="27.5"
-                            cx="35"
-                            cy="35"/>
-                </g>
-            </svg>
-        </div>
-    </div>
-    {{/hasprogress}}
-    {{^hasprogress}}
-    <div class="no-progress">
-        {{#pix}} i/course {{/pix}}
-    </div>
-    {{/hasprogress}}
+
+{{#hasprogress}}
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: {{progress}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+
 </div>
+{{progress}} % {{#str}}complete, block_myoverview{{/str}}
+{{/hasprogress}}
