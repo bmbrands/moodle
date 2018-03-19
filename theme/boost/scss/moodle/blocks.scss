@@ -204,6 +204,31 @@ $doughnut-fill-colour: $brand-warning;
     // }
 }
 
+.course-icon-circle {
+    display: inline-block;
+    span {
+        display: table-cell;
+        font-size: 10px;
+        line-height: 24px;
+        margin-left: 3px;
+        margin-right: 15px;
+        text-align: center;
+        vertical-align: middle;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+    }
+    &.large span {
+        font-size: 24px;
+        line-height: 52px;
+        margin-left: 3px;
+        margin-right: 15px;
+        height: 52px;
+        width: 52px;
+        border-radius: 50%;
+    }
+}
+
 .card-deck {
     .card {
         $card-gutter : $card-deck-margin * 2;

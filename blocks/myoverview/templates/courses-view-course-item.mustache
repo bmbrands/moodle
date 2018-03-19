@@ -33,10 +33,17 @@
     </div>
 
     <div class="card-body course-info-container" id="course-info-container-{{id}}">
-        <h4 class="card-title h5"><a href="{{viewurl}}" class="{{^visible}}dimmed{{/visible}}">{{{fullnamedisplay}}}</a></h4>
-        <p class="card-text">
-            {{> block_myoverview/progress-chart}}
-        </p>
+        <div class="media">
+            <div class="mr-3">
+                {{> block_myoverview/courseicon}}
+            </div>
+            <div class="media-body">
+                <h4 class="card-title h5"><a href="{{viewurl}}" class="{{^visible}}dimmed{{/visible}}">{{{fullnamedisplay}}}</a></h4>
+                <p class="card-text">
+                    {{> block_myoverview/progress-chart}}
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 

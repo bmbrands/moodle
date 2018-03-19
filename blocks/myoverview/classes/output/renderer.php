@@ -45,4 +45,9 @@ class renderer extends plugin_renderer_base {
     public function render_main(main $main) {
         return $this->render_from_template('block_myoverview/main', $main->export_for_template($this));
     }
+
+    public function render_courseicon(\theme_reboost\output\reboost\courseicon $courseicon) {
+        $templatevars = $courseicon->export_for_template($this);
+        return $this->render_from_template('block_myoverview/courseicon', $templatevars);
+    }
 }

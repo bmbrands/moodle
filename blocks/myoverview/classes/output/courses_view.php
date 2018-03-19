@@ -97,12 +97,21 @@ class courses_view implements renderable, templatable {
                 }
             }
 
+            $basecolors = ['#81ecec', '#74b9ff', '#a29bfe', '#dfe6e9', '#00b894', '#0984e3', '#b2bec3', '#fdcb6e', '#fd79a8', '#6c5ce7'];
+
+            srand($courseid);
+            $exportedcourse->color = $basecolors[rand(0,9)];
+
+
             if (!isset($exportedcourse->courseimage)) {
                 $pattern = new \core_geopattern();
+                $pattern->setColor($exportedcourse->color);
                 $pattern->patternbyid($courseid);
                 $exportedcourse->classes = 'coursepattern';
                 $exportedcourse->courseimage = $pattern->datauri();
             }
+
+            $exportedcourse->courseabbr = $this->course_icon_abbr($course);
 
             // Include course visibility.
             $exportedcourse->visible = (bool)$course->visible;
@@ -168,5 +177,24 @@ class courses_view implements renderable, templatable {
         }
 
         return $coursesview;
+    }
+
+    private function course_icon_abbr($course) {
+        $words = preg_split("/\s+/", $course->fullname);
+        
+        $maxcaps = 2;
+        $count = 0;
+        $abbr = '';
+        
+        foreach ($words as $word) {
+            if ($count < $maxcaps) {
+                $chr = mb_substr($word, 0, 1, "UTF-8");
+                if (mb_strtolower($chr, "UTF-8") != $chr) {
+                    $count++;
+                    $abbr .= $chr;
+                }
+            }
+        }
+        return $abbr;
     }
 }
