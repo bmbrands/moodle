@@ -93,6 +93,7 @@ function theme_boost_get_main_scss_content($theme) {
     $swatch = !empty($theme->settings->bootswatch) ? $theme->settings->bootswatch : null;
 
     $variables = 'bootswatch/dist/'.$swatch.'/_variables.scss';
+    
     $bootswatch = 'bootswatch/dist/'.$swatch.'/_bootswatch.scss';
 
     $sassfiles = ['fontawesome.scss', $variables, 'bootstrap.scss',
@@ -135,6 +136,10 @@ function theme_boost_get_pre_scss($theme) {
     // Prepend pre-scss.
     if (!empty($theme->settings->scsspre)) {
         $scss .= $theme->settings->scsspre;
+    }
+
+    if (!empty($theme->settings->fontsize)) {
+        $scss .= '$font-size-base: ' . (1 / 100 * $theme->settings->fontsize) . "rem !default;\n";
     }
 
     return $scss;

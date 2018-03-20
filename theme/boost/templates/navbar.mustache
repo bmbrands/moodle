@@ -23,7 +23,7 @@
             <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-secondary" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
         </div>
 
-        <a href="{{{ config.wwwroot }}}" class="navbar-brand mr-auto {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
+        <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
             {{^ output.should_display_navbar_logo }}
                 hidden-sm-down
             {{/ output.should_display_navbar_logo }}
@@ -35,6 +35,12 @@
             {{/ output.should_display_navbar_logo }}
             <span class="site-name hidden-sm-down">{{{ sitename }}}</span>
         </a>
+
+        
+        <ul class="nav navbar-nav mx-auto">
+            {{{ output.search_box }}}
+        </ul>
+
         <nav class="nav navbar-nav hidden-md-down">
             <!-- custom_menu -->
             {{{ output.custom_menu }}}
@@ -53,10 +59,6 @@
                 {{{ output.user_menu }}}
             </li>
         </ul>
-
         <!-- search_box -->
-        <span class="hidden-md-down">
-        {{{ output.search_box }}}
-        </span>
 </nav>
 

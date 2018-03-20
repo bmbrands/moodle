@@ -66,13 +66,14 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    // Preset files setting.
-    $name = 'theme_boost/presetfiles';
-    $title = get_string('presetfiles','theme_boost');
-    $description = get_string('presetfiles_desc', 'theme_boost');
+    // Base font size
+    $name = 'theme_boost/fontsize';
+    $title = get_string('fontsize', 'theme_boost');
+    $description = get_string('fontsize_desc', 'theme_boost');
+    $default = '100';
 
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'preset', 0,
-        array('maxfiles' => 20, 'accepted_types' => array('.scss')));
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
     // Background image setting.
