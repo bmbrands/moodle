@@ -73,7 +73,7 @@ class courses_view implements renderable, templatable {
         ];
 
         // How many courses we have per status?
-        $coursesbystatus = ['past' => 0, 'inprogress' => 0, 'future' => 0];
+        $coursesbystatus = ['total' => 0, 'past' => 0, 'inprogress' => 0, 'future' => 0];
         foreach ($this->courses as $course) {
             $courseid = $course->id;
             $context = \context_course::instance($courseid);
@@ -154,6 +154,14 @@ class courses_view implements renderable, templatable {
                 $coursesview['inprogress']['haspages'] = true;
                 $coursesbystatus['inprogress']++;
             }
+            // All courses for the totals view.
+
+            $totalpages = floor($coursesbystatus['total'] / $this::COURSES_PER_PAGE);
+            $coursesview['total']['pages'][$totalpages]['courses'][] = $exportedcourse;
+            $coursesview['total']['pages'][$totalpages]['active'] = ($totalpages == 0 ? true : false);
+            $coursesview['total']['pages'][$totalpages]['page'] = $totalpages + 1;
+            $coursesview['total']['haspages'] = true;
+            $coursesbystatus['total']++;
         }
 
         // Build courses view paging bar structure.

@@ -22,6 +22,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['all'] = 'All';
 $string['defaulttab'] = 'Default tab';
 $string['defaulttab_desc'] = 'The tab that will be displayed when a user first views their course overview. When returning to their course overview, the user\'s active tab is remembered.';
 $string['future'] = 'Future';
@@ -33,6 +34,7 @@ $string['nocourses'] = 'No courses';
 $string['nocoursesinprogress'] = 'No in progress courses';
 $string['nocoursesfuture'] = 'No future courses';
 $string['nocoursespast'] = 'No past courses';
+$string['nocoursestotal'] = 'No courses';
 $string['noevents'] = 'No upcoming activities due';
 $string['next30days'] = 'Next 30 days';
 $string['next7days'] = 'Next 7 days';
@@ -45,3 +47,4 @@ $string['timeline'] = 'Timeline';
 $string['viewcourse'] = 'View course';
 $string['viewcoursename'] = 'View course {$a}';
 $string['complete'] = 'Complete';
+$string['privacy:metadata'] = 'The Course overview block only shows data stored in other locations.';

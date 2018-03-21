@@ -24,21 +24,57 @@
 }}
 <div id="courses-view-{{uniqid}}" data-region="courses-view">
     {{#hascourses}}
-    <div class="justify-content-center text-center">
-        <div class="btn-group my-4" role="group" data-toggle="btns">
-            <a class="btn btn-default active" href="#myoverview_courses_view_in_progress" data-toggle="tab">
-                {{#str}} inprogress, block_myoverview {{/str}}
-            </a>
-            <a class="btn btn-default" href="#myoverview_courses_view_future" data-toggle="tab">
-                {{#str}} future, block_myoverview {{/str}}
-            </a>
-            <a class="btn btn-default" href="#myoverview_courses_view_past" data-toggle="tab">
-                {{#str}} past, block_myoverview {{/str}}
-            </a>
-        </div>
-    </div>
+    <ul class="nav my-3">
+        <li id="hybrid" class="nav-item">
+            <div class="dropdown">
+                <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                  {{#str}} all, block_myoverview {{/str}}
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" id="collapsed">
+                    <li>
+                        <a class="dropdown-item" href="#myoverview_courses_view_total" data-toggle="tab">
+                            {{#str}} all, block_myoverview {{/str}}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#myoverview_courses_view_in_progress" data-toggle="tab">
+                            {{#str}} inprogress, block_myoverview {{/str}}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#myoverview_courses_view_future" data-toggle="tab">
+                            {{#str}} future, block_myoverview {{/str}}
+                        </a>
+                    </li>
+                    <li><a class="dropdown-item" href="#myoverview_courses_view_past" data-toggle="tab">
+                        {{#str}} past, block_myoverview {{/str}}</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
     <div class="tab-content">
-        <div class="tab-pane active fade show" id="myoverview_courses_view_in_progress">
+        <div class="tab-pane active fade show" id="myoverview_courses_view_total">
+            {{#total}}
+                {{< block_myoverview/courses-view-by-status }}
+                    {{$id}}courses-view-total{{/id}}
+                    {{$status}}1{{/status}}
+                    {{$pagingbarid}}pb-for-total{{/pagingbarid}}
+                    {{$pagingcontentid}}pc-for-total{{/pagingcontentid}}
+                {{/ block_myoverview/courses-view-by-status }}
+            {{/total}}
+            {{^total}}
+                <div class="justify-content-center text-center mt-5">
+                    <img class="empty-placeholder-image-lg"
+                         src="{{urls.nocourses}}"
+                         alt="{{#str}} nocoursestotal, block_myoverview {{/str}}"
+                         role="presentation">
+                    <p class="text-muted mt-3">{{#str}} nocoursestotal, block_myoverview {{/str}}</p>
+                </div>
+            {{/total}}
+        </div>
+
+        <div class="tab-pane fade" id="myoverview_courses_view_in_progress">
             {{#inprogress}}
                 {{< block_myoverview/courses-view-by-status }}
                     {{$id}}courses-view-in-progress{{/id}}
@@ -108,11 +144,11 @@
     {{/hascourses}}
 </div>
 {{#js}}
-require(['jquery', 'core/custom_interaction_events'], function($, customEvents) {
-    var root = $('#courses-view-{{uniqid}}');
-    customEvents.define(root, [customEvents.events.activate]);
-    root.on(customEvents.events.activate, '[data-toggle="btns"] > .btn', function() {
-        root.find('.btn.active').removeClass('active');
+require(['jquery', 'core/log'], function($, log) {
+    $(".dropdown-menu li a").click(function(){
+      $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+      $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+      $(this).parents(".dropdown").find('.dropdown-item').removeClass('active');
     });
 });
 {{/js}}

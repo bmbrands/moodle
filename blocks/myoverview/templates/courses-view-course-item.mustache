@@ -38,7 +38,10 @@
                 {{> block_myoverview/courseicon}}
             </div>
             <div class="media-body">
-                <h4 class="card-title h5"><a href="{{viewurl}}" class="{{^visible}}dimmed{{/visible}}">{{{fullnamedisplay}}}</a></h4>
+                <h4 class="card-title h5">
+                    <a href="{{viewurl}}" class="{{^visible}}dimmed{{/visible}}">{{{fullnamedisplay}}}</a>
+                    {{#pix}}i/addfavorite, core{{/pix}}
+                </h4>
                 <p class="card-text">
                     {{> block_myoverview/progress-chart}}
                 </p>
