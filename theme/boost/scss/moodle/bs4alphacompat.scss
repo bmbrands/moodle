@@ -185,3 +185,8 @@ $tag-font-weight:           bold !default;
 .fade.in {
   opacity: 1;
 }
+
+.bs-popover-right .arrow {
+    left: calc((0.5rem + 1px) * -1);
+    color: #000;
+}
