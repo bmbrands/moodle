@@ -2020,5 +2020,30 @@ function xmldb_main_upgrade($oldversion) {
         upgrade_main_savepoint(true, 2018022800.03);
     }
 
+    if ($oldversion < 2018031600.02) {
+
+        // Define table course_user_favourites to be created.
+        $table = new xmldb_table('course_user_favourites');
+
+        // Adding fields to table course_user_favourites.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('userid', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table->add_field('courseid', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table->add_field('timecreated', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table->add_field('timemodified', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+
+        // Adding keys to table course_user_favourites.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+        $table->add_key('userid', XMLDB_KEY_FOREIGN, array('userid'), 'user', array('id'));
+
+        // Conditionally launch create table for course_user_favourites.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Main savepoint reached.
+        upgrade_main_savepoint(true, 2018031600.02);
+    }
+
     return true;
 }
