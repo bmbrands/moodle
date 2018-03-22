@@ -37,10 +37,10 @@
         </li>
     </ul>
     <div class="tab-content content-centred">
-        <div role="tabpanel" class="tab-pane fade {{#viewingtimeline}}in active{{/viewingtimeline}}" id="myoverview_timeline_view">
+        <div role="tabpanel" class="tab-pane fade {{#viewingtimeline}}show active{{/viewingtimeline}}" id="myoverview_timeline_view">
             {{> block_myoverview/timeline-view }}
         </div>
-        <div role="tabpanel" class="tab-pane fade {{#viewingcourses}}in active{{/viewingcourses}}" id="myoverview_courses_view">
+        <div role="tabpanel" class="tab-pane fade {{#viewingcourses}}show active{{/viewingcourses}}" id="myoverview_courses_view">
             {{#coursesview}}
                 {{> block_myoverview/courses-view }}
             {{/coursesview}}

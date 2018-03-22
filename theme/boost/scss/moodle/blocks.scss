@@ -82,84 +82,84 @@ $doughnut-dasharray: 173;
 $doughnut-empty-colour: $gray-lighter;
 $doughnut-fill-colour: $brand-warning;
 
-.progress-chart-container {
-    height: $chart-size;
-    width: $chart-size;
+// .progress-chart-container {
+//     height: $chart-size;
+//     width: $chart-size;
 
-    .progress-doughnut {
-        position: relative;
-        height: $chart-size;
-        width: $chart-size;
-        background-clip: padding-box;
-        border: $doughnut-border-size solid $doughnut-empty-colour;
-        border-radius: 50%;
-        box-sizing: border-box;
+//     .progress-doughnut {
+//         position: relative;
+//         height: $chart-size;
+//         width: $chart-size;
+//         background-clip: padding-box;
+//         border: $doughnut-border-size solid $doughnut-empty-colour;
+//         border-radius: 50%;
+//         box-sizing: border-box;
 
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            /*rtl:ignore*/
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: $doughnut-empty-colour;
+//         .progress-text {
+//             position: absolute;
+//             top: 50%;
+//             /*rtl:ignore*/
+//             left: 50%;
+//             transform: translate(-50%, -50%);
+//             color: $doughnut-empty-colour;
 
-            &.has-percent {
-                color: $doughnut-fill-colour;
-            }
-        }
+//             &.has-percent {
+//                 color: $doughnut-fill-colour;
+//             }
+//         }
 
-        .progress-indicator {
-            position: absolute;
-            top: ($doughnut-border-size * -1);
-            left: ($doughnut-border-size * -1);
-            height: $chart-size;
-            width: $chart-size;
+//         .progress-indicator {
+//             position: absolute;
+//             top: ($doughnut-border-size * -1);
+//             left: ($doughnut-border-size * -1);
+//             height: $chart-size;
+//             width: $chart-size;
 
-            svg {
-                position: relative;
-                height: 100%;
-                width: 100%;
+//             svg {
+//                 position: relative;
+//                 height: 100%;
+//                 width: 100%;
 
-                .circle {
-                    stroke-width: $doughnut-border-size;
-                    stroke: $doughnut-fill-colour;
-                    fill: none;
-                    stroke-dasharray: $doughnut-dasharray;
-                    stroke-dashoffset: $doughnut-dasharray;
-                    transform: rotate(-90deg);
-                    transform-origin: center center;
+//                 .circle {
+//                     stroke-width: $doughnut-border-size;
+//                     stroke: $doughnut-fill-colour;
+//                     fill: none;
+//                     stroke-dasharray: $doughnut-dasharray;
+//                     stroke-dashoffset: $doughnut-dasharray;
+//                     transform: rotate(-90deg);
+//                     transform-origin: center center;
 
-                    @for $i from 1 through 100 {
-                        &.percent-#{$i} {
-                            stroke-dashoffset: $doughnut-dasharray - ($i / 100 * $doughnut-dasharray);
-                        }
-                    }
-                }
-            }
-        }
-    }
+//                     @for $i from 1 through 100 {
+//                         &.percent-#{$i} {
+//                             stroke-dashoffset: $doughnut-dasharray - ($i / 100 * $doughnut-dasharray);
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
 
-    .no-progress {
-        height: $chart-size;
-        width: $chart-size;
-        background-color: $doughnut-empty-colour;
-        border-radius: 50%;
-        position: relative;
+//     .no-progress {
+//         height: $chart-size;
+//         width: $chart-size;
+//         background-color: $doughnut-empty-colour;
+//         border-radius: 50%;
+//         position: relative;
 
-        .icon {
-            position: absolute;
-            top: 50%;
-            /*rtl:ignore*/
-            left: 50%;
-            margin: 0;
-            transform: translate(-45%, -45%);
-            color: #fff;
-            height: ($chart-size / 2) + 10px;
-            width: ($chart-size / 2) + 10px;
-            font-size: ($chart-size / 2) + 10px;
-        }
-    }
-}
+//         .icon {
+//             position: absolute;
+//             top: 50%;
+//             /*rtl:ignore*/
+//             left: 50%;
+//             margin: 0;
+//             transform: translate(-45%, -45%);
+//             color: #fff;
+//             height: ($chart-size / 2) + 10px;
+//             width: ($chart-size / 2) + 10px;
+//             font-size: ($chart-size / 2) + 10px;
+//         }
+//     }
+// }
 
 .block_myoverview {
     .event-list-item {
@@ -198,9 +198,50 @@ $doughnut-fill-colour: $brand-warning;
         height: 125px;
     }
 
-    .courses-view-course-item {
-        height: 220px;
-        overflow-y: hidden;
+    // .courses-view-course-item {
+    //     height: 220px;
+    //     overflow-y: hidden;
+    // }
+}
+
+.course-icon-circle {
+    display: inline-block;
+    span {
+        display: table-cell;
+        font-size: 10px;
+        line-height: 24px;
+        margin-left: 3px;
+        margin-right: 15px;
+        text-align: center;
+        vertical-align: middle;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+    }
+    &.large span {
+        font-size: 24px;
+        line-height: 52px;
+        margin-left: 3px;
+        margin-right: 15px;
+        height: 52px;
+        width: 52px;
+        border-radius: 50%;
+    }
+}
+
+.card-deck {
+    .card {
+        $card-gutter : $card-deck-margin * 2;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: calc(50% - #{$card-gutter});
+    }
+    .myoverviewimg {
+        height: 150px;
+        &.courseimage {
+            background-position: center;
+            background-size: cover;
+        }
     }
 }
 

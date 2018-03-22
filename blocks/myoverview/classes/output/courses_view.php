@@ -65,6 +65,7 @@ class courses_view implements renderable, templatable {
     public function export_for_template(renderer_base $output) {
         global $CFG;
         require_once($CFG->dirroot.'/course/lib.php');
+        require_once($CFG->dirroot.'/lib/coursecatlib.php');
 
         // Build courses view data structure.
         $coursesview = [
@@ -72,7 +73,7 @@ class courses_view implements renderable, templatable {
         ];
 
         // How many courses we have per status?
-        $coursesbystatus = ['past' => 0, 'inprogress' => 0, 'future' => 0];
+        $coursesbystatus = ['total' => 0, 'past' => 0, 'inprogress' => 0, 'future' => 0];
         foreach ($this->courses as $course) {
             $courseid = $course->id;
             $context = \context_course::instance($courseid);
@@ -82,6 +83,35 @@ class courses_view implements renderable, templatable {
             $exportedcourse = $exporter->export($output);
             // Convert summary to plain text.
             $exportedcourse->summary = content_to_text($exportedcourse->summary, $exportedcourse->summaryformat);
+
+            $course = new \course_in_list($course);
+            foreach ($course->get_course_overviewfiles() as $file) {
+                $isimage = $file->is_valid_image();
+                if ($isimage) {
+                    $url = file_encode_url("$CFG->wwwroot/pluginfile.php",
+                        '/'. $file->get_contextid(). '/'. $file->get_component(). '/'.
+                        $file->get_filearea(). $file->get_filepath(). $file->get_filename(), !$isimage);
+                    $exportedcourse->courseimage = $url;
+                    $exportedcourse->classes = 'courseimage';
+                    continue;
+                }
+            }
+
+            $basecolors = ['#81ecec', '#74b9ff', '#a29bfe', '#dfe6e9', '#00b894', '#0984e3', '#b2bec3', '#fdcb6e', '#fd79a8', '#6c5ce7'];
+
+            srand($courseid);
+            $exportedcourse->color = $basecolors[rand(0,9)];
+
+
+            if (!isset($exportedcourse->courseimage)) {
+                $pattern = new \core_geopattern();
+                $pattern->setColor($exportedcourse->color);
+                $pattern->patternbyid($courseid);
+                $exportedcourse->classes = 'coursepattern';
+                $exportedcourse->courseimage = $pattern->datauri();
+            }
+
+            $exportedcourse->courseabbr = $this->course_icon_abbr($course);
 
             // Include course visibility.
             $exportedcourse->visible = (bool)$course->visible;
@@ -124,6 +154,14 @@ class courses_view implements renderable, templatable {
                 $coursesview['inprogress']['haspages'] = true;
                 $coursesbystatus['inprogress']++;
             }
+            // All courses for the totals view.
+
+            $totalpages = floor($coursesbystatus['total'] / $this::COURSES_PER_PAGE);
+            $coursesview['total']['pages'][$totalpages]['courses'][] = $exportedcourse;
+            $coursesview['total']['pages'][$totalpages]['active'] = ($totalpages == 0 ? true : false);
+            $coursesview['total']['pages'][$totalpages]['page'] = $totalpages + 1;
+            $coursesview['total']['haspages'] = true;
+            $coursesbystatus['total']++;
         }
 
         // Build courses view paging bar structure.
@@ -147,5 +185,24 @@ class courses_view implements renderable, templatable {
         }
 
         return $coursesview;
+    }
+
+    private function course_icon_abbr($course) {
+        $words = preg_split("/\s+/", $course->fullname);
+        
+        $maxcaps = 2;
+        $count = 0;
+        $abbr = '';
+        
+        foreach ($words as $word) {
+            if ($count < $maxcaps) {
+                $chr = mb_substr($word, 0, 1, "UTF-8");
+                if (mb_strtolower($chr, "UTF-8") != $chr) {
+                    $count++;
+                    $abbr .= $chr;
+                }
+            }
+        }
+        return $abbr;
     }
 }

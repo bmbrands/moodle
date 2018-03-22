@@ -12,7 +12,7 @@
     "url": "https://github.com/bmbrands/moodle-theme_reboost.git"
   },
   "scripts": {
-    "postcss": "postcss --config postcss.js --output style/reboost.css style/reboost.css"
+    "postcss": "postcss --config postcss.js --output style/boost.css style/boost.css"
   },
   "devDependencies": {
     "autoprefixer": "^8.0.0",

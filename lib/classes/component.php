@@ -79,6 +79,7 @@ class core_component {
         'Sabberworm\\CSS' => 'lib/php-css-parser',
         'MoodleHQ\\RTLCSS' => 'lib/rtlcss',
         'Leafo\\ScssPhp' => 'lib/scssphp',
+        'RedeyeVentures\\GeoPattern' => 'lib/geopattern-php',
         'Box\\Spout' => 'lib/spout/src/Spout',
         'MatthiasMullie\\Minify' => 'lib/minify/matthiasmullie-minify/src/',
         'MatthiasMullie\\PathConverter' => 'lib/minify/matthiasmullie-pathconverter/src/',
