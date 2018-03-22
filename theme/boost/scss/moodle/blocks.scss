@@ -32,7 +32,7 @@ $blocks-column-width: 250px !default;
     float: right;
 }
 
-$blocks-plus-gutter: $blocks-column-width + $grid-gutter-width;
+$blocks-plus-gutter: $blocks-column-width + ( $grid-gutter-width / 2 );
 
 /* We put an absolutely positioned div in a relatively positioned div so it takes up no space */
 #region-main-settings-menu {

@@ -1,3 +1,9 @@
 // Import font awesome.
 @import "fontawesome/moodle-path";
 @import "fontawesome/font-awesome";
+
+@mixin mcalc($property, $expression) { 
+  #{$property}: -webkit-calc(#{$expression}); 
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: calc(#{$expression}); 
+} 

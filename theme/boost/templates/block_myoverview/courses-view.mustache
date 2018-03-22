@@ -24,19 +24,30 @@
 }}
 <div id="courses-view-{{uniqid}}" data-region="courses-view">
     {{#hascourses}}
-    <div class="justify-content-center text-center">
-        <div class="btn-group my-4" role="group" data-toggle="btns">
-            <a class="btn btn-default active" href="#myoverview_courses_view_in_progress" data-toggle="tab">
-                {{#str}} inprogress, block_myoverview {{/str}}
-            </a>
-            <a class="btn btn-default" href="#myoverview_courses_view_future" data-toggle="tab">
-                {{#str}} future, block_myoverview {{/str}}
-            </a>
-            <a class="btn btn-default" href="#myoverview_courses_view_past" data-toggle="tab">
-                {{#str}} past, block_myoverview {{/str}}
-            </a>
-        </div>
-    </div>
+    <ul class="nav my-3">
+          <li id="hybrid" class="nav-item">
+              <div class="dropdown">
+                  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                    {{#str}} inprogress, block_myoverview {{/str}}
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" id="collapsed">
+                      <li>
+                          <a class="dropdown-item" href="#myoverview_courses_view_in_progress" data-toggle="tab">
+                              {{#str}} inprogress, block_myoverview {{/str}}
+                          </a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="#myoverview_courses_view_future" data-toggle="tab">
+                              {{#str}} future, block_myoverview {{/str}}
+                          </a>
+                      </li>
+                      <li><a class="dropdown-item" href="#myoverview_courses_view_past" data-toggle="tab">
+                          {{#str}} past, block_myoverview {{/str}}</a></li>
+                  </ul>
+              </div>
+          </li>
+    </ul>
     <div class="tab-content">
         <div class="tab-pane active fade show" id="myoverview_courses_view_in_progress">
             {{#inprogress}}
@@ -108,11 +119,11 @@
     {{/hascourses}}
 </div>
 {{#js}}
-require(['jquery', 'core/custom_interaction_events'], function($, customEvents) {
-    var root = $('#courses-view-{{uniqid}}');
-    customEvents.define(root, [customEvents.events.activate]);
-    root.on(customEvents.events.activate, '[data-toggle="btns"] > .btn', function() {
-        root.find('.btn.active').removeClass('active');
-    });
-});
-{{/js}}
+require(['jquery', 'core/log'], function($, log) {
+    $(".dropdown-menu li a").click(function(){
+         $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+         $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+         $(this).parents(".dropdown").find('.dropdown-item').removeClass('active');
+     });
+ });
+ {{/js}}

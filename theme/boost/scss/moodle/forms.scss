@@ -98,6 +98,10 @@ input#id_externalurl {
     display: inline;
 }
 
+.form-inline label:not(.sr-only) + select {
+    margin-left: 0.5rem;
+}
+
 .formsettingheading .form-horizontal {
     @extend .text-muted;
 }
