@@ -197,6 +197,7 @@ class privacy_manager_testcase extends advanced_testcase {
      * This really just checks that all providers can be safely autoloaded.
      */
     public function test_installed_plugins() {
+	echo "\n";
         $manager = new \core_privacy\manager();
         $metadata = $manager->get_metadata_for_components();
         $this->assertNotEmpty($metadata);
