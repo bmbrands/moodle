@@ -66,6 +66,7 @@ media/player/videojs/videojs/video-js.swf
 mod/assign/feedback/editpdf/fpdi/
 repository/s3/S3.php
 theme/boost/scss/bootstrap/
+theme/boost/scss/bootswatch/
 theme/boost/amd/src/alert.js
 theme/boost/amd/src/button.js
 theme/boost/amd/src/carousel.js
@@ -79,6 +80,7 @@ theme/boost/amd/src/tooltip.js
 theme/boost/amd/src/util.js
 theme/boost/amd/src/tether.js
 theme/boost/scss/fontawesome/
+theme/boost/amd/src/popper.js
 theme/bootstrapbase/less/bootstrap/
 theme/bootstrapbase/javascript/html5shiv.js
 theme/bootstrapbase/amd/src/bootstrap.js
