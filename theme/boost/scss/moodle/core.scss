@@ -8,7 +8,6 @@ $bg-inverse-link-color: #fff !default;
 #region-main > .card {
     overflow-x: auto;
     overflow-y: visible;
-    min-height: 45rem;
 }
 
 .context-header-settings-menu,
@@ -1753,11 +1752,8 @@ img#persona_signin {
 
 /** Page header */
 #page-header {
-    .logo {
-        margin: $spacer 0;
-        img {
-            max-height: 75px;
-        }
+    .logo img {
+        max-height: 75px;
     }
 }
 
