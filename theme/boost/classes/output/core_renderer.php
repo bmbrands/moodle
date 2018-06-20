@@ -339,6 +339,7 @@ class core_renderer extends \core_renderer {
         $context->ariarole = !empty($bc->attributes['role']) ? $bc->attributes['role'] : 'complementary';
         $context->type = $bc->attributes['data-block'];
         $context->title = $bc->title;
+        $context->class = $bc->attributes['class'];
         $context->content = $bc->content;
         $context->annotation = $bc->annotation;
         $context->footer = $bc->footer;

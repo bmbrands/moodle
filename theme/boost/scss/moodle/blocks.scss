@@ -25,6 +25,10 @@
     }
 }
 
+.block.dimmed .card-title {
+    opacity: .5;
+}
+
 $blocks-column-width: 250px !default;
 
 [data-region="blocks-column"] {
