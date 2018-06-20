@@ -100,22 +100,13 @@ function theme_boost_get_main_scss_content($theme) {
     } else if ($filename == 'plain.scss') {
         $scss = file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
     } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_boost', 'preset', 0, '/', $filename))) {
-        $validpreset = true;
-        // Run a test run on the preset.
-        $compiler = new core_scss();
-        $compiler->prepend_raw_scss($presetfile->get_content());
-        try {
-            $compiled = $compiler->to_css();
-        } catch (Exception $e) {
-            $validpreset = false;
-            debugging('Loading preset failed: ' . $e->getMessage(), DEBUG_DEVELOPER);
-        }
         // If the preset is validated we return the preset Sass, if not the default is served.
-        if ($validpreset) {
+        if (theme_boost_validate_scss_content()) {
             $scss = $presetfile->get_content();
         } else {
             $scss = file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
         }
+        
     } else {
         // Safety fallback - maybe new installs etc.
         $scss = file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
@@ -160,4 +151,49 @@ function theme_boost_get_pre_scss($theme) {
     }
 
     return $scss;
+}
+
+/**
+ * Test if the SCSS content compiles.
+ *
+ * @return bool true if no compilation errors found
+ */
+function theme_boost_validate_scss_content() {
+    global $CFG;
+
+    $theme = theme_config::load('boost');
+    $context = context_system::instance();
+    $fs = get_file_storage();
+
+
+    // Load the SCSS compiler.
+    $compiler = new core_scss();
+
+    // Prepend pre-scss.
+    if (!empty($theme->settings->scsspre)) {
+        $compiler->prepend_raw_scss($theme->settings->scsspre);
+    }
+
+    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
+
+    if ($presetfile = $fs->get_file($context->id, 'theme_boost', 'preset', 0, '/', $filename)) {
+        $compiler->set_file($presetfile->get_filepath());
+    } else {
+        $compiler->set_file($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    }
+
+    // Append pst-scss.
+    if (!empty($theme->settings->scss)) {
+        $compiler->append_raw_scss($theme->settings->scss);
+    }
+
+    try {
+        $compiled = $compiler->to_css();            
+    } catch (Exception $e) {
+        debugging('Failed Loading boost scss: ' . $e->getMessage(), DEBUG_DEVELOPER);
+        return false;
+    }
+
+    theme_reset_all_caches();
+    return true;
 }
