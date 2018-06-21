@@ -45,7 +45,7 @@ if ($ADMIN->fulltree) {
     $choices['plain.scss'] = 'plain.scss';
 
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
+    $setting->set_updatedcallback('theme_boost_validate_scss_content');
     $page->add($setting);
 
     // Preset files setting.
