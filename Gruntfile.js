@@ -137,6 +137,16 @@ module.exports = function(grunt) {
                 }
            }
         },
+        sass: {
+            dist: {
+                files: {
+                    "theme/boost/style/moodle.css": "theme/boost/scss/preset/default.scss"
+                }
+            },
+            options: {
+                includePaths: ["theme/boost/scss/"]
+            }
+        },
         watch: {
             options: {
                 nospawn: true // We need not to spawn so config can be changed dynamically.
@@ -362,6 +372,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-stylelint');
 
