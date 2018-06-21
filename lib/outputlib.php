@@ -663,6 +663,11 @@ class theme_config {
     public $remapiconcache = [];
 
     /**
+     * The name of the function to call to get precompiled CSS.
+     */
+    public $precompiledcsscallback = null;
+
+    /**
      * Load the config.php file for a particular theme, and return an instance
      * of this class. (That is, this is a factory method.)
      *
@@ -739,7 +744,7 @@ class theme_config {
             'rendererfactory', 'csspostprocess', 'editor_sheets', 'rarrow', 'larrow', 'uarrow', 'darrow',
             'hidefromselector', 'doctype', 'yuicssmodules', 'blockrtlmanipulations',
             'lessfile', 'extralesscallback', 'lessvariablescallback', 'blockrendermethod',
-            'scss', 'extrascsscallback', 'prescsscallback', 'csstreepostprocessor', 'addblockposition', 'iconsystem');
+            'scss', 'extrascsscallback', 'prescsscallback', 'csstreepostprocessor', 'addblockposition', 'iconsystem', 'precompiledcsscallback');
 
         foreach ($config as $key=>$value) {
             if (in_array($key, $configurable)) {
@@ -1095,7 +1100,7 @@ class theme_config {
                         } else {
                             // The compiler failed so default back to any precompiled css that might
                             // exist.
-                            $compiled .= $this->get_precompiled_css_content();
+                            $csscontent .= $this->get_precompiled_css_content();
                         }
                     } else if ($type === 'theme' && $identifier === $this->lessfile) {
                         // We need the content from LESS because this is the LESS file from the theme.
@@ -1498,11 +1503,13 @@ class theme_config {
         $css = '';
 
         foreach ($configs as $config) {
-            if (isset($conf->precompiledcsscallback)) {
-                $css = $conf->precompiledcsscallback($theme) . ";";
+            if (isset($config->precompiledcsscallback)) {
+                $function = $config->precompiledcsscallback;
+                if (function_exists($function)) {
+                    $css .= $function($this);
+                }
             }
         }
-
         return $css;
     }
 
