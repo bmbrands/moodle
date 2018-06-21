@@ -146,3 +146,9 @@ function theme_boost_get_pre_scss($theme) {
 
     return $scss;
 }
+
+function theme_boost_get_precompiled_css($theme) {
+    global $CFG;
+    die("IN HERE");
+    return file_get_contents($CFG->dirroot . '/theme/boost/style/moodle.css');
+}

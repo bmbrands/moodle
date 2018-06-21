@@ -1090,7 +1090,13 @@ class theme_config {
                 } else {
                     if ($type === 'theme' && $identifier === self::SCSS_KEY) {
                         // We need the content from SCSS because this is the SCSS file from the theme.
-                        $csscontent .= $this->get_css_content_from_scss(false);
+                        if ($compiled = $this->get_css_content_from_scss(false)) {
+                            $csscontent .= $compiled;
+                        } else {
+                            // The compiler failed so default back to any precompiled css that might
+                            // exist.
+                            $compiled .= $this->get_precompiled_css_content();
+                        }
                     } else if ($type === 'theme' && $identifier === $this->lessfile) {
                         // We need the content from LESS because this is the LESS file from the theme.
                         $csscontent .= $this->get_css_content_from_less(false);
@@ -1485,6 +1491,19 @@ class theme_config {
         unset($compiler);
 
         return $compiled;
+    }
+
+    public function get_precompiled_css_content() {
+        $configs = [$this] + $this->parent_configs;
+        $css = '';
+
+        foreach ($configs as $config) {
+            if (isset($conf->precompiledcsscallback)) {
+                $css = $conf->precompiledcsscallback($theme) . ";";
+            }
+        }
+
+        return $css;
     }
 
     /**
