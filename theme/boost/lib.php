@@ -146,3 +146,13 @@ function theme_boost_get_pre_scss($theme) {
 
     return $scss;
 }
+
+/**
+ * Get compiled css.
+ *
+ * @return string compiled css
+ */
+function theme_boost_get_precompiled_css() {
+    global $CFG;
+    return file_get_contents($CFG->dirroot . '/theme/boost/style/moodle.css');
+}
