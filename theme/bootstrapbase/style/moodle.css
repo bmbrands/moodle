@@ -18018,6 +18018,9 @@ div#dock {
 .path-mod-scorm #region-main #intro {
   width: auto;
 }
+.path-admin-tool-dataprivacy [data-region="data-requests-table"] .no-overflow {
+  overflow: visible;
+}
 .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax {
   background-color: #fff;
 }
