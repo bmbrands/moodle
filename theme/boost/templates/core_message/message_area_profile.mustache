@@ -19,47 +19,63 @@
         <button class="btn btn-link show-contacts" data-action="show-contacts">&lt; {{#str}} contacts, message {{/str}}</button>
     </div>
 </div>
-<div class="profile" data-userid="{{userid}}" data-region="profile">
-    <div class="user-container">
+<div class="profile p-4" data-userid="{{userid}}" data-region="profile">
+    <div class="user-container d-flex">
         <a data-action="profile-view" href="#">
             <img class="profile-picture" src="{{profileimageurl}}"
                  alt="{{#str}}pictureof, moodle, {{fullname}}{{/str}}"
                  title="{{#str}}pictureof, moodle, {{fullname}}{{/str}}" />
         </a>
-        <div class="name-container">
+        <div class="name-container mt-3 ml-2">
             <div class="name">{{fullname}}</div>
             {{#showonlinestatus}}
                 <div class="status {{#isonline}}online{{/isonline}}">
-                    <div class="online-text">{{#str}} online, message {{/str}}</div>
-                    <div class="offline-text">{{#str}} offline, message {{/str}}</div>
+                    <div class="online-text text-success">{{#str}} online, message {{/str}}</div>
+                    <div class="offline-text text-danger">{{#str}} offline, message {{/str}}</div>
                 </div>
             {{/showonlinestatus}}
         </div>
-        <ul class="information">
-            {{#email}}<li><div class="name">{{#str}} email {{/str}}</div><div class="value">{{.}}</div></li>{{/email}}
-            {{#country}}<li><div class="name">{{#str}} country {{/str}}</div><div class="value">{{country}}</div></li>{{/country}}
-            {{#city}}<li><div class="name">{{#str}} city {{/str}}</div><div class="value">{{city}}</div></li>{{/city}}
-        </ul>
     </div>
-    <div class="actions">
-        <div class="separator">
+    <ul class="information list-unstyled mt-3">
+        {{#email}}
+            <li>
+                <dl>
+                    <dt>{{#str}} email {{/str}}</dt>
+                    <dd>{{.}}</dd>
+                </dl>
+            </li>
+        {{/email}}
+        {{#country}}
+            <li>
+                <dl>
+                    <dt>{{#str}} country {{/str}}</dt>
+                    <dd>{{country}}</dd>
+                </dl>
+            </li>
+        {{/country}}
+        {{#city}}
+            <li>
+                <dl>
+                    <dt>{{#str}} city {{/str}}</dt>
+                    <dd>{{city}}</dd>
+                </dl>
+            </li>
+        {{/city}}
+    </ul>
+    <div class="actions mt-5">
             <a data-action="profile-send-message" class="btn btn-primary" href="#">{{#str}}sendmessage, message{{/str}}</a>
-        </div>
-        <div class="separator">
             {{#isblocked}}
                 <a data-action="profile-unblock-contact" class="btn btn-warning" href="#">{{#str}}unblockcontact, message{{/str}}</a>
             {{/isblocked}}
             {{^isblocked}}
-                <a class="btn btn-danger" data-action="profile-block-contact" href="#">{{#str}}blockcontact, message{{/str}}</a>
+                <a data-action="profile-block-contact" class="btn btn-danger" href="#">{{#str}}blockcontact, message{{/str}}</a>
             {{/isblocked}}
-        </div>
-        <div class="separator">
             {{#iscontact}}
-                <a class="btn btn-danger" data-action="profile-remove-contact" href="#">{{#str}}removecontact, message{{/str}}</a>
+                <a data-action="profile-remove-contact" class="btn btn-danger" href="#">{{#str}}removecontact, message{{/str}}</a>
             {{/iscontact}}
             {{^iscontact}}
-                <a data-action="profile-add-contact" class="btn btn-success" href="#">{{#str}}addcontact, message{{/str}}</a>
+                <a data-action="profile-add-contact"  class="btn btn-success" href="#">{{#str}}addcontact, message{{/str}}</a>
             {{/iscontact}}
-        </div>
+        
     </div>
 </div>

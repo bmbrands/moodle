@@ -8143,7 +8143,7 @@ a.ygtvspacer:hover {
 .messaging-area-container .status.online .offline-text {
   display: none;
 }
-.messaging-area-container a,
+.messaging-area-container a:not(.btn),
 .messaging-area-container .btn.btn-link {
   color: #4f94cd;
 }

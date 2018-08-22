@@ -154,7 +154,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/notification', 'core/str'
          */
         Profile.prototype._blockContact = function() {
             var action = this._performAction('core_message_block_contacts', 'unblockcontact', 'profile-block-contact',
-                'profile-unblock-contact', '');
+                'profile-unblock-contact', 'btn btn-warning');
             return action.then(function() {
                 this.messageArea.trigger(Events.CONTACTBLOCKED, this._getUserId());
             }.bind(this));
@@ -168,7 +168,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/notification', 'core/str'
          */
         Profile.prototype._unblockContact = function() {
             var action = this._performAction('core_message_unblock_contacts', 'blockcontact', 'profile-unblock-contact',
-                'profile-block-contact', 'danger');
+                'profile-block-contact', 'btn btn-danger');
             return action.then(function() {
                 this.messageArea.trigger(Events.CONTACTUNBLOCKED, this._getUserId());
             }.bind(this));
@@ -182,7 +182,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/notification', 'core/str'
          */
         Profile.prototype._addContact = function() {
             var action = this._performAction('core_message_create_contacts', 'removecontact', 'profile-add-contact',
-                'profile-remove-contact', 'danger');
+                'profile-remove-contact', 'btn btn-danger');
             return action.then(function() {
                 this.messageArea.trigger(Events.CONTACTADDED, this._getUserId());
             }.bind(this));
@@ -196,7 +196,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/notification', 'core/str'
          */
         Profile.prototype._removeContact = function() {
             var action = this._performAction('core_message_delete_contacts', 'addcontact', 'profile-remove-contact',
-                'profile-add-contact', '');
+                'profile-add-contact', 'btn btn-success');
             return action.then(function() {
                 this.messageArea.trigger(Events.CONTACTREMOVED, this._getUserId());
             }.bind(this));

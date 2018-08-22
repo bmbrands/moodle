@@ -74,29 +74,30 @@
     }
 }}
 <div class="preferences-page-container">
-    ORIGINEEL
+    HALLO!!
     <h2>{{#str}} notificationpreferences, message {{/str}}</h2>
-    <div class="checkbox-container" data-region="disable-notification-container">
+    <div class="checkbox-container form-check my-3" data-region="disable-notification-container">
         <input id="disable-notifications"
            type="checkbox"
+           class="form-check-input"
            data-disable-notifications
            {{#disableall}}checked{{/disableall}} />
-        <label for="disable-notifications">{{#str}} disableall, message {{/str}}</label>
+        <label class="form-check-label" for="disable-notifications">{{#str}} disableall, message {{/str}}</label>
         {{> core/loading }}
     </div>
-    <div class="preferences-container {{#disableall}}disabled{{/disableall}}" data-user-id="{{userid}}">
+    <div class="preferences-container table-bordered {{#disableall}}disabled{{/disableall}}" data-user-id="{{userid}}">
         <table class="table table-hover preference-table">
-            <thead>
+            <thead class="text-center">
                 <tr>
                     <th>{{displayname}}</th>
                     {{#processors}}
-                        {{> message/notification_preferences_processor }}
+                        {{> core_message/notification_preferences_processor }}
                     {{/processors}}
                 </tr>
             </thead>
             <tbody>
                 {{#components}}
-                    {{> message/notification_preferences_component }}
+                    {{> core_message/notification_preferences_component }}
                 {{/components}}
             </tbody>
         </table>

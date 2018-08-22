@@ -78,7 +78,7 @@ $PAGE->set_title($strmessaging);
 $PAGE->set_heading(fullname($user));
 
 // Grab the renderer
-$renderer = $PAGE->get_renderer('core', 'message');
+$renderer = $PAGE->get_renderer('core_message');
 $messagingoptions = $renderer->render_user_message_preferences($user);
 
 echo $OUTPUT->header();

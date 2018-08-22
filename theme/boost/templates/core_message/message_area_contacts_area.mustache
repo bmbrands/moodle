@@ -1,0 +1,56 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+<div class="scroll p-0">
+    <div class="searchtextarea d-flex" data-region="search-text-area">
+        <label class="accesshide" for="searchtext">{{#str}}search{{/str}}</label>
+        <input data-region="search-box" class="form-control" type="text" id="searchtext" placeholder="{{#contactsfirst}} {{#str}}searchforuserorcourse, message{{/str}} {{/contactsfirst}} {{^contactsfirst}} {{#str}}searchmessages, message{{/str}} {{/contactsfirst}}">
+    </div>
+    <div data-region="search-filter-area" class="alert alert-info searchfilterarea" style="display:none" role="button" tabindex="0">
+        <div data-region="search-filter" class="searchfilter"></div>
+        <div data-action="search-filter-delete" class="searchfilterdelete">{{#pix}}t/delete{{/pix}}</div>
+    </div>
+    {{#contactsfirst}}
+    <div class="contacts pl-1 pr-1" data-region="contacts" data-region-content="conversations" style="display:none;" role="tabpanel" id="conversations-tab-panel"></div>
+    <div class="contacts" data-region="contacts" data-region-content="contacts" role="tabpanel" id="contacts-tab-panel">
+        {{> core_message/message_area_contacts }}
+    </div>
+    {{/contactsfirst}}
+    {{^contactsfirst}}
+    <div class="contacts pl-1 pr-1" data-region="contacts" data-region-content="conversations" role="tabpanel" id="conversations-tab-panel">
+        {{> core_message/message_area_contacts }}
+    </div>
+    <div class="contacts pl-1 pr-1" data-region="contacts" data-region-content="contacts" style="display:none;" role="tabpanel" id="contacts-tab-panel"></div>
+    {{/contactsfirst}}
+    {{! Hidden divs to load the other tab and search panels via JS when appropriate. }}
+    <div class="contacts searcharea" data-region="search-results-area" style="display:none;"></div>
+</div>
+<div class="card-footer contacts-footer p-0">
+    <div class="tabs nav nav-pills nav-justified" role="tablist">
+        <div class="nav-item nav-link tab tabconversations {{^contactsfirst}}active{{/contactsfirst}} " data-action="conversations-view" role="tab" aria-controls="conversations-tab-panel" aria-selected="{{^contactsfirst}}true{{/contactsfirst}}{{#contactsfirst}}false{{/contactsfirst}}" tabindex="0">
+            <div class="media align-items-center">
+            {{#pix}}t/message, moodle{{/pix}}
+                <span>{{#str}}messages, message{{/str}}</span>
+            </div>
+        </div>
+        <div class="nav-item nav-link tab tabcontacts {{#contactsfirst}}active{{/contactsfirst}}" data-action="contacts-view" role="tab" aria-controls="contacts-tab-panel" aria-selected="{{#contactsfirst}}true{{/contactsfirst}}{{^contactsfirst}}false{{/contactsfirst}}" tabindex="-1">
+            <div class="media align-items-center">
+                {{#pix}}i/cohort, moodle{{/pix}}
+                <span>{{#str}}contacts, message{{/str}}</span>
+            </div>
+        </div>
+    </div>
+</div>

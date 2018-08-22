@@ -123,11 +123,13 @@ define(['core/custom_interaction_events', 'core_message/message_area_events'], f
      */
     Tabs.prototype._selectTab = function(tabselect, tabdeselect) {
         tabdeselect = this.messageArea.find(tabdeselect);
+        tabdeselect.removeClass('active');
         tabdeselect.removeClass('selected');
         tabdeselect.attr('aria-selected', 'false');
         tabdeselect.attr('tabindex', '-1');
 
         tabselect = this.messageArea.find(tabselect);
+        tabselect.addClass('active');
         tabselect.addClass('selected');
         tabselect.attr('aria-selected', 'true');
         tabselect.attr('tabindex', '0');
