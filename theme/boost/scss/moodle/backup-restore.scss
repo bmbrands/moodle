@@ -1,31 +1,13 @@
 .path-backup .mform {
     .grouped_settings {
-        clear: both;
-        overflow: hidden;
-
         /* Use card styles but avoid extend because that brings in too much. */
         &.section_level {
             background-color: $card-bg;
             @include border-radius($card-border-radius);
             border: $card-border-width solid $card-border-color;
-            @include clearfix;
             padding: $card-spacer-x;
             margin-bottom: $card-spacer-x;
         }
-    }
-
-    /* These are long labels with checkboxes on the right. */
-    .include_setting {
-        width: 50%;
-        display: inline-block;
-        float: left;
-        padding: $table-sm-cell-padding;
-    }
-    .normal_setting {
-        width: 50%;
-        display: inline-block;
-        float: left;
-        padding: $table-sm-cell-padding;
     }
 }
 
@@ -46,22 +28,9 @@
 .path-backup .mform {
     .root_setting,
     .grouped_settings {
-        /* Striped rows like a table */
-        &:nth-of-type(odd) {
-            background-color: $table-bg-accent;
-        }
-        &:nth-of-type(even) {
-            background-color: $card-bg;
-        }
         .form-group {
-            /* These checkboxes with no label on the left. */
-            .col-md-3.checkbox {
-                width: 0%;
-            }
-            .col-md-9.checkbox {
-                width: 100%;
-                left: 0;
-            }
+            margin-bottom: 0;
+            padding-bottom: 1rem;
         }
     }
 }
