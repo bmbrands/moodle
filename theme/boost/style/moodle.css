@@ -15979,31 +15979,13 @@ div#dock {
 #page-report-participation-index .participationselectform div label[for=menuinstanceid] {
   margin-left: 0; }
 
-.path-backup .mform {
-  /* These are long labels with checkboxes on the right. */ }
-  .path-backup .mform .grouped_settings {
-    clear: both;
-    overflow: hidden;
-    /* Use card styles but avoid extend because that brings in too much. */ }
-    .path-backup .mform .grouped_settings.section_level {
-      background-color: #fff;
-      border: 1px solid rgba(0, 0, 0, 0.125);
-      padding: 1.25rem;
-      margin-bottom: 1.25rem; }
-      .path-backup .mform .grouped_settings.section_level::after {
-        display: block;
-        clear: both;
-        content: ""; }
-  .path-backup .mform .include_setting {
-    width: 50%;
-    display: inline-block;
-    float: left;
-    padding: 0.3rem; }
-  .path-backup .mform .normal_setting {
-    width: 50%;
-    display: inline-block;
-    float: left;
-    padding: 0.3rem; }
+.path-backup .mform .grouped_settings {
+  /* Use card styles but avoid extend because that brings in too much. */ }
+  .path-backup .mform .grouped_settings.section_level {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem; }
 
 .path-backup {
   /* Bold section labels */ }
@@ -16015,46 +15997,19 @@ div#dock {
     margin-left: auto; }
 
 /* Override the columns width to leave more room for the labels. */
-.path-backup .mform .root_setting,
-.path-backup .mform .grouped_settings {
-  /* Striped rows like a table */ }
-  .path-backup .mform .root_setting:nth-of-type(odd),
-  .path-backup .mform .grouped_settings:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05); }
-  .path-backup .mform .root_setting:nth-of-type(even),
-  .path-backup .mform .grouped_settings:nth-of-type(even) {
-    background-color: #fff; }
-  .path-backup .mform .root_setting .form-group, .path-backup .mform .root_setting .form-buttons,
-  .path-backup .mform .root_setting .path-admin .buttons, .path-admin .path-backup .mform .root_setting .buttons,
-  .path-backup .mform .root_setting .fp-content-center form + div, .fp-content-center .path-backup .mform .root_setting form + div,
-  .path-backup .mform .root_setting div.backup-section + form,
-  .path-backup .mform .grouped_settings .form-group,
-  .path-backup .mform .grouped_settings .form-buttons,
-  .path-backup .mform .grouped_settings .path-admin .buttons,
-  .path-admin .path-backup .mform .grouped_settings .buttons,
-  .path-backup .mform .grouped_settings .fp-content-center form + div,
-  .fp-content-center .path-backup .mform .grouped_settings form + div,
-  .path-backup .mform .grouped_settings div.backup-section + form {
-    /* These checkboxes with no label on the left. */ }
-    .path-backup .mform .root_setting .form-group .col-md-3.checkbox, .path-backup .mform .root_setting .form-buttons .col-md-3.checkbox, .path-backup .mform .root_setting .path-admin .buttons .col-md-3.checkbox, .path-admin .path-backup .mform .root_setting .buttons .col-md-3.checkbox, .path-backup .mform .root_setting .fp-content-center form + div .col-md-3.checkbox, .fp-content-center .path-backup .mform .root_setting form + div .col-md-3.checkbox, .path-backup .mform .root_setting div.backup-section + form .col-md-3.checkbox,
-    .path-backup .mform .grouped_settings .form-group .col-md-3.checkbox,
-    .path-backup .mform .grouped_settings .form-buttons .col-md-3.checkbox,
-    .path-backup .mform .grouped_settings .path-admin .buttons .col-md-3.checkbox,
-    .path-admin .path-backup .mform .grouped_settings .buttons .col-md-3.checkbox,
-    .path-backup .mform .grouped_settings .fp-content-center form + div .col-md-3.checkbox,
-    .fp-content-center .path-backup .mform .grouped_settings form + div .col-md-3.checkbox,
-    .path-backup .mform .grouped_settings div.backup-section + form .col-md-3.checkbox {
-      width: 0%; }
-    .path-backup .mform .root_setting .form-group .col-md-9.checkbox, .path-backup .mform .root_setting .form-buttons .col-md-9.checkbox, .path-backup .mform .root_setting .path-admin .buttons .col-md-9.checkbox, .path-admin .path-backup .mform .root_setting .buttons .col-md-9.checkbox, .path-backup .mform .root_setting .fp-content-center form + div .col-md-9.checkbox, .fp-content-center .path-backup .mform .root_setting form + div .col-md-9.checkbox, .path-backup .mform .root_setting div.backup-section + form .col-md-9.checkbox,
-    .path-backup .mform .grouped_settings .form-group .col-md-9.checkbox,
-    .path-backup .mform .grouped_settings .form-buttons .col-md-9.checkbox,
-    .path-backup .mform .grouped_settings .path-admin .buttons .col-md-9.checkbox,
-    .path-admin .path-backup .mform .grouped_settings .buttons .col-md-9.checkbox,
-    .path-backup .mform .grouped_settings .fp-content-center form + div .col-md-9.checkbox,
-    .fp-content-center .path-backup .mform .grouped_settings form + div .col-md-9.checkbox,
-    .path-backup .mform .grouped_settings div.backup-section + form .col-md-9.checkbox {
-      width: 100%;
-      left: 0; }
+.path-backup .mform .root_setting .form-group, .path-backup .mform .root_setting .form-buttons,
+.path-backup .mform .root_setting .path-admin .buttons, .path-admin .path-backup .mform .root_setting .buttons,
+.path-backup .mform .root_setting .fp-content-center form + div, .fp-content-center .path-backup .mform .root_setting form + div,
+.path-backup .mform .root_setting div.backup-section + form,
+.path-backup .mform .grouped_settings .form-group,
+.path-backup .mform .grouped_settings .form-buttons,
+.path-backup .mform .grouped_settings .path-admin .buttons,
+.path-admin .path-backup .mform .grouped_settings .buttons,
+.path-backup .mform .grouped_settings .fp-content-center form + div,
+.fp-content-center .path-backup .mform .grouped_settings form + div,
+.path-backup .mform .grouped_settings div.backup-section + form {
+  margin-bottom: 0;
+  padding-bottom: 1rem; }
 
 /* Detail pair is (usually) some short label with a longer value */
 .path-backup .detail-pair .detail-pair-label {
