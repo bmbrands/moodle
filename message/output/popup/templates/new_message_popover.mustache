@@ -1,0 +1,120 @@
+
+
+<!-- 
+
+A concept for a chat interface. 
+
+Try writing a new message! :)
+
+
+Follow me here:
+Twitter: https://twitter.com/thatguyemil
+Codepen: https://codepen.io/emilcarlsson/
+Website: http://emilcarlsson.se/
+
+-->
+<div class="popover-region collapsed {{$classes}}{{/classes}}"
+    {{$attributes}}{{/attributes}}
+    data-region="popover-region">
+    <div class="popover-region-toggle toggle-messages nav-link"
+        data-region="popover-region-toggle"
+        aria-role="button"
+        aria-controls="popover-region-container-{{uniqid}}"
+        aria-haspopup="true"
+        aria-label="{{#str}} showmessagewindownonew, message {{/str}}"
+        tabindex="0">
+        {{#pix}} t/message, core, {{#str}} togglemessagemenu, message {{/str}} {{/pix}}
+        <div class="count-container {{^unreadcount}}hidden{{/unreadcount}}" data-region="count-container">{{unreadcount}}</div>
+    </div>
+</div>
+<div id="messagingarea-container" class="messageoverlay" aria-hidden="true">
+    <div id="sidepanel" class="contactsarea">
+        <div class="messagesearch d-flex align-items-center">
+            <div class="input-group mr-2 ml-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                    <i class="fa fa-search searchicon" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Search contacts..." />
+            </div>
+            <button id="settings" class="btn btn-outline mr-2"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span class="sr-only">Settings</span></button>
+        </div>
+        <div id="contactscontainer" class="contacts">
+            <div id="contactsaccordion">
+
+                {{< message_popup/new_accordion_item }}
+                    {{$classes}}show{{/classes}}
+                    {{$name}}contacts{{/name}}
+                    {{$parent}}contactsaccordion{{/parent}}
+                    {{$header}}<strong>Contacts</strong> (33){{/header}}
+                    {{$content}}
+                        {{> message_popup/new_message_contacts }}
+                    {{/content}}
+                {{/ message_popup/new_accordion_item }}
+
+                {{< message_popup/new_accordion_item }}
+                    {{$name}}favorites{{/name}}
+                    {{$parent}}contactsaccordion{{/parent}}
+                    {{$header}}<strong>Favorites</strong> (6){{/header}}
+                    {{$content}}
+                        {{> message_popup/new_message_contacts }}
+                    {{/content}}
+                {{/ message_popup/new_accordion_item }}
+
+                {{< message_popup/new_accordion_item }}
+                    {{$name}}groups{{/name}}
+                    {{$parent}}contactsaccordion{{/parent}}
+                    {{$header}}<strong>Group messages</strong> (2){{/header}}
+                    {{$content}}
+                        {{> message_popup/new_message_contacts }}
+                    {{/content}}
+                {{/ message_popup/new_accordion_item }}
+
+            </div>
+        </div>
+
+    </div>
+    <div class="messagesarea">
+        <div class="contact-profile d-flex align-items-center">
+            <button class="btn btn-link returntocontacts">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <img src="{{{path}}}/laura.jpg" class="rounded-circle" alt="" />
+            <div class="name ml-2">Leara Leach</div>
+            <div class="btn-group ml-auto mr-3" role="group">
+                <button class="btn btn-link">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <span class="sr-only">Search</span>
+                </button>
+                <button class="btn btn-link">
+                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                    <span class="sr-only">Options</span>
+                </button>
+            </div>
+        </div>
+        {{> message_popup/new_message_messages }}
+        <div class="message-input">
+            <div class="wrap">
+            <input type="text" placeholder="Write your message..." />
+            <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#js}}
+require(
+[
+    'jquery',
+    'message_popup/new_messaging'
+],
+function(
+    $,
+    Messaging
+) {
+    var root = $('#messagingarea-container');
+    Messaging.init(root);
+
+});
+{{/js}}

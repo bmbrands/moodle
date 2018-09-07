@@ -1,0 +1,257 @@
+.messageoverlay {
+    transition: right .5s ease,left .5s ease;
+    position: absolute;
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, .08);
+    right: -400px;
+    top: $navbar-height;
+    width: 400px;
+    height: calc(100vh - 50px);
+    background: $white;
+    &.active {
+        right: 0px;
+    }
+    .messagesarea {
+        right: -400px;
+    }
+    &.showmessaging {
+        .messagesarea {
+            right: 0;
+        }
+        .contactsarea {
+            right: -400px;
+        }
+    }
+    .contactsarea {
+        width: 400px;
+        height: 100%;
+        background: $gray-100;
+        color: color-yiq($gray-100);
+        overflow: hidden;
+        position: absolute;
+        .messagesearch {
+            height: 60px;
+            background: $body-bg;
+            border-top: 1px solid $gray-200;
+            border-bottom: 1px solid $gray-200;
+            input {
+                background: $gray-100;
+                &:focus {
+                    outline: none;
+                    background: $gray-200;
+                }
+                &::-webkit-input-placeholder {
+                    color: $gray-700;
+                }
+                &::-moz-placeholder {
+                    color: $gray-700;
+                }
+                &:-ms-input-placeholder {
+                    color: $gray-700;
+                }
+                &:-moz-placeholder {
+                    color: $gray-700;
+                }
+            }
+        }
+        .contacts {
+            height: calc(100% - 60px);
+            overflow-y: scroll;
+            overflow-x: hidden;
+            &::-webkit-scrollbar {
+                width: 8px;
+                background: $gray-300;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: $gray-700;
+            }
+            ul {
+                li.contact {
+                    padding: 10px 0 15px 0;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    &:hover {
+                        background: $gray-200;
+                    }
+                    .wrap {
+                        width: 88%;
+                        margin: 0 auto;
+                        position: relative;
+                        .contact-status {
+                            position: absolute;
+                            left: 0;
+                            margin: -2px 0 0 -2px;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                            border: 2px solid $gray-100;
+                            background: $gray-700;
+                        }
+                        .contact-status.online {
+                            background: $green;
+                        }
+                        .contact-status.away {
+                            background: $yellow;
+                        }
+                        .contact-status.busy {
+                            background: $red;
+                        }
+                        img {
+                            width: 40px;
+                            float: left;
+                            margin-right: 10px;
+                        }
+                        .meta {
+                            padding: 5px 0 0 0;
+                            .name {
+                                font-weight: $font-weight-bold;
+                            }
+                            .preview {
+                                margin: 5px 0 0 0;
+                                padding: 0 0 1px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                transition: 1s all ease;
+                                span {
+                                    position: initial;
+                                    border-radius: initial;
+                                    background: none;
+                                    border: none;
+                                    padding: 0 2px 0 0;
+                                    margin: 0 0 0 1px;
+                                    opacity: .5;
+                                }
+                            }
+                        }
+                        .time {
+                            position: absolute;
+                            top: 1px;
+                            right: 1px;
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
+                li.contact.active {
+                    background: $gray-200;
+                    border-right: 5px solid $brand-primary;
+                    span.contact-status {
+                        border: 2px solid $gray-200 !important;
+                    }
+                }
+            }
+        }
+    }
+    .messagesarea {
+        width: 400px;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        .contact-profile {
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            background: $gray-100;
+            img {
+                width: 40px;
+            }
+            .actions {
+                i {
+                    cursor: pointer;
+                    &:hover {
+                        color: darken($blue, 15%);
+                    }
+                }
+            }
+        }
+        .messages {
+            height: auto;
+            width: 400px;
+            min-height: calc(100% - 93px);
+            max-height: calc(100% - 93px);
+            overflow-y: scroll;
+            overflow-x: hidden;
+            &::-webkit-scrollbar {
+                width: 8px;
+                background: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: $gray-700;
+            }
+            ul {
+               .message {
+                    display: inline-block;
+                    width: 100%;
+                    font-size: 0.9rem;
+                    &:nth-last-child(1) {
+                        margin-bottom: 20px;
+                    }
+                    img {
+                        width: 22px;
+                        float: left;
+                    }
+                    p {
+                        display: inline-block;
+                        padding: 10px 15px;
+                        max-width: 205px;
+                        line-height: 130%;
+                        border-radius: 10px;
+                    }
+                }
+                .message.sent {
+                    img {
+                        margin: 6px 8px 0 0;
+                    }
+                    p {
+                        background: darken($blue, 10%);
+                        color: $gray-100;
+                    }
+                }
+                .message.replies {
+                    img {
+                        float: right;
+                        margin: 6px 0 0 8px;
+                    }
+                    p {
+                        background: $gray-100;
+                        float: right;
+                    }
+                }
+            }
+        }
+        .message-input {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            z-index: 99;
+            .wrap {
+                position: relative;
+                input {
+                    float: left;
+                    border: none;
+                    width: calc(100% - 90px);
+                    padding: 11px 32px 10px 8px;
+                    font-size: 0.8em;
+                    color: darken($blue, 10%);
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                button {
+                    float: right;
+                    border: none;
+                    width: 50px;
+                    padding: 12px 0;
+                    cursor: pointer;
+                    background: $blue;
+                    color: $gray-100;
+                    &:hover {
+                        background: darken($blue, 10%);
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+}

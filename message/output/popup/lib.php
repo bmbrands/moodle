@@ -33,6 +33,12 @@ defined('MOODLE_INTERNAL') || die();
 function message_popup_render_navbar_output(\renderer_base $renderer) {
     global $USER, $CFG;
 
+    $template = new stdClass();
+
+    $template->path = new moodle_url('/message/output/popup/pix');
+
+    return $renderer->render_from_template('message_popup/new_message_popover', $template);
+
     // Early bail out conditions.
     if (!isloggedin() || isguestuser() || user_not_fully_set_up($USER) ||
         get_user_preferences('auth_forcepasswordchange') ||
