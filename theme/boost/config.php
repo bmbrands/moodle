@@ -27,12 +27,13 @@ defined('MOODLE_INTERNAL') || die();
 require_once(__DIR__ . '/lib.php');
 
 $THEME->name = 'boost';
-$THEME->sheets = [];
+$THEME->sheets = ['moodle'];
 $THEME->editor_sheets = [];
 $THEME->usefallback = true;
-$THEME->scss = function($theme) {
-    return theme_boost_get_main_scss_content($theme);
-};
+// Disables SCSS parsing. This theme's CSS is created using Grunt.
+// $THEME->scss = function($theme) {
+//    return theme_boost_get_main_scss_content($theme);
+// };
 
 $THEME->layouts = [
     // Most backwards compatible layout without the blocks - this is the layout used by default.
