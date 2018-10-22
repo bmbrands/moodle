@@ -11137,23 +11137,14 @@ div.editor_atto_toolbar button .icon {
 .block_myoverview .empty-placeholder-image-lg {
   height: 125px; }
 
-.block_myoverview .course-card {
-  margin-bottom: 0.5rem;
-  flex-basis: 100%; }
-
 .block_myoverview .course-info-container {
   padding: 0.8rem; }
 
-.block_myoverview .course-card-footer {
+.block_myoverview .dashboard-card-footer {
   padding: 0.8rem; }
 
 .block_myoverview .progress {
   height: 0.5rem; }
-
-.block_myoverview .myoverviewimg {
-  height: 7rem;
-  background-position: center;
-  background-size: cover; }
 
 .block_myoverview .course-summaryitem {
   border: 1px solid #dee2e6;
@@ -11166,41 +11157,54 @@ div.editor_atto_toolbar button .icon {
   .block_myoverview .summaryimage {
     max-height: 7rem; } }
 
-#region-main .block_myoverview .course-card {
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: calc(50% - 0.5rem); }
+.dashboard-card-img {
+  height: 7rem;
+  background-position: center;
+  background-size: cover; }
+
+.dashboard-card-deck .dashboard-card {
+  margin-bottom: 0.5rem;
+  flex-basis: 100%;
+  flex-grow: 0; }
 
 @media (min-width: 576px) {
-  #region-main .block_myoverview .course-card {
+  .dashboard-card-deck .dashboard-card {
     flex-basis: calc(50% - 0.5rem); } }
 
 @media (min-width: 768px) {
-  #region-main .block_myoverview .course-card {
+  .dashboard-card-deck .dashboard-card {
     flex-basis: calc(33.33% - 0.5rem); } }
 
 @media (min-width: 992px) {
-  #region-main .block_myoverview .course-card {
+  .dashboard-card-deck .dashboard-card {
     flex-basis: calc(25% - 0.5rem); } }
 
 @media (min-width: 1200px) {
-  #region-main .block_myoverview .course-card {
+  .dashboard-card-deck .dashboard-card {
     flex-basis: calc(20% - 0.5rem); } }
 
 @media (min-width: 992px) {
-  #region-main.has-blocks .block_myoverview .course-card {
+  .has-blocks .dashboard-card-deck .dashboard-card {
     flex-basis: calc(33.33% - 0.5rem); } }
 
 @media (min-width: 1200px) {
-  #region-main.has-blocks .block_myoverview .course-card {
+  .has-blocks .dashboard-card-deck .dashboard-card {
     flex-basis: calc(25% - 0.5rem); } }
 
-body.drawer-open-left #region-main.has-blocks .block_myoverview .course-card {
+body.drawer-open-left #region-main.has-blocks .dashboard-card-deck .dashboard-card {
   flex-basis: calc(50% - 0.5rem); }
 
 @media (min-width: 992px) {
-  body.drawer-open-left #region-main.has-blocks .block_myoverview .course-card {
+  body.drawer-open-left #region-main.has-blocks .dashboard-card-deck .dashboard-card {
     flex-basis: calc(33.33% - 0.5rem); } }
+
+@media (min-width: 1200px) {
+  #block-region-side-pre .dashboard-card-deck {
+    margin: 0; }
+    #block-region-side-pre .dashboard-card-deck .dashboard-card {
+      flex-basis: 100% !important;
+      margin-left: 0;
+      margin-right: 0; } }
 
 .block_settings .block_tree [aria-expanded="true"],
 .block_settings .block_tree [aria-expanded="true"].emptybranch,
@@ -11238,16 +11242,9 @@ body.drawer-open-left #region-main.has-blocks .block_myoverview .course-card {
 .block_recentcourses [data-region="recent-courses-view-content"] {
   overflow-x: hidden; }
 
-.block_recentcourses .recent-course-card {
-  flex-basis: auto;
-  height: 150px;
-  width: 200px;
-  flex-shrink: 0; }
-
 .block_recentcourses .course-card-container {
-  height: 150px;
-  overflow: hidden;
-  flex-wrap: wrap; }
+  height: 180px;
+  overflow: hidden; }
 
 .block_recentcourses .recent-course-img {
   height: 7rem;

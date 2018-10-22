@@ -32,17 +32,15 @@
     }
 }}
 
-<div class="course-card-container d-flex justify-content-around">
+<div class="course-card-container card-deck dashboard-card-deck" role="list">
     {{#courses}}
-        <a href="{{viewurl}}">
-            <div class="card recent-course-card mx-1 mb-1">
-                <div class="card-img-top recent-course-img" style='background-image: url("{{{courseimageurl}}}");'>
-                </div>
-                <div class="card-body recent-course-info-container" id="course-info-container-{{id}}">
-                    <div class="d-flex">
-                        <div class="card-title d-inline-block text-truncate">
-                            {{{fullname}}}
-                        </div>
+        <a href="{{viewurl}}" class="card dashboard-card m-b-1" role="listitem">
+            <div class="card-img-top dashboard-card-img" style='background-image: url("{{{courseimageurl}}}");'>
+            </div>
+            <div class="card-body recent-course-info-container" id="course-info-container-{{id}}">
+                <div class="d-flex">
+                    <div class="card-title d-inline-block text-truncate">
+                        {{{fullname}}}
                     </div>
                 </div>
             </div>
