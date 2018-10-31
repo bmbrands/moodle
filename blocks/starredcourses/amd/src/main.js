@@ -43,8 +43,6 @@ function(
         STARRED_COURSES_REGION: '[data-region="starred-courses-view-content"]'
     };
 
-    var NUM_COURSES_TOTAL = 5;
-
     /**
      * Render the starred courses.
      *
@@ -76,12 +74,13 @@ function(
         var content = root.find(SELECTORS.STARRED_COURSES_REGION);
 
         var args = {
-            limit: NUM_COURSES_TOTAL,
+            limit: 0,
             offset: 0,
         };
 
         return Repository.getStarredCourses(args)
             .then(function(courses) {
+                console.log('Courses', courses);
                 return renderCourses(root, courses);
             }).then(function(html, js) {
                 return Templates.replaceNodeContents(content, html, js);
