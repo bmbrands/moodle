@@ -4166,7 +4166,8 @@ EOD;
         }
 
         // Show a course image if enabled.
-        if ($context->contextlevel == CONTEXT_COURSE && get_config('moodlecourse', 'showcourseimages')) {
+        if ($context->contextlevel == CONTEXT_COURSE && get_config('moodlecourse', 'showcourseimages')
+            && $COURSE->id != SITEID) {
             $exporter = new core_course\external\course_summary_exporter($COURSE, ['context' => $context]);
             $courseinfo = $exporter->export($this);
             $imagedata = $this->render_from_template('core/course_header_image', $courseinfo);
