@@ -73,6 +73,10 @@ function(
 
     var lastPage = 0;
 
+    var lastLimit = 0;
+
+    var hideCoursesCalled = false;
+
     /**
      * Get filter values from DOM.
      *
@@ -103,7 +107,6 @@ function(
      * @return {promise} Resolved with an array of courses.
      */
     var getMyCourses = function(filters, limit) {
-
         return Repository.getEnrolledCoursesByTimeline({
             offset: courseOffset,
             limit: limit,
@@ -251,6 +254,9 @@ function(
      * @param {Object} target The course that you want to hide
      */
     var hideElement = function(root, target) {
+
+        hideCoursesCalled = true;
+
         var id = getCourseId(target);
 
         var pagingBar = root.find('[data-region="paging-bar"]');
@@ -281,22 +287,7 @@ function(
 
         loadedPages[jumpto].courses = reducedCourse;
 
-        // Reduce the course offset
-        courseOffset--;
-
-        // Render the paged content for the current
-        var pagedContentPage = getPagedContentContainer(root, jumpto);
-        renderCourses(root, loadedPages[jumpto]).then(function(html, js) {
-            return Templates.replaceNodeContents(pagedContentPage, html, js);
-        }).catch(Notification.exception);
-
-        // Delete subsequent pages in order to trigger the callback
-        loadedPages.forEach(function(courseList, index) {
-            if (index > jumpto) {
-                var page = getPagedContentContainer(root, index);
-                page.remove();
-            }
-        });
+        reset(root);
     };
 
     /**
@@ -381,12 +372,22 @@ function(
                     var currentPage = pageData.pageNumber;
                     var limit = pageData.limit;
 
+                    // Resetting all stored variables if the pagelimit has changed.
+                    if (lastLimit != limit || hideCoursesCalled ) {
+                        loadedPages = [];
+                        courseOffset = 0;
+                        lastPage = 0;
+                    }
+
                     if (lastPage == currentPage) {
                         // If we are on the last page and have it's data then load it from cache
                         actions.allItemsLoaded(lastPage);
                         promises.push(renderCourses(root, loadedPages[currentPage]));
                         return;
                     }
+
+                    lastLimit = limit;
+                    hideCoursesCalled = false;
 
                     // Get 2 pages worth of data as we will need it for the hidden functionality.
                     if (loadedPages[currentPage + 1] == undefined) {
