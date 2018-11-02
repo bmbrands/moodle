@@ -388,26 +388,12 @@
     }
 }
 
-.block_starredcourses {
-    .dashboard-card-deck {
-        flex-flow: nowrap;
-        overflow-y: scroll;
-    }
+.dashboard-card-deck.one-row-scroll {
+    flex-flow: nowrap;
+    overflow-y: scroll;
 }
 
 .block_recentlyaccesseditems {
-    [data-region="recentlyaccesseditems-view-content"] {
-        overflow-x: hidden;
-    }
-    .dashboard-card {
-        height: 75px;
-    }
-    .dashboard-card-deck {
-        @media (min-width: 576px) {
-            height: 75px;
-            overflow: hidden;
-        }
-    }
     .empty-placeholder-image-lg {
         height: 125px;
     }

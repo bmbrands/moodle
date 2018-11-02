@@ -11192,7 +11192,7 @@ div.editor_atto_toolbar button .icon {
   #rubric-rubric.gradingform_rubric .block_starredcourses .btn-link.btn-icon.addcriterion:focus {
     background-color: #e9ecef; }
 
-.block_starredcourses .dashboard-card-deck {
+.dashboard-card-deck.one-row-scroll {
   flex-flow: nowrap;
   overflow-y: scroll; }
 
@@ -11204,17 +11204,6 @@ div.editor_atto_toolbar button .icon {
 @media (min-width: 1200px) {
   [data-region="blocks-column"] .block_recentlyaccesseditems .dashboard-card-deck {
     height: unset; } }
-
-.block_recentlyaccesseditems [data-region="recentlyaccesseditems-view-content"] {
-  overflow-x: hidden; }
-
-.block_recentlyaccesseditems .dashboard-card {
-  height: 75px; }
-
-@media (min-width: 576px) {
-  .block_recentlyaccesseditems .dashboard-card-deck {
-    height: 75px;
-    overflow: hidden; } }
 
 .block_recentlyaccesseditems .course-info-container {
   padding: 0.8rem; }

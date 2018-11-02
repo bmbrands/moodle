@@ -112,11 +112,9 @@ $card-gutter : $card-deck-margin * 2;
     }
 }
 
-.block_starredcourses {
-    .dashboard-card-deck {
-        flex-flow: nowrap;
-        overflow-y: scroll;
-    }
+.dashboard-card-deck.one-row-scroll {
+    flex-flow: nowrap;
+    overflow-y: scroll;
 }
 
 .summaryimage {
@@ -136,18 +134,6 @@ $card-gutter : $card-deck-margin * 2;
 }
 
 .block_recentlyaccesseditems {
-    [data-region="recentlyaccesseditems-view-content"] {
-        overflow-x: hidden;
-    }
-    .dashboard-card {
-        height: 75px;
-    }
-    .dashboard-card-deck {
-        @include media-breakpoint-up(sm) {
-            height: 75px;
-            overflow: hidden;
-        }
-    }
     .course-info-container {
         padding: 0.8rem;
     }

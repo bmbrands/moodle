@@ -40,10 +40,10 @@
     }
 }}
 
-<div class="card-deck dashboard-card-deck" role="list">
+<div class="card-deck dashboard-card-deck one-row-scroll" role="list">
     {{#items}}
         <a
-                class="card dashboard-card py-2 pl-0 pr-0"
+                class="card dashboard-card m-b-1"
                 href="{{{viewurl}}}"
                 title="{{name}}"
         >
@@ -53,7 +53,7 @@
                         {{{icon}}}
                     </div>
                     <div class="w-100 line-height-3 text-truncate">
-                        <h6 class="mb-0">{{{name}}}</h6>
+                        <h6 class="mb-0 text-truncate">{{{name}}}</h6>
                         <small class="text-muted m-b-0">{{{coursename}}}</small>
                     </div>
                 </div>

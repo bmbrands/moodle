@@ -16606,21 +16606,9 @@ body {
     max-height: 7rem;
   }
 }
-.block_starredcourses .dashboard-card-deck {
+.dashboard-card-deck.one-row-scroll {
   flex-flow: nowrap;
   overflow-y: scroll;
-}
-.block_recentlyaccesseditems [data-region="recentlyaccesseditems-view-content"] {
-  overflow-x: hidden;
-}
-.block_recentlyaccesseditems .dashboard-card {
-  height: 75px;
-}
-@media (min-width: 576px) {
-  .block_recentlyaccesseditems .dashboard-card-deck {
-    height: 75px;
-    overflow: hidden;
-  }
 }
 .block_recentlyaccesseditems .empty-placeholder-image-lg {
   height: 125px;
