@@ -83,37 +83,39 @@ $card-gutter : $card-deck-margin * 2;
 
 .block_myoverview,
 .block_starredcourses {
-    .course-info-container {
-        padding: 0.8rem;
-    }
-    .progress {
-        height: 0.5rem;
-    }
-    .course-summaryitem {
-        border: $border-width solid $border-color;
-        background-color: $body-bg;
-    }
-    .icon {
-        margin-right: 0;
-        &.fa-star {
-            color: $blue;
+    .content {
+        .course-info-container {
+            padding: 0.8rem;
         }
-    }
-    .card .coursemenubtn {
-        margin-top: -0.5rem;
-    }
-    a.coursename,
-    .btn-link {
-        color: inherit;
-    }
-    .btn.btn-link.btn-icon {
-        height: 36px;
-        width: 36px;
-        padding: 0;
-        border-radius: 50%;
+        .progress {
+            height: 0.5rem;
+        }
+        .course-summaryitem {
+            border: $border-width solid $border-color;
+            background-color: $body-bg;
+        }
+        .icon {
+            margin-right: 0;
+            &.fa-star {
+                color: $blue;
+            }
+        }
+        .card .coursemenubtn {
+            margin-top: -0.5rem;
+        }
+        a.coursename,
+        .btn-link {
+            color: inherit;
+        }
+        .btn.btn-link.btn-icon {
+            height: 36px;
+            width: 36px;
+            padding: 0;
+            border-radius: 50%;
 
-        @include hover-focus {
-            background-color: $gray-200;
+            @include hover-focus {
+                background-color: $gray-200;
+            }
         }
     }
 }
