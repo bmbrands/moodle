@@ -11172,9 +11172,9 @@ div.editor_atto_toolbar button .icon {
 .block_starredcourses .well .coursemenubtn {
   margin-top: -0.5rem; }
 
-.block_myoverview a,
+.block_myoverview a.coursename,
 .block_myoverview .btn-link,
-.block_starredcourses a,
+.block_starredcourses a.coursename,
 .block_starredcourses .btn-link {
   color: inherit; }
 

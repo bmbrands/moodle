@@ -16606,6 +16606,10 @@ body {
 .block_myoverview .card .coursemenubtn {
   margin-top: -0.5rem;
 }
+.block_starredcourses a.coursename,
+.block_myoverview a.coursename {
+  color: #333;
+}
 @media (max-width: 576px) {
   .block_starredcourses .summaryimage,
   .block_myoverview .summaryimage {
