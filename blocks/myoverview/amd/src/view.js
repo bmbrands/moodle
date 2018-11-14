@@ -31,7 +31,8 @@ define(
     'core/notification',
     'core/templates',
     'core_course/events',
-    'block_myoverview/selectors'
+    'block_myoverview/selectors',
+    'core/paged_content_events',
 ],
 function(
     $,
@@ -42,7 +43,8 @@ function(
     Notification,
     Templates,
     CourseEvents,
-    Selectors
+    Selectors,
+    PagedContentEvents
 ) {
 
     var SELECTORS = {
@@ -378,16 +380,34 @@ function(
     };
 
     /**
-     * Intialise the paged list and cards views on page load.
+     * Intialise the courses list and cards views on page load.
      *
      * @param {object} root The root element for the courses view.
      * @param {object} content The content element for the courses view.
      */
     var initializePagedContent = function(root) {
+
+        var itemsPerPage = NUMCOURSES_PERPAGE;
+        var pagingLimit = parseInt(root.find(Selectors.courseView.region).attr('data-paging'), 10);
+        if (pagingLimit) {
+            itemsPerPage = NUMCOURSES_PERPAGE.map(function(value) {
+                var active = false;
+                if (value == pagingLimit) {
+                    active = true;
+                }
+
+                return {
+                    value: value,
+                    active: active
+                };
+            });
+        }
+
+
         var filters = getFilterValues(root);
 
         var pagedContentPromise = PagedContentFactory.createWithLimit(
-            NUMCOURSES_PERPAGE,
+            itemsPerPage,
             function(pagesData, actions) {
                 var promises = [];
 
@@ -474,7 +494,7 @@ function(
             DEFAULT_PAGED_CONTENT_CONFIG
         );
 
-        pagedContentPromise.then(function(html, js) {
+        return pagedContentPromise.then(function(html, js) {
             return Templates.replaceNodeContents(root.find(Selectors.courseView.region), html, js);
         }).catch(Notification.exception);
     };
@@ -543,6 +563,21 @@ function(
             hideElement(root, target);
             data.originalEvent.preventDefault();
         });
+
+        // Listen for changes the the items per page from the paging bar.
+        var pagedContentContainer = root.find('[data-region="paged-content-container"]');
+        var id = pagedContentContainer.attr('id');
+        PubSub.subscribe(id + PagedContentEvents.SET_ITEMS_PER_PAGE_LIMIT, function(limit) {
+            var request = {
+                preferences: [
+                    {
+                        type: 'block_myoverview_user_paging_preference',
+                        value: limit
+                    }
+                ]
+            };
+            Repository.updateUserPreferences(request);
+        });
     };
 
     /**
@@ -556,12 +591,15 @@ function(
         lastPage = 0;
         courseOffset = 0;
 
-        if (!root.attr('data-init')) {
-            registerEventListeners(root);
-            root.attr('data-init', true);
-        }
+        initializePagedContent(root).then(function(){
+            if (!root.attr('data-init')) {
+                registerPagedEventHandlers(root);
+                registerEventListeners(root);
+                root.attr('data-init', true);
+            }
+        });
 
-        initializePagedContent(root);
+
     };
 
     /**
