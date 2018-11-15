@@ -1435,9 +1435,10 @@ class api {
      * @param \stdClass $user The user who's conversations should be counted
      * @param int $type The conversation type
      * @param bool $excludefavourites Exclude favourite conversations
+     * @param bool $allfavourites All favourited conversations
      * @return int the count of the user's unread conversations
      */
-    public static function count_conversations($user, int $type = null, bool $excludefavourites = false) {
+    public static function count_conversations($user, int $type = null, bool $excludefavourites = false, bool $allfavourites) {
         global $DB;
 
         $params = [];
@@ -1453,6 +1454,36 @@ class api {
                             )";
             $params[] = $user->id;
         }
+
+        if ($allfavourites) {
+            $params = [$user->id, self::MESSAGE_ACTION_DELETED, $user->id, $user->id];
+            $sql = "SELECT COUNT(DISTINCT(m.conversationid))
+                          FROM {messages} m
+                     LEFT JOIN {message_conversations} c
+                            ON m.conversationid = c.id
+                     LEFT JOIN {message_user_actions} ma
+                            ON ma.messageid = m.id
+                     LEFT JOIN {message_conversation_members} mcm
+                            ON m.conversationid = mcm.conversationid
+                         WHERE mcm.userid = ?
+                           AND (
+                                    c.type != " . self::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL . "
+                                    OR
+                                    (
+                                        (ma.action IS NULL OR ma.action != ? OR ma.userid != ?)
+                                        AND c.type = " . self::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL . "
+                                    )
+                                )
+                            AND m.conversationid IN (
+                                SELECT itemid
+                                FROM {favourite}
+                                WHERE component = 'core_message'
+                                AND itemtype = 'message_conversations'
+                                AND userid = ?
+                            )";
+            return $DB->count_records_sql($sql, $params);
+        }
+
 
         switch($type) {
             case null:

@@ -823,17 +823,21 @@ function core_message_standard_after_main_region_html() {
     $individualconversationcount = \core_message\api::count_conversations(
         $USER,
         \core_message\api::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL,
-        true
+        true,
+        false
     );
     $groupconversationcount = \core_message\api::count_conversations(
         $USER,
         \core_message\api::MESSAGE_CONVERSATION_TYPE_GROUP,
+        true,
+        false
+    );
+    $favouriteconversationcount = \core_message\api::count_conversations(
+        $USER,
+        null,
+        false,
         true
     );
-    $systemcontext = \context_system::instance();
-    $usercontext = \context_user::instance($USER->id);
-    $ufservice = \core_favourites\service_factory::get_service_for_user_context($usercontext);
-    $favouriteconversationcount = $ufservice->count_favourites_by_type('core_message', 'message_conversations', $systemcontext);
     $requestcount = \core_message\api::count_received_contact_requests($USER);
     $contactscount = \core_message\api::count_contacts($USER->id);
 
