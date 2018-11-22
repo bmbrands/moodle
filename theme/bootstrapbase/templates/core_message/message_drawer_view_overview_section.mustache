@@ -33,6 +33,7 @@
     This is an overridden template
     changing icon "t/collapsedcaret" to "t/collapsed"
     adding ".in" to ".show"
+    changing span.font-weight-bold to strong
 
     Example context (json):
     {}
@@ -56,7 +57,7 @@
             <span class="expanded-icon-container">
                 {{#pix}} t/expanded, core {{/pix}}
             </span>
-            {{$title}}{{/title}} (<span data-region="section-total-count">{{count.total}}</span>)
+            <strong class="mr-1">{{$title}}{{/title}}</strong> (<span data-region="section-total-count">{{count.total}}</span>)
             <span class="hidden ml-2" data-region="loading-icon-container">
                 {{> core/loading }}
             </span>
