@@ -108,7 +108,9 @@ function(
      */
     var render = function(contentContainer, conversations, userId) {
         var formattedConversations = conversations.map(function(conversation) {
+
             var lastMessage = conversation.messages.length ? conversation.messages[conversation.messages.length - 1] : null;
+
             var formattedConversation = {
                 id: conversation.id,
                 imageurl: conversation.imageurl,
@@ -132,6 +134,15 @@ function(
                 formattedConversation.showonlinestatus = otherUser.showonlinestatus;
                 formattedConversation.isonline = otherUser.isonline;
                 formattedConversation.isblocked = otherUser.isblocked;
+            }
+
+            if (conversation.type == MessageDrawerViewConversationContants.CONVERSATION_TYPES.PUBLIC) {
+                formattedConversation.lastsendername = conversation.members.reduce(function(carry, member) {
+                    if (!carry && member.id == lastMessage.useridfrom) {
+                        carry = member.fullname;
+                    }
+                    return carry;
+                }, null) + ':';
             }
 
             return formattedConversation;
@@ -310,6 +321,8 @@ function(
 
                 if (message.fromLoggedInUser) {
                     lastMessage = youString + ' ' + lastMessage;
+                } else {
+                    lastMessage = message.userFrom.fullname + ': ' + lastMessage;
                 }
 
                 element.find(SELECTORS.LAST_MESSAGE).html(lastMessage);
