@@ -13679,9 +13679,9 @@ a.ygtvspacer:hover {
             color: #a1a1a1;
             float: right; }
         .messaging-area-container .messaging-area .messages-area .messages .message .content.left {
-          margin-left: auto; }
-        .messaging-area-container .messaging-area .messages-area .messages .message .content.right {
           margin-right: auto; }
+        .messaging-area-container .messaging-area .messages-area .messages .message .content.right {
+          margin-left: auto; }
       .messaging-area-container .messaging-area .messages-area .response {
         display: table;
         padding: 10px 10px 9px;
