@@ -681,8 +681,7 @@ function groups_course_module_visible() {
  * @deprecated since 2.0
  */
 function error() {
-    throw new coding_exception('notlocalisederrormessage', 'error', $link, $message, 'error() is a removed, please call
-            print_error() instead of error()');
+    throw new coding_exception('error() is a removed, please call print_error() instead of error()');
 }
 
 
