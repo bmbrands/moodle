@@ -11644,63 +11644,6 @@ div.editor_atto_toolbar button .icon {
 .dir-ltr .dir-ltr-hide {
   display: none; }
 
-.switch {
-  position: relative; }
-  .switch input {
-    float: left;
-    width: 1px;
-    transform: translateX(1px);
-    padding: 0;
-    margin: 0;
-    opacity: 0; }
-    .switch input + label {
-      position: relative;
-      min-height: 1.25rem;
-      min-width: 2.5rem;
-      line-height: 1.25rem;
-      border-radius: 1.25rem;
-      display: inline-block;
-      cursor: pointer;
-      outline: none;
-      user-select: none;
-      vertical-align: middle;
-      padding-left: 3rem; }
-    .switch input + label::before,
-    .switch input + label::after {
-      content: '';
-      position: absolute;
-      top: calc(50% - 0.625rem);
-      left: 0;
-      width: 2.5rem;
-      height: 1.25rem;
-      bottom: 0;
-      display: block; }
-    .switch input + label::before {
-      right: 0;
-      background-color: #dee2e6;
-      border-radius: 1.25rem;
-      transition: 0.2s all; }
-    .switch input + label::after {
-      margin-top: 2px;
-      left: 2px;
-      width: calc(1.25rem - 4px);
-      height: calc(1.25rem - 4px);
-      border-radius: 50%;
-      background-color: #fff;
-      transition: 0.2s all; }
-    .switch input:checked + label::before {
-      background-color: #1177d1; }
-    .switch input:checked + label::after {
-      margin-left: 1.25rem; }
-    .switch input:focus + label::before {
-      outline: none;
-      box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.25); }
-    .switch input:disabled + label {
-      color: #868e96;
-      cursor: not-allowed; }
-    .switch input:disabled + label::before {
-      background-color: #e9ecef; }
-
 .paged-content-page-container {
   min-height: 3.125rem; }
 
@@ -17708,6 +17651,18 @@ body.behat-site [data-region="drawer"] {
   -moz-transition: initial;
   transition: initial;
   position: absolute; }
+
+body.behat-site .custom-control,
+body.behat-site .custom-switch {
+  padding-left: 0; }
+
+body.behat-site .custom-control-input {
+  position: static;
+  z-index: 0;
+  opacity: 1; }
+
+body.behat-site .custom-control-label::before, body.behat-site .custom-control-label::after {
+  content: none; }
 
 .phpinfo table,
 .phpinfo th,

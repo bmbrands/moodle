@@ -5054,7 +5054,7 @@ p.arrow_button input[type="button"],
   position: relative;
   display: block;
   min-height: 1.40625rem;
-  padding-left: 1.5rem; }
+  padding-left: 1.75rem; }
 
 .custom-control-inline {
   display: inline-flex;
@@ -5087,22 +5087,22 @@ p.arrow_button input[type="button"],
   vertical-align: top; }
   .custom-control-label::before {
     position: absolute;
-    top: 0.203125rem;
-    left: -1.5rem;
+    top: 0.078125rem;
+    left: -1.75rem;
     display: block;
-    width: 1rem;
-    height: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
     pointer-events: none;
     content: "";
     background-color: #fff;
     border: #adb5bd solid 1px; }
   .custom-control-label::after {
     position: absolute;
-    top: 0.203125rem;
-    left: -1.5rem;
+    top: 0.078125rem;
+    left: -1.75rem;
     display: block;
-    width: 1rem;
-    height: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
     content: "";
     background: no-repeat 50% / 50% 50%; }
 
@@ -5132,26 +5132,26 @@ p.arrow_button input[type="button"],
   background-color: rgba(17, 119, 209, 0.5); }
 
 .custom-switch {
-  padding-left: 2.25rem; }
+  padding-left: 2.6875rem; }
   .custom-switch .custom-control-label::before {
-    left: -2.25rem;
-    width: 1.75rem;
+    left: -2.6875rem;
+    width: 2.1875rem;
     pointer-events: all;
-    border-radius: 0.5rem; }
+    border-radius: 0.625rem; }
   .custom-switch .custom-control-label::after {
-    top: calc(0.203125rem + 2px);
-    left: calc(-2.25rem + 2px);
-    width: calc(1rem - 4px);
-    height: calc(1rem - 4px);
+    top: calc(0.078125rem + 2px);
+    left: calc(-2.6875rem + 2px);
+    width: calc(1.25rem - 4px);
+    height: calc(1.25rem - 4px);
     background-color: #adb5bd;
-    border-radius: 0.5rem;
+    border-radius: 0.625rem;
     transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
     @media (prefers-reduced-motion: reduce) {
       .custom-switch .custom-control-label::after {
         transition: none; } }
   .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
     background-color: #fff;
-    transform: translateX(0.75rem); }
+    transform: translateX(0.9375rem); }
   .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
     background-color: rgba(17, 119, 209, 0.5); }
 
@@ -11389,63 +11389,6 @@ div.editor_atto_toolbar button .icon {
 .dir-ltr .dir-ltr-hide {
   display: none; }
 
-.switch {
-  position: relative; }
-  .switch input {
-    float: left;
-    width: 1px;
-    transform: translateX(1px);
-    padding: 0;
-    margin: 0;
-    opacity: 0; }
-    .switch input + label {
-      position: relative;
-      min-height: 1.25rem;
-      min-width: 2.5rem;
-      line-height: 1.25rem;
-      border-radius: 1.25rem;
-      display: inline-block;
-      cursor: pointer;
-      outline: none;
-      user-select: none;
-      vertical-align: middle;
-      padding-left: 3rem; }
-    .switch input + label::before,
-    .switch input + label::after {
-      content: '';
-      position: absolute;
-      top: calc(50% - 0.625rem);
-      left: 0;
-      width: 2.5rem;
-      height: 1.25rem;
-      bottom: 0;
-      display: block; }
-    .switch input + label::before {
-      right: 0;
-      background-color: #dee2e6;
-      border-radius: 1.25rem;
-      transition: 0.2s all; }
-    .switch input + label::after {
-      margin-top: 2px;
-      left: 2px;
-      width: calc(1.25rem - 4px);
-      height: calc(1.25rem - 4px);
-      border-radius: 50%;
-      background-color: #fff;
-      transition: 0.2s all; }
-    .switch input:checked + label::before {
-      background-color: #1177d1; }
-    .switch input:checked + label::after {
-      margin-left: 1.25rem; }
-    .switch input:focus + label::before {
-      outline: none;
-      box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.25); }
-    .switch input:disabled + label {
-      color: #868e96;
-      cursor: not-allowed; }
-    .switch input:disabled + label::before {
-      background-color: #e9ecef; }
-
 .paged-content-page-container {
   min-height: 3.125rem; }
 
@@ -17469,6 +17412,18 @@ body.behat-site [data-region="drawer"] {
   -moz-transition: initial;
   transition: initial;
   position: absolute; }
+
+body.behat-site .custom-control,
+body.behat-site .custom-switch {
+  padding-left: 0; }
+
+body.behat-site .custom-control-input {
+  position: static;
+  z-index: 0;
+  opacity: 1; }
+
+body.behat-site .custom-control-label::before, body.behat-site .custom-control-label::after {
+  content: none; }
 
 .phpinfo table,
 .phpinfo th,
