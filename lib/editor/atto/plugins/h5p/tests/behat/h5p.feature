@@ -1,4 +1,4 @@
-@editor @editor_atto @atto @atto_h5p @_switch_iframe
+@editor @editor_atto @atto @atto_h5p @_file_upload @_switch_iframe
 Feature: Add h5ps to Atto
   To write rich text - I need to add h5ps.
 
