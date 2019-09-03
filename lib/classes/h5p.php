@@ -61,6 +61,7 @@ class core_h5p {
     private $jsrequires;
     private $cssrequires;
     private $testidnumber;
+    private $files;
 
     protected $settings;
 
@@ -722,17 +723,34 @@ class core_h5p_framework implements \H5PFrameworkInterface {
     }
 
     public function saveLibraryDependencies($libraryid, $dependencies, $dependencytype) {
+        global $DB;
+
+        foreach ($dependencies as $dependency) {
+            // Find dependency library.
+            $dependencylibrary = $DB->get_record('h5p_libraries', array(
+                'machinename' => $dependency['machineName'],
+                'majorversion' => $dependency['majorVersion'],
+                'minorversion' => $dependency['minorVersion']
+            ));
+
+            // Create relation.
+            $DB->insert_record('h5p_library_dependencies', array(
+                'libraryid' => $libraryid,
+                'requiredlibraryid' => $dependencylibrary->id,
+                'dependencytype' => $dependencytype
+            ));
+        }
     }
 
     public function updateContent($content, $contentmainid = null) {
         global $DB;
 
-        $data = array_merge(\H5PMetadata::toDBArray($content['metadata'], false), array(
+        $data = array(
             'jsoncontent' => $content['params'],
             'embedtype' => 'div',
             'mainlibraryid' => $content['library']['libraryId'],
             'timemodified' => time(),
-        ));
+        );
 
         if (!isset($content['id'])) {
             $data['slug'] = '';
@@ -850,10 +868,10 @@ class core_h5p_framework implements \H5PFrameworkInterface {
                    JOIN {h5p_libraries} hl ON hll.requiredlibraryid = hl.id
                   WHERE hll.libraryid = ?', array($library->id));
         foreach ($dependencies as $dependency) {
-            $librarydata[$dependency->dependency_type . 'Dependencies'][] = array(
-                'machineName' => $dependency->machine_name,
-                'majorVersion' => $dependency->major_version,
-                'minorVersion' => $dependency->minor_version
+            $librarydata[$dependency->dependencytype . 'Dependencies'][] = array(
+                'machineName' => $dependency->machinename,
+                'majorVersion' => $dependency->majorversion,
+                'minorVersion' => $dependency->minorversion
             );
         }
 

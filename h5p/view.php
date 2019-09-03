@@ -47,6 +47,5 @@ $h5p->addassetstopage();
 
 // Print page HTML.
 echo $OUTPUT->header();
-
 echo $h5p->outputview();
 echo $OUTPUT->footer();
