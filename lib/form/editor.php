@@ -390,10 +390,21 @@ class MoodleQuickForm_editor extends HTML_QuickForm_element implements templatab
             $subtitle_options->env = 'editor';
             $subtitle_options->itemid = $draftitemid;
 
+            // H5P plugin.
+            $args->accepted_types = array('.h5p');
+            $h5p_options = initialise_filepicker($args);
+            $h5p_options->context = $ctx;
+            $h5p_options->client_id = uniqid();
+            $h5p_options->maxbytes  = $this->_options['maxbytes'];
+            $h5p_options->areamaxbytes  = $this->_options['areamaxbytes'];
+            $h5p_options->env = 'editor';
+            $h5p_options->itemid = $draftitemid;
+
             $fpoptions['image'] = $image_options;
             $fpoptions['media'] = $media_options;
             $fpoptions['link'] = $link_options;
             $fpoptions['subtitle'] = $subtitle_options;
+            $fpoptions['h5p'] = $h5p_options;
         }
 
         //If editor is required and tinymce, then set required_tinymce option to initalize tinymce validation.

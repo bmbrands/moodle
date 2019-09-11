@@ -22,10 +22,20 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['allowdownload'] = 'Allow download';
+$string['browserepositories'] = 'Browse repositories...';
+$string['copyrightbutton'] = 'Copyright button';
+$string['displaybuttons'] = 'Display buttons (download, embed and copyright)';
+$string['embedbutton'] = 'Embed button';
 $string['enterurl'] = 'Enter URL';
+$string['h5p:addembed'] = 'Add embedded H5P';
+$string['h5p:upload'] = 'Upload H5P';
+$string['h5pfile'] = 'H5P file';
+$string['h5poptions'] = 'H5P options';
 $string['h5pproperties'] = 'H5P properties';
+$string['h5purl'] = 'H5P URL';
 $string['invalidh5purl'] = 'Invalid URL';
+$string['noh5pcontent'] = 'No H5P content added';
 $string['pluginname'] = 'Insert H5P';
 $string['privacy:metadata'] = 'The atto_h5p plugin does not store any personal data.';
-$string['h5p:addembed'] = 'Add embedded H5P';
 $string['saveh5p'] = 'Save H5P';
