@@ -22,3 +22,4 @@
  */
 
 $string['privacy:metadata'] = 'H5P subsystem does not store any personal data.';
+$string['h5pfilenotfound'] = 'H5P file not found';
