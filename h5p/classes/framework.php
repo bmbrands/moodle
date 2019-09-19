@@ -707,12 +707,18 @@ class framework implements \H5PFrameworkInterface {
             $content['disable'] = \H5PCore::DISABLE_NONE;
         }
 
+        $hashes = explode('/', $contentmainid);
+        $pathnamehash = $hashes[0];
+        $contenthash = $hashes[1];
+
         $data = array(
             'jsoncontent' => $content['params'],
             'embedtype' => 'div',
+            'displayoptions' => $content['disable'],
             'mainlibraryid' => $content['library']['libraryId'],
             'timemodified' => time(),
-            'pathnamehash' => $contentmainid
+            'pathnamehash' => $pathnamehash,
+            'contenthash' => $contenthash
         );
 
         if (!isset($content['id'])) {
@@ -833,7 +839,7 @@ class framework implements \H5PFrameworkInterface {
     public function loadContent($id) {
         global $DB;
 
-        $sql = "SELECT hc.id, hc.jsoncontent, hc.embedtype, hl.id AS libraryid,
+        $sql = "SELECT hc.id, hc.jsoncontent, hc.embedtype, hc.displayoptions, hl.id AS libraryid,
                        hl.machinename, hl.majorversion, hl.minorversion,
                        hl.fullscreen, hl.semantics
                   FROM {h5p} hc
@@ -857,7 +863,7 @@ class framework implements \H5PFrameworkInterface {
             'filtered' => '',
             'slug' => 'h5p-test-' . $data->id,
             'embedType' => $data->embedtype,
-            'disable' => 'false',
+            'disable' => $data->displayoptions,
             'libraryId' => $data->libraryid,
             'libraryName' => $data->machinename,
             'libraryMajorVersion' => $data->majorversion,
