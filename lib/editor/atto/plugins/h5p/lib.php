@@ -51,7 +51,8 @@ function atto_h5p_params_for_js($elementid, $options, $fpoptions) {
 
     $params = [
         'allowedmethods' => $allowedmethods,
-        'storeinrepo' => true
+        'storeinrepo' => true,
+        'contextid' => $context->id
     ];
     return $params;
 }
