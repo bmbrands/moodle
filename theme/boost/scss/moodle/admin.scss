@@ -65,21 +65,6 @@
     width: 30em;
 }
 
-#page-admin-report-backups-index .backup-error,
-#page-admin-report-backups-index .backup-unfinished {
-    @extend .tag-danger;
-}
-
-#page-admin-report-backups-index .backup-skipped,
-#page-admin-report-backups-index .backup-ok,
-#page-admin-report-backups-index .backup-notyetrun {
-    @extend .tag-success;
-}
-
-#page-admin-report-backups-index .backup-warning {
-    @extend .tag-warning;
-}
-
 #page-admin-qtypes .disabled,
 #page-admin-qbehaviours .disabled {
     @extend .text-muted;

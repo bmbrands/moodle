@@ -9475,15 +9475,9 @@ a.dimmed_text:visited,
   .tag-primary[href]:hover, .tag-primary[href]:focus {
     background-color: #0d5ca2; }
 
-.tag-success, #page-admin-report-backups-index .backup-skipped,
-#page-admin-report-backups-index .backup-ok,
-#page-admin-report-backups-index .backup-notyetrun {
+.tag-success {
   background-color: #5cb85c; }
-  .tag-success[href]:hover, #page-admin-report-backups-index .backup-skipped[href]:hover,
-  #page-admin-report-backups-index .backup-ok[href]:hover,
-  #page-admin-report-backups-index .backup-notyetrun[href]:hover, .tag-success[href]:focus, #page-admin-report-backups-index .backup-skipped[href]:focus,
-  #page-admin-report-backups-index .backup-ok[href]:focus,
-  #page-admin-report-backups-index .backup-notyetrun[href]:focus {
+  .tag-success[href]:hover, .tag-success[href]:focus {
     background-color: #449d44; }
 
 .tag-info, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release {
@@ -9491,20 +9485,17 @@ a.dimmed_text:visited,
   .tag-info[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release[href]:hover, .tag-info[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release[href]:focus {
     background-color: #31b0d5; }
 
-.tag-warning, #page-admin-report-backups-index .backup-warning, #page-admin-index .updateplugin .updatepluginconfirmexternal, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release,
+.tag-warning, #page-admin-index .updateplugin .updatepluginconfirmexternal, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release,
 #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity150 .info.release {
   background-color: #ff7518; }
-  .tag-warning[href]:hover, #page-admin-report-backups-index .backup-warning[href]:hover, #page-admin-index .updateplugin .updatepluginconfirmexternal[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release[href]:hover,
-  #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity150 .info.release[href]:hover, .tag-warning[href]:focus, #page-admin-report-backups-index .backup-warning[href]:focus, #page-admin-index .updateplugin .updatepluginconfirmexternal[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release[href]:focus,
+  .tag-warning[href]:hover, #page-admin-index .updateplugin .updatepluginconfirmexternal[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release[href]:hover,
+  #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity150 .info.release[href]:hover, .tag-warning[href]:focus, #page-admin-index .updateplugin .updatepluginconfirmexternal[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release[href]:focus,
   #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity150 .info.release[href]:focus {
     background-color: #e45c00; }
 
-.tag-danger, #page-admin-report-backups-index .backup-error,
-#page-admin-report-backups-index .backup-unfinished, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release {
+.tag-danger, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release {
   background-color: #d9534f; }
-  .tag-danger[href]:hover, #page-admin-report-backups-index .backup-error[href]:hover,
-  #page-admin-report-backups-index .backup-unfinished[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release[href]:hover, .tag-danger[href]:focus, #page-admin-report-backups-index .backup-error[href]:focus,
-  #page-admin-report-backups-index .backup-unfinished[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release[href]:focus {
+  .tag-danger[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release[href]:hover, .tag-danger[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release[href]:focus {
     background-color: #c9302c; }
 
 .custom-select {
