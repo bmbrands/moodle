@@ -9441,8 +9441,7 @@ a.dimmed_text:visited,
 
 /* stylelint-disable function-url-scheme-blacklist */
 /* stylelint-enable function-url-scheme-blacklist */
-.tag, .statusok, .statuswarning, .statusserious,
-.statuscritical, .que .correctness, .label {
+.tag, .que .correctness, .label {
   display: inline-block;
   padding: 0.25rem 0.4em;
   font-size: 75%;
@@ -9452,8 +9451,7 @@ a.dimmed_text:visited,
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline; }
-  .tag:empty, .statusok:empty, .statuswarning:empty, .statusserious:empty,
-  .statuscritical:empty, .que .correctness:empty, .label:empty {
+  .tag:empty, .que .correctness:empty, .label:empty {
     display: none; }
 
 .form-control-success,
@@ -9477,13 +9475,13 @@ a.dimmed_text:visited,
   .tag-primary[href]:hover, .tag-primary[href]:focus {
     background-color: #0d5ca2; }
 
-.tag-success, .statusok, #page-admin-report-backups-index .backup-skipped,
+.tag-success, #page-admin-report-backups-index .backup-skipped,
 #page-admin-report-backups-index .backup-ok,
 #page-admin-report-backups-index .backup-notyetrun {
   background-color: #5cb85c; }
-  .tag-success[href]:hover, .statusok[href]:hover, #page-admin-report-backups-index .backup-skipped[href]:hover,
+  .tag-success[href]:hover, #page-admin-report-backups-index .backup-skipped[href]:hover,
   #page-admin-report-backups-index .backup-ok[href]:hover,
-  #page-admin-report-backups-index .backup-notyetrun[href]:hover, .tag-success[href]:focus, .statusok[href]:focus, #page-admin-report-backups-index .backup-skipped[href]:focus,
+  #page-admin-report-backups-index .backup-notyetrun[href]:hover, .tag-success[href]:focus, #page-admin-report-backups-index .backup-skipped[href]:focus,
   #page-admin-report-backups-index .backup-ok[href]:focus,
   #page-admin-report-backups-index .backup-notyetrun[href]:focus {
     background-color: #449d44; }
@@ -9493,22 +9491,19 @@ a.dimmed_text:visited,
   .tag-info[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release[href]:hover, .tag-info[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release[href]:focus {
     background-color: #31b0d5; }
 
-.tag-warning, .statuswarning, #page-admin-report-backups-index .backup-warning, #page-admin-index .updateplugin .updatepluginconfirmexternal, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release,
+.tag-warning, #page-admin-report-backups-index .backup-warning, #page-admin-index .updateplugin .updatepluginconfirmexternal, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release,
 #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity150 .info.release {
   background-color: #ff7518; }
-  .tag-warning[href]:hover, .statuswarning[href]:hover, #page-admin-report-backups-index .backup-warning[href]:hover, #page-admin-index .updateplugin .updatepluginconfirmexternal[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release[href]:hover,
-  #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity150 .info.release[href]:hover, .tag-warning[href]:focus, .statuswarning[href]:focus, #page-admin-report-backups-index .backup-warning[href]:focus, #page-admin-index .updateplugin .updatepluginconfirmexternal[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release[href]:focus,
+  .tag-warning[href]:hover, #page-admin-report-backups-index .backup-warning[href]:hover, #page-admin-index .updateplugin .updatepluginconfirmexternal[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release[href]:hover,
+  #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity150 .info.release[href]:hover, .tag-warning[href]:focus, #page-admin-report-backups-index .backup-warning[href]:focus, #page-admin-index .updateplugin .updatepluginconfirmexternal[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity100 .info.release[href]:focus,
   #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity150 .info.release[href]:focus {
     background-color: #e45c00; }
 
-.tag-danger, .statusserious,
-.statuscritical, #page-admin-report-backups-index .backup-error,
+.tag-danger, #page-admin-report-backups-index .backup-error,
 #page-admin-report-backups-index .backup-unfinished, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release {
   background-color: #d9534f; }
-  .tag-danger[href]:hover, .statusserious[href]:hover,
-  .statuscritical[href]:hover, #page-admin-report-backups-index .backup-error[href]:hover,
-  #page-admin-report-backups-index .backup-unfinished[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release[href]:hover, .tag-danger[href]:focus, .statusserious[href]:focus,
-  .statuscritical[href]:focus, #page-admin-report-backups-index .backup-error[href]:focus,
+  .tag-danger[href]:hover, #page-admin-report-backups-index .backup-error[href]:hover,
+  #page-admin-report-backups-index .backup-unfinished[href]:hover, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release[href]:hover, .tag-danger[href]:focus, #page-admin-report-backups-index .backup-error[href]:focus,
   #page-admin-report-backups-index .backup-unfinished[href]:focus, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity50 .info.release[href]:focus {
     background-color: #c9302c; }
 

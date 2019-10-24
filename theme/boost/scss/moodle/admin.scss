@@ -61,22 +61,6 @@
     display: none;
 }
 
-.statusok {
-    @extend .tag;
-    @extend .tag-success;
-}
-
-.statuswarning {
-    @extend .tag;
-    @extend .tag-warning;
-}
-
-.statusserious,
-.statuscritical {
-    @extend .tag;
-    @extend .tag-danger;
-}
-
 #page-admin-report-capability-index #capabilitysearch {
     width: 30em;
 }
