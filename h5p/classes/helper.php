@@ -75,7 +75,7 @@ class helper {
 
             return $h5pstorage->contentId;
         }
-
+        
         return false;
     }
 
