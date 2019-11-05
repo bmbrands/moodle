@@ -62,6 +62,8 @@ if ($data = $form->get_data()) {
     } else {
         echo $OUTPUT->notification(get_string('uploadsuccess', 'core_h5p'), 'success');
     }
+} else {
+    \core_h5p\autoloader::register();
 }
 $form->display();
 
