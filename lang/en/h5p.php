@@ -83,6 +83,7 @@ $string['h5pmanage'] = 'Manage H5P content types';
 $string['h5ppackage'] = 'H5P content type';
 $string['h5ppackage_help'] = 'An H5P content type is a file with an H5P or ZIP extension containing all libraries required to display the content.';
 $string['hideadvanced'] = 'Hide advanced';
+$string['installedcontentlibraries'] = 'Installed H5P content libraries';
 $string['invalidcontextid'] = 'H5P file not found (invalid contextid)';
 $string['invalidfile'] = 'File "{$a->%filename}" not allowed. Only files with the following extensions are allowed: {$a->%files-allowed}.';
 $string['invalidlanguagefile'] = 'Invalid language file {$a->%file} in library {$a->%library}';

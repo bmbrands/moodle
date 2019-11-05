@@ -1700,4 +1700,14 @@ class framework implements \H5PFrameworkInterface {
 
         return null;
     }
+
+    /**
+     * Get a list of all H5P content libraries
+     *
+     * @return array List of content libraries
+     */
+    public static function get_all_content_libraries() {
+        global $DB;
+        return array_values($DB->get_records('h5p_libraries'));
+    }
 }

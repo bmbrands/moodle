@@ -24,11 +24,38 @@
 
     Example context (json):
     {
-        "h5pid": 123
+        "contenttypes": [
+            {
+                "title": "Accordion",
+                "majorversion": 1,
+                "minorversion:": 0
+            },
+            {
+                "title": "Collage",
+                "majorversion": 0,
+                "minorversion:": 3
+            },
+
+        ]
     }
 
 }}
-
-<div class="h5p-content-wrapper">
-    <div class="h5p-content" data-content-id="{{h5pid}}"></div>
-</div>
+<h3 class="mt-3">{{#str}}installedcontentlibraries, h5p{{/str}}</h3>
+<table class="admintable generaltable" id="h5pcontenttypes">
+    <thead>
+        <tr>
+            <th>{{#str}}description, core{{/str}}</th>
+            <th>{{#str}}version, core{{/str}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#contenttypes}}
+        <tr class="">
+            <td>
+                {{{ title }}}
+            </td>
+            <td>{{{ majorversion }}}.{{{ minorversion }}}</td>
+        </tr>
+        {{/contenttypes}}
+    </tbody>
+</table>
