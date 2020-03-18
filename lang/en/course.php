@@ -28,6 +28,7 @@ $string['aria:courseshortname'] = 'Course short name';
 $string['aria:coursename'] = 'Course name';
 $string['aria:favourite'] = 'Course is starred';
 $string['coursealreadyfinished'] = 'Course already finished';
+$string['courseimagealt'] = 'Course image';
 $string['coursenotyetstarted'] = 'The course has not yet started';
 $string['coursenotyetfinished'] = 'The course has not yet finished';
 $string['coursetoolong'] = 'The course is too long';
