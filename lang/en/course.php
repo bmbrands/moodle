@@ -33,6 +33,7 @@ $string['aria:favouritestab'] = 'Your starred modules';
 $string['aria:recommendedtab'] = 'The recommended modules';
 $string['aria:modulefavourite'] = 'Star {$a} module';
 $string['coursealreadyfinished'] = 'Course already finished';
+$string['courseimagealt'] = 'Course image';
 $string['coursenotyetstarted'] = 'The course has not yet started';
 $string['coursenotyetfinished'] = 'The course has not yet finished';
 $string['coursetoolong'] = 'The course is too long';
