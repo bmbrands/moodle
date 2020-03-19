@@ -16324,8 +16324,11 @@ select {
     background-color: #e9ecef; } }
 
 .path-mod-forum .unified-grader .navbar {
-  max-height: none;
+  max-height: 53px;
   z-index: 1; }
+
+.path-mod-forum .unified-grader .grader-grading-wrapper {
+  height: calc(100% - 53px); }
 
 .path-mod-forum .unified-grader .body-container.hidden {
   display: none !important;

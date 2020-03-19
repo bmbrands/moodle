@@ -439,6 +439,7 @@ $grading-icon-button-size: 36px !default;
 $grading-search-button-padding-left: calc(#{map-get($spacers, 2)} + 8px) !default;
 $grading-search-input-padding-left: calc(#{map-get($spacers, 2)} + #{map-get($spacers, 2)} + #{$grading-icon-button-size - ($input-border-width * 2)}) !default; /* stylelint-disable-line max-line-length */
 $grading-search-input-padding-right: calc(#{map-get($spacers, 2)} + #{$grading-icon-button-size}) !default;
+$grading-nav-bar-height: 53px !default;
 $grading-nav-bar-active-drawer-button-bottom: calc(#{map-get($spacers, 2) * -1} - 1px) !default;
 $grading-content-show-content-button-padding-left: calc(#{map-get($spacers, 2) * 2} + 45px) !default;
 
@@ -488,8 +489,12 @@ $grading-content-show-content-button-padding-left: calc(#{map-get($spacers, 2) *
 
 .path-mod-forum .unified-grader {
     .navbar {
-        max-height: none;
+        max-height: $grading-nav-bar-height;
         z-index: 1;
+    }
+
+    .grader-grading-wrapper {
+        height: calc(100% - #{$grading-nav-bar-height});
     }
 
     .body-container {
