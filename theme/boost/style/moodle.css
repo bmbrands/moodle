@@ -13814,6 +13814,8 @@ a.ygtvspacer:hover {
     border-bottom-color: #fff; }
   .message-app .lazy-load-list {
     overflow-y: auto; }
+  .message-app .messages-pane {
+    overflow-y: auto; }
 
 #page-message-index #region-main {
   height: 100%; }

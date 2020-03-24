@@ -623,6 +623,9 @@ $message-drawer-width: 320px;
     .lazy-load-list {
         overflow-y: auto;
     }
+    .messages-pane {
+        overflow-y: auto;
+    }
 }
 #page-message-index #region-main {
     height: 100%;
