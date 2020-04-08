@@ -3693,7 +3693,7 @@ table#listdirectories td {
     background-color: #fff;
     border-color: #6eb5f3;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.25); }
+    box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.75); }
   .form-control::placeholder {
     color: #6c757d;
     opacity: 1; }
@@ -4049,7 +4049,7 @@ div.backup-section + form {
     text-decoration: none; }
   .btn:focus, #page-grade-grading-manage .actions .action:focus, #rubric-rubric.gradingform_rubric .addcriterion:focus, .btn.focus, #page-grade-grading-manage .actions .focus.action, #rubric-rubric.gradingform_rubric .focus.addcriterion {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.25); }
+    box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.75); }
   .btn.disabled, .fp-viewbar.disabled a, #page-grade-grading-manage .actions .disabled.action, #rubric-rubric.gradingform_rubric .disabled.addcriterion, .btn:disabled, #page-grade-grading-manage .actions .action:disabled, #rubric-rubric.gradingform_rubric .addcriterion:disabled {
     opacity: 0.65; }
   .btn:not(:disabled):not(.disabled), #page-grade-grading-manage .actions .action:not(:disabled):not(.disabled), #rubric-rubric.gradingform_rubric .addcriterion:not(:disabled):not(.disabled) {
@@ -4919,7 +4919,7 @@ tbody.collapse.show {
     color: #fff;
     background-color: #1177d1; }
   .custom-control-input:focus ~ .custom-control-label::before {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(17, 119, 209, 0.25); }
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(17, 119, 209, 0.75); }
   .custom-control-input:active ~ .custom-control-label::before {
     color: #fff;
     background-color: #9dcdf7; }
@@ -5041,7 +5041,7 @@ tbody.collapse.show {
   opacity: 0; }
   .custom-file-input:focus ~ .custom-file-control {
     border-color: #6eb5f3;
-    box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.25); }
+    box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.75); }
     .custom-file-input:focus ~ .custom-file-control::before {
       border-color: #6eb5f3; }
   .custom-file-input:lang(en) ~ .custom-file-label::after {
@@ -5581,7 +5581,7 @@ tbody.collapse.show {
   .page-link:focus {
     z-index: 2;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.25); }
+    box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.75); }
   .page-link:not(:disabled):not(.disabled) {
     cursor: pointer; }
 
@@ -8768,6 +8768,94 @@ input[disabled] {
 .mdl-align {
   text-align: center; }
 
+.aalink.focus, .aalink:focus,
+#page-footer a:not([class]).focus,
+#page-footer a:not([class]):focus,
+.arrow_link.focus,
+.arrow_link:focus,
+a:not([class]).focus,
+a:not([class]):focus,
+.activityinstance > a.focus,
+.activityinstance > a:focus {
+  outline: 0.2rem solid transparent;
+  color: #212529;
+  background-color: #e4f1fd;
+  box-shadow: 0 -0.2rem #e4f1fd, 0 0.2rem #343a40; }
+
+.aalink:focus:hover,
+#page-footer a:not([class]):focus:hover,
+.arrow_link:focus:hover,
+a:not([class]):focus:hover,
+.activityinstance > a:focus:hover {
+  text-decoration: none; }
+
+.aabtn.focus, .aabtn:focus,
+.btn-link.focus,
+.btn-link:focus,
+.nav-link.focus,
+.nav-link:focus,
+.atto_link_button.focus,
+.atto_link_button:focus,
+[role="button"].focus,
+[role="button"]:focus,
+.list-group-item-action.focus,
+.list-group-item-action:focus,
+input[type="checkbox"].focus,
+input[type="checkbox"]:focus,
+input[type="radio"].focus,
+input[type="radio"]:focus,
+input[type="file"].focus,
+input[type="file"]:focus,
+input[type="image"].focus,
+input[type="image"]:focus,
+.sr-only-focusable.focus,
+.sr-only-focusable:focus,
+a.dropdown-item.focus,
+a.dropdown-item:focus,
+a.dropdown-toggle.focus,
+a.dropdown-toggle:focus,
+.modal-dialog[tabindex="0"].focus,
+.modal-dialog[tabindex="0"]:focus,
+.moodle-dialogue-base .closebutton.focus,
+.moodle-dialogue-base .closebutton:focus,
+button.close.focus,
+.moodle-dialogue-base button.focus.closebutton,
+button.close:focus,
+.moodle-dialogue-base button.closebutton:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.75); }
+
+.aabtn:focus:hover,
+.btn-link:focus:hover,
+.nav-link:focus:hover,
+.atto_link_button:focus:hover,
+[role="button"]:focus:hover,
+.list-group-item-action:focus:hover,
+input[type="checkbox"]:focus:hover,
+input[type="radio"]:focus:hover,
+input[type="file"]:focus:hover,
+input[type="image"]:focus:hover,
+.sr-only-focusable:focus:hover,
+a.dropdown-item:focus:hover,
+a.dropdown-toggle:focus:hover,
+.modal-dialog[tabindex="0"]:focus:hover,
+.moodle-dialogue-base .closebutton:focus:hover,
+button.close:focus:hover,
+.moodle-dialogue-base button.closebutton:focus:hover {
+  text-decoration: none; }
+
+.usermenu a,
+.usermenu a[role="button"],
+div.dropdown-item a,
+div.dropdown-item a[role="button"] {
+  outline: 0;
+  box-shadow: none; }
+
+.usermenu:focus-within,
+div.dropdown-item:focus-within {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(17, 119, 209, 0.75); }
+
 .unlist,
 .unlist li,
 .inline-list,
@@ -10104,7 +10192,8 @@ nav.navbar .logo img {
 
 /** Header-bar styles **/
 .page-context-header {
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 0.25rem; }
   .page-context-header .page-header-image,
   .page-context-header .page-header-headings {
     float: left;
@@ -10113,6 +10202,8 @@ nav.navbar .logo img {
   .page-context-header .page-header-image {
     margin-right: 1em;
     margin-bottom: 1em; }
+    .page-context-header .page-header-image > a {
+      display: inline-block; }
   .page-context-header .page-header-headings,
   .page-context-header .header-button-group {
     position: relative;
@@ -10121,9 +10212,6 @@ nav.navbar .logo img {
   .page-context-header .header-button-group {
     display: block;
     float: left; }
-    .page-context-header .header-button-group a {
-      position: relative;
-      top: -0.4em; }
 
 ul.dragdrop-keyboard-drag li {
   list-style-type: none; }
@@ -10295,6 +10383,8 @@ ul {
   text-decoration: underline; }
   #page-footer a .icon {
     color: #fff; }
+  #page-footer a:focus .icon {
+    color: #343a40; }
 
 .bg-inverse a {
   color: #fff;
@@ -11656,7 +11746,7 @@ body:not(.editing) .sitetopic ul.section {
     min-height: 2em; }
     .section .activity .contentwithoutlink > a,
     .section .activity .activityinstance > a {
-      display: block;
+      display: inline-block;
       text-indent: -31px;
       padding-left: 31px; }
     .section .activity .contentwithoutlink .dimmed .activityicon,
@@ -12660,6 +12750,7 @@ body.drawer-ease {
 
 .fp-iconview .fp-filename-field {
   height: 33px;
+  margin-top: 3px;
   word-wrap: break-word;
   overflow: hidden;
   position: absolute; }
@@ -13114,10 +13205,12 @@ a.ygtvspacer:hover {
   display: none; }
 
 .filemanager .fp-iconview .fp-folder.fp-hascontextmenu .fp-contextmenu {
-  display: block;
   position: absolute;
-  right: 7px;
-  bottom: 5px; }
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .filemanager .fp-treeview .fp-folder.fp-hascontextmenu .fp-contextmenu,
 .filemanager .fp-tableview .fp-folder.fp-hascontextmenu .fp-contextmenu {
@@ -15130,11 +15223,6 @@ div#dock {
 
 .usermenu .login {
   line-height: 2.25rem; }
-  .usermenu .login a {
-    color: #1177d1; }
-    .usermenu .login a:hover, .usermenu .login a:focus {
-      color: #0b4f8a;
-      text-decoration: underline; }
 
 .userloggedinas .usermenu .usertext,
 .userswitchedrole .usermenu .usertext,
@@ -15663,6 +15751,70 @@ p.arrow_button {
 
 .btn-lineup {
   margin: 0 0 10px 5px; }
+
+.btn-primary:focus, .btn-primary.focus {
+  outline: 0.2rem solid #020c14;
+  box-shadow: inset 0 0 0 2px #fff; }
+
+.btn-secondary:focus, .btn-default:focus, .btn-secondary.focus, .focus.btn-default {
+  outline: 0.2rem solid #5f6e7d;
+  box-shadow: inset 0 0 0 2px #fff; }
+
+.btn-success:focus, .btn-success.focus {
+  outline: 0.2rem solid black;
+  box-shadow: inset 0 0 0 2px #fff; }
+
+.btn-info:focus, .btn-info.focus {
+  outline: 0.2rem solid #124a5b;
+  box-shadow: inset 0 0 0 2px #fff; }
+
+.btn-warning:focus, .btn-warning.focus {
+  outline: 0.2rem solid #694109;
+  box-shadow: inset 0 0 0 2px #fff; }
+
+.btn-danger:focus, .btn-danger.focus {
+  outline: 0.2rem solid #360d0c;
+  box-shadow: inset 0 0 0 2px #fff; }
+
+.btn-light:focus, .btn-light.focus {
+  outline: 0.2rem solid #8193a5;
+  box-shadow: inset 0 0 0 2px #fff; }
+
+.btn-dark:focus, .btn-dark.focus {
+  outline: 0.2rem solid black;
+  box-shadow: inset 0 0 0 2px #fff; }
+
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+  outline: 0.2rem solid #020c14;
+  box-shadow: inset 0 0 0 2px #343a40; }
+
+.btn-outline-secondary:focus, .btn-outline-secondary.focus {
+  outline: 0.2rem solid #5f6e7d;
+  box-shadow: inset 0 0 0 2px #343a40; }
+
+.btn-outline-success:focus, .btn-outline-success.focus {
+  outline: 0.2rem solid black;
+  box-shadow: inset 0 0 0 2px #343a40; }
+
+.btn-outline-info:focus, .btn-outline-info.focus {
+  outline: 0.2rem solid #124a5b;
+  box-shadow: inset 0 0 0 2px #343a40; }
+
+.btn-outline-warning:focus, .btn-outline-warning.focus {
+  outline: 0.2rem solid #694109;
+  box-shadow: inset 0 0 0 2px #343a40; }
+
+.btn-outline-danger:focus, .btn-outline-danger.focus {
+  outline: 0.2rem solid #360d0c;
+  box-shadow: inset 0 0 0 2px #343a40; }
+
+.btn-outline-light:focus, .btn-outline-light.focus {
+  outline: 0.2rem solid #8193a5;
+  box-shadow: inset 0 0 0 2px #343a40; }
+
+.btn-outline-dark:focus, .btn-outline-dark.focus {
+  outline: 0.2rem solid black;
+  box-shadow: inset 0 0 0 2px #343a40; }
 
 .gradetreebox h4 {
   font-size: 0.9375rem; }
