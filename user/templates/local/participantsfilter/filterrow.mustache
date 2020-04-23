@@ -34,15 +34,15 @@
 }}
 <div data-filterregion="filter">
     <div class="rounded mb-3 p-2 bg-white border border-secondary d-flex align-items-center">
-        <label for="core_user-local-participantsfilter-filterrow-jointype-{{uniqid}}" class="pt-2">{{#str}}match, core_user{{/str}}</label>
-        <select class="custom-select" data-filterfield="join" id="core_user-local-participantsfilter-filterrow-jointype-{{uniqid}}">
+        <label for="core_user-local-participantsfilter-filterrow-jointype-{{uniqid}}" class="my-0 mr-2">{{#str}}match, core_user{{/str}}</label>
+        <select class="custom-select mr-2" data-filterfield="join" id="core_user-local-participantsfilter-filterrow-jointype-{{uniqid}}">
             <option value="0">{{#str}}none{{/str}}</option>
             <option selected=selected value="1">{{#str}}any{{/str}}</option>
             <option value="2">{{#str}}all{{/str}}</option>
         </select>
 
         <label class="sr-only pt-2" for="core_user-local-participantsfilter-filterrow-filtertype-{{uniqid}}">filtertype</label>
-        <select class="custom-select" data-filterfield="type" id="core_user-local-participantsfilter-filterrow-filtertype-{{uniqid}}">
+        <select class="custom-select mr-2" data-filterfield="type" id="core_user-local-participantsfilter-filterrow-filtertype-{{uniqid}}">
             <option value="">{{#str}}selectfiltertype, core_user{{/str}}</option>
             {{#filtertypes}}
             <option value="{{name}}">{{title}}</option>
@@ -51,8 +51,8 @@
 
         <div data-filterregion="value"></div>
 
-        <button data-filteraction="remove" class="ml-auto btn btn-link text-reset" aria-label="{{#str}}clearfilterrow, core_user{{/str}}">
-            <i class="icon fa fa-times-circle pt-2"></i>
+        <button data-filteraction="remove" class="ml-auto icon-no-margin btn text-reset" aria-label="{{#str}}clearfilterrow, core_user{{/str}}">
+            <i class="icon fa fa-times-circle"></i>
         </button>
     </div>
     <div data-filterregion="joinadverb">
