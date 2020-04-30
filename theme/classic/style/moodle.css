@@ -11516,6 +11516,9 @@ body.h5p-embed .h5pmessages {
   float: right !important;
   /* stylelint-disable-line declaration-no-important */ }
 
+.border-radius {
+  border-radius: 0.25rem; }
+
 .emoji-picker {
   width: 350px;
   height: 400px; }
