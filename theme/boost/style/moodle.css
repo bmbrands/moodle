@@ -10653,8 +10653,16 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
  */
 .modchooser .modal-body {
   padding: 0;
-  height: 640px;
-  overflow-y: auto; }
+  min-height: 640px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column; }
+  .modchooser .modal-body .carousel-item.active {
+    display: flex; }
+  .modchooser .modal-body .choosercontainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto; }
   .modchooser .modal-body .loading-icon {
     opacity: 1; }
     .modchooser .modal-body .loading-icon .icon {
@@ -10662,7 +10670,7 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
       font-size: 3em;
       height: 1em;
       width: 1em;
-      margin: 5em auto; }
+      margin: 1em auto; }
 
 .modchoosercontainer.noscroll {
   overflow-y: hidden; }
@@ -10682,33 +10690,23 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
   overflow-x: hidden; }
   .modchoosercontainer .optionscontainer .option,
   .modchoosercontainer .searchresultitemscontainer .option {
-    flex-basis: 16.66%; }
+    flex-basis: calc(50% - 0.5rem); }
     .modchoosercontainer .optionscontainer .option .optionactions .optionaction,
     .modchoosercontainer .searchresultitemscontainer .option .optionactions .optionaction {
       cursor: pointer;
       color: #6c757d; }
-      .modchoosercontainer .optionscontainer .option .optionactions .optionaction i,
-      .modchoosercontainer .searchresultitemscontainer .option .optionactions .optionaction i {
-        margin: 0; }
     .modchoosercontainer .optionscontainer .option .optioninfo a,
     .modchoosercontainer .searchresultitemscontainer .option .optioninfo a {
       color: #495057; }
       .modchoosercontainer .optionscontainer .option .optioninfo a:hover,
       .modchoosercontainer .searchresultitemscontainer .option .optioninfo a:hover {
         text-decoration: none; }
-      .modchoosercontainer .optionscontainer .option .optioninfo a .optionicon .icon,
-      .modchoosercontainer .searchresultitemscontainer .option .optioninfo a .optionicon .icon {
-        margin: 0;
-        padding: 0;
-        width: 32px;
-        height: 32px;
-        font-size: 32px; }
 
 .modchooser .modal-body .optionsummary {
   background-color: #fff;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 640px; }
+  min-height: 640px; }
   .modchooser .modal-body .optionsummary .content {
     overflow-y: auto; }
     .modchooser .modal-body .optionsummary .content .heading .icon {
@@ -10718,12 +10716,9 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
       padding: 0; }
   .modchooser .modal-body .optionsummary .actions {
     border-top: 1px solid #dee2e6;
-    background: #fff; }
-
-@media (max-width: 1199.98px) {
-  .modchoosercontainer .optionscontainer .option,
-  .modchoosercontainer .searchresultitemscontainer .option {
-    flex-basis: 20%; } }
+    background: #fff;
+    position: absolute;
+    bottom: 0; }
 
 @media (max-width: 575.98px) {
   .path-course-view .modal-dialog.modal-lg,
@@ -10736,12 +10731,23 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
   .modchoosercontainer,
   .optionscontainer,
   .searchresultitemscontainer {
-    height: 100%; }
+    min-height: auto;
+    height: 100%;
+    overflow-y: auto; }
   .path-course-view .modal-dialog.modal-lg {
     margin: 0; }
+  .modchooser .modal-body .optionsummary .actions {
+    position: fixed; } }
+
+@media (min-width: 576px) {
   .modchoosercontainer .optionscontainer .option,
   .modchoosercontainer .searchresultitemscontainer .option {
-    flex-basis: 25%; } }
+    flex-basis: calc(33.33% - 0.5rem); } }
+
+@media (min-width: 992px) {
+  .modchoosercontainer .optionscontainer .option,
+  .modchoosercontainer .searchresultitemscontainer .option {
+    flex-basis: calc(16.66% - 0.5rem); } }
 
 /* Form element: listing */
 .formlistingradio {
@@ -11482,6 +11488,22 @@ body.h5p-embed .h5pmessages {
   /* stylelint-disable-line declaration-no-important */ }
 
 .icon-size-5 .icon {
+  height: 32px !important;
+  /* stylelint-disable-line declaration-no-important */
+  width: 32px !important;
+  /* stylelint-disable-line declaration-no-important */
+  font-size: 32px !important;
+  /* stylelint-disable-line declaration-no-important */ }
+
+.icon-size-6 .icon {
+  height: 40px !important;
+  /* stylelint-disable-line declaration-no-important */
+  width: 40px !important;
+  /* stylelint-disable-line declaration-no-important */
+  font-size: 40px !important;
+  /* stylelint-disable-line declaration-no-important */ }
+
+.icon-size-7 .icon {
   height: 48px !important;
   /* stylelint-disable-line declaration-no-important */
   width: 48px !important;
@@ -14615,6 +14637,16 @@ a.ygtvspacer:hover {
       width: 44px !important;
       /* stylelint-disable-line declaration-no-important */ }
     .message-app .btn.btn-link.btn-icon.icon-size-5 {
+      height: 52px !important;
+      /* stylelint-disable-line declaration-no-important */
+      width: 52px !important;
+      /* stylelint-disable-line declaration-no-important */ }
+    .message-app .btn.btn-link.btn-icon.icon-size-6 {
+      height: 60px !important;
+      /* stylelint-disable-line declaration-no-important */
+      width: 60px !important;
+      /* stylelint-disable-line declaration-no-important */ }
+    .message-app .btn.btn-link.btn-icon.icon-size-7 {
       height: 68px !important;
       /* stylelint-disable-line declaration-no-important */
       width: 68px !important;
@@ -17251,6 +17283,24 @@ p.arrow_button {
     line-height: 24px !important;
     /* stylelint-disable-line declaration-no-important */ }
   .btn.btn-icon.icon-size-5 {
+    height: 52px !important;
+    /* stylelint-disable-line declaration-no-important */
+    width: 52px !important;
+    /* stylelint-disable-line declaration-no-important */
+    font-size: 32px !important;
+    /* stylelint-disable-line declaration-no-important */
+    line-height: 32px !important;
+    /* stylelint-disable-line declaration-no-important */ }
+  .btn.btn-icon.icon-size-6 {
+    height: 60px !important;
+    /* stylelint-disable-line declaration-no-important */
+    width: 60px !important;
+    /* stylelint-disable-line declaration-no-important */
+    font-size: 40px !important;
+    /* stylelint-disable-line declaration-no-important */
+    line-height: 40px !important;
+    /* stylelint-disable-line declaration-no-important */ }
+  .btn.btn-icon.icon-size-7 {
     height: 68px !important;
     /* stylelint-disable-line declaration-no-important */
     width: 68px !important;
