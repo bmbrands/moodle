@@ -151,7 +151,7 @@ const highlight = (text, highlightText) => {
     if (highlightText !== '') {
         const pos = text.toLowerCase().indexOf(highlightText.toLowerCase());
         if (pos > -1) {
-            result = text.substr(0, pos) + '<mark>' + text.substr(pos, highlightText.length) + '</mark>' +
+            result = text.substr(0, pos) + '<span class="matchtext">' + text.substr(pos, highlightText.length) + '</span>' +
                 text.substr(pos + highlightText.length);
         }
     }

@@ -46,6 +46,7 @@ $string['privacy:metadata:contentbankcontent'] = 'Stores the content of the cont
 $string['privacy:metadata:userid'] = 'The ID of the user creating or modifying content bank content.';
 $string['rename'] = 'Rename';
 $string['renamecontent'] = 'Rename content';
+$string['searchcontentbankbyname'] = 'Search for content by name';
 $string['timecreated'] = 'Time created';
 $string['unsupported'] = 'This content type is not supported.';
 $string['upload'] = 'Upload';
