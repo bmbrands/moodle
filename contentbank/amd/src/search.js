@@ -36,7 +36,7 @@ import {debounce} from 'core/utils';
 export const init = () => {
     const pendingPromise = new Pending();
 
-    const root = $(selectors.elements.main);
+    const root = $(selectors.regions.contentbank);
     registerListenerEvents(root);
 
     pendingPromise.resolve();
@@ -120,7 +120,7 @@ const toggleSearchResultsView = async(body, searchQuery) => {
  * @return {Array}
  */
 const filterContents = (body, searchTerm) => {
-    const contents = Array.from(body.find(selectors.elements.cbfile));
+    const contents = Array.from(body.find(selectors.elements.listitem));
     const searchResults = [];
     contents.forEach((content) => {
         const contentName = content.getAttribute('data-file');
