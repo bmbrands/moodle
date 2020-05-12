@@ -75,18 +75,25 @@ class bankcontent implements renderable, templatable {
         global $PAGE;
 
         $PAGE->requires->js_call_amd('core_contentbank/search', 'init');
+        $PAGE->requires->js_call_amd('core_contentbank/sort', 'init');
 
         $data = new stdClass();
         $contentdata = array();
         foreach ($this->contents as $content) {
             $record = $content->get_content();
+            $file = $content->get_file();
+            $filesize = $file ? $file->get_filesize() : 0;
             $contenttypeclass = $content->get_content_type().'\\contenttype';
             $contenttype = new $contenttypeclass($this->context);
             $name = $content->get_name();
             $contentdata[] = array(
                 'name' => $name,
                 'link' => $contenttype->get_view_url($record),
-                'icon' => $contenttype->get_icon($name)
+                'icon' => $contenttype->get_icon($name),
+                'timemodified' => $content->get_timemodified(),
+                'bytes' => $filesize,
+                'size' => display_size($filesize),
+                'type' => get_mimetype_description($file)
             );
         }
         $data->contents = $contentdata;
