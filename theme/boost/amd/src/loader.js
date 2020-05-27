@@ -57,7 +57,6 @@ const rememberTabs = () => {
 const enablePopovers = () => {
     $('body').popover({
         selector: '[data-toggle="popover"]',
-        trigger: 'focus hover',
         placement: 'auto'
     });
 
