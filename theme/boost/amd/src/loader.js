@@ -108,12 +108,13 @@ const init = () => {
     pendingPromise.resolve();
 };
 
+init();
+
 /**
  * Set up the search.
  *
  * @method init
  */
 export {
-    init,
     Bootstrap
 };
