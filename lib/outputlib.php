@@ -1100,10 +1100,27 @@ class theme_config {
                 }
             }
         }
+        $urls[] = $this->sourcemap_url();
 
         // Allow themes to change the css url to something like theme/mytheme/mycss.php.
         component_callback('theme_' . $this->name, 'alter_css_urls', [&$urls]);
         return $urls;
+    }
+
+    public function sourcemap_url() {
+
+        $filename = right_to_left() ? 'all-rtl-map' : 'all-map';
+        $themesubrevision = theme_get_sub_revision_for_theme($this->name);
+
+        // Provide the sub revision to allow us to invalidate cached theme CSS
+        // on a per theme basis, rather than globally.
+        $rev = theme_get_revision();
+        if ($themesubrevision && $themesubrevision > 0) {
+            $rev .= "_{$themesubrevision}";
+        }
+
+        return new moodle_url("/theme/styles.php",
+            ['theme' => $this->name, 'rev' => $rev, 'type' => $filename]);
     }
 
     /**
@@ -1139,7 +1156,9 @@ class theme_config {
             }
         }
         $csscontent = $this->post_process($csscontent);
-        $csscontent = core_minify::css($csscontent);
+        // $csscontent = core_minify::css($csscontent);
+        // 
+        //$csscontent .= '/*# sourceMappingURL=screen.css.map */';
 
         return $csscontent;
     }
@@ -1430,16 +1449,31 @@ class theme_config {
         // TODO: MDL-62757 When changing anything in this method please do not forget to check
         // if the validate() method in class admin_setting_configthemepreset needs updating too.
         $cacheoptions = '';
-        if ($themedesigner) {
-            $scsscachedir = $CFG->localcachedir . '/scsscache/';
-            $cacheoptions = array(
-                  'cacheDir' => $scsscachedir,
-                  'prefix' => 'scssphp_',
-                  'forceRefresh' => false,
-            );
-        }
+
+        make_localcache_directory('scsscache', false);
+        $cacheoptions = array(
+              'cacheDir' => $CFG->localcachedir . '/scsscache/',
+              'prefix' => 'scssphp_',
+              'forceRefresh' => false,
+        );
+
         // Set-up the compiler.
         $compiler = new core_scss($cacheoptions);
+        make_localcache_directory('scssmap', false);
+
+        $rev = theme_get_revision();
+        $themename = $this->name;
+        $name = right_to_left() ? 'all-rtl.map' : 'all.map';
+        $maplocation = "$CFG->localcachedir/theme/$rev/$themename/css/$name";
+        if (!file_exists(dirname($maplocation))) {
+            @mkdir(dirname($maplocation), $CFG->directorypermissions, true);
+        }
+
+        $compiler->setSourceMapOptions(
+            ['sourceMapWriteTo' => $maplocation,
+            'sourceMapURL' => $this->sourcemap_url()->out()]
+        );
+        $compiler->setSourceMap($compiler::SOURCE_MAP_FILE);
         $compiler->prepend_raw_scss($this->get_pre_scss_code());
         if (is_string($scss)) {
             $compiler->set_file($scss);
