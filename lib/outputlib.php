@@ -1055,6 +1055,10 @@ class theme_config {
         } else {
             $baseurl = new moodle_url('/theme/styles_debug.php');
 
+            if (!right_to_left()) {
+                $urls[] = $this->sourcemap_url();
+            }
+
             $css = $this->get_css_files(true);
             if (!$svg) {
                 // We add an SVG param so that we know not to serve SVG images.
@@ -1105,6 +1109,32 @@ class theme_config {
         // Allow themes to change the css url to something like theme/mytheme/mycss.php.
         component_callback('theme_' . $this->name, 'alter_css_urls', [&$urls]);
         return $urls;
+    }
+
+    /**
+     * Get the sourcemap URL of this theme.
+     *
+     * @return Object moodle_url
+     */
+    public function sourcemap_url() {
+        return new moodle_url("/theme/styles_debug.php",
+            ['theme' => $this->name, 'rev' => '-1', 'type' => 'map']);
+    }
+
+    /**
+     * Create and return the location of the cached sourcemap file.
+     *
+     * @return String sourcemapfile.
+     */
+    public function sourcemap_file() {
+        global $CFG;
+        $rev = theme_get_revision();
+        $themename = $this->name;
+        $maplocation = "$CFG->localcachedir/theme/$rev/$themename/css/all.css.map";
+        if (!file_exists(dirname($maplocation))) {
+            @mkdir(dirname($maplocation), $CFG->directorypermissions, true);
+        }
+        return $maplocation;
     }
 
     /**
@@ -1208,6 +1238,7 @@ class theme_config {
      * @return string CSS markup
      */
     public function get_css_content_debug($type, $subtype, $sheet) {
+
         if ($type === 'scss') {
             // The SCSS file of the theme is requested.
             $csscontent = $this->get_css_content_from_scss(true);
@@ -1215,6 +1246,11 @@ class theme_config {
                 return $this->post_process($csscontent);
             }
             return '';
+        }
+
+        if ($type === 'map') {
+            $sourcemap = $this->sourcemap_file();
+            return file_get_contents($sourcemap);
         }
 
         $cssfiles = array();
@@ -1430,17 +1466,38 @@ class theme_config {
 
         // TODO: MDL-62757 When changing anything in this method please do not forget to check
         // if the validate() method in class admin_setting_configthemepreset needs updating too.
-        $cacheoptions = '';
-        if ($themedesigner) {
-            $scsscachedir = $CFG->localcachedir . '/scsscache/';
+
+        $scsscache = 'scsscache-' . $this->name;
+        $cachedir = $CFG->localcachedir . '/' . $scsscache . '/';
+        if ($themedesigner && empty($this->rtlmode)) {
+            make_localcache_directory($scsscache, false);
             $cacheoptions = array(
-                  'cacheDir' => $scsscachedir,
+                  'cacheDir' => $cachedir,
                   'prefix' => 'scssphp_',
                   'forceRefresh' => false,
             );
+            $compiler = new core_scss($cacheoptions);
+
+            // Normalise the path for Windows filesystems.
+            $basepath = str_replace('\\', '/', $CFG->dirroot);
+
+            // Enable source maps.
+            $compiler->setSourceMapOptions([
+                'sourceMapBasepath' => $basepath,
+                'sourceMapRootpath' => $CFG->wwwroot . '/',
+                'sourceMapWriteTo' => $this->sourcemap_file(),
+                'sourceMapURL' => $this->sourcemap_url()->out(false)
+            ]);
+            $compiler->setSourceMap($compiler::SOURCE_MAP_FILE);
+        } else {
+            // The cachedir needs to be removed to ensure new source maps are created
+            // when it is in use again.
+            if (file_exists($cachedir)) {
+                rmdir($cachedir);
+            }
+            $compiler = new core_scss();
         }
-        // Set-up the compiler.
-        $compiler = new core_scss($cacheoptions);
+
         $compiler->prepend_raw_scss($this->get_pre_scss_code());
         if (is_string($scss)) {
             $compiler->set_file($scss);
