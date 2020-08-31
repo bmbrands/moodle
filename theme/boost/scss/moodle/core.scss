@@ -1640,6 +1640,9 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
     .carousel-item .loading-icon .icon {
         margin: 1em auto;
     }
+    .searchbar {
+        width: 100%;
+    }
 }
 
 .modchooser .modal-footer {
@@ -2038,6 +2041,15 @@ img#persona_signin {
 /** Navbar logo. */
 nav.navbar .logo img {
     max-height: 35px;
+}
+
+.nav.usernav {
+    .nav-item {
+        display: flex;
+    }
+    .usermenu .dropdown-toggle {
+        padding: 0 0.5rem;
+    }
 }
 
 /** Header-bar styles **/
