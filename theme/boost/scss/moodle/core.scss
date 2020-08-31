@@ -1654,11 +1654,7 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
     }
 }
 
-.modchoosercontainer.noscroll {
-    overflow-y: hidden;
-}
-
-.modchooser .searchcontainer .searchbar .input-group-append {
+.modchooser .searchcontainer .searchbar .inputgroupappend {
     align-items: center;
 
     i {
@@ -1669,6 +1665,10 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
         height: 20px;
         width: 20px;
     }
+}
+
+.modchoosercontainer.noscroll {
+    overflow-y: hidden;
 }
 
 .modchoosercontainer .optionscontainer,
@@ -2038,6 +2038,15 @@ img#persona_signin {
 /** Navbar logo. */
 nav.navbar .logo img {
     max-height: 35px;
+}
+
+.nav.usernav {
+    .nav-item {
+        display: flex;
+    }
+    .usermenu .dropdown-toggle {
+        padding: 0 0.5rem;
+    }
 }
 
 /** Header-bar styles **/
