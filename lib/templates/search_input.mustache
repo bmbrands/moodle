@@ -25,13 +25,21 @@
         "extraclasses": "my-2",
         "inputname": "search",
         "searchstring": "Search settings",
-        "value": "policy",
         "btnclass": "primary",
         "query": "themedesigner"
+        "hiddenfields": [
+            {
+                "name": "course",
+                "value": "11"
+            }
+        ]
     }
 }}
 <div id="searchinput-{{uniqid}}" class="simplesearchform {{{ extraclasses }}}">
     <form autocomplete="off" action="{{{ action }}}" method="get" accept-charset="utf-8" class="mform form-inline simplesearchform">
+    {{#hiddenfields}}
+        <input type="hidden" name="{{ name }}" value="{{ value }}">
+    {{/hiddenfields}}
     <div class="input-group">
         <label for="searchinput-{{uniqid}}">
             <span class="sr-only">{{{ searchstring }}}</span>
@@ -53,5 +61,8 @@
             </button>
         </div>
     </div>
+    {{#otherfields}}
+        <div  class="ml-2">{{{ otherfields }}}</div>
+    {{/otherfields}}
 </form>
 </div>
