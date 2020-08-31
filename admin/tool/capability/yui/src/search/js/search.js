@@ -74,16 +74,27 @@ SEARCH.prototype = {
         this.button = this.form.all('input[type=submit]');
         this.lastsearch = this.form.one('input[name=search]');
 
-        var div = Y.Node.create('<div id="capabilitysearchui" data-fieldtype="text"></div>'),
-            label = Y.Node.create('<label for="capabilitysearch">' + this.get('strsearch') + '</label>');
-        this.input = Y.Node.create('<input type="text" id="capabilitysearch" />');
+        var div = Y.Node.create('<div id="capabilitysearchui" class="input-group mb-2" data-fieldtype="text"></div>'),
+            label = Y.Node.create('<label for="capabilitysearch"><span class="sr-only"' +
+                this.get('strsearch') + '</span></label>'),
+            cancel = Y.Node.create('<div class="input-group-append">' +
+                '<a data-action="close" class="btn btn-append-close icon-no-margin">' +
+                '<i class="icon fa fa-times fa-fw " aria-hidden="true"></i>' +
+                '</a>' +
+                '</div>');
+        this.input = Y.Node.create('<input type="text" class="form-control" placeholder="' +
+            this.get('strsearch') + '"id="capabilitysearch" />');
 
-        div.append(label).append(this.input);
+        div.append(label).append(this.input).append(cancel);
 
         this.select.insert(div, 'before');
 
         this.input.on('keyup', this.typed, this);
         this.select.on('change', this.validate, this);
+        cancel.on('click', function() {
+            this.input.set('value', '');
+            this.typed();
+        }, this);
 
         if (this.lastsearch) {
             this.input.set('value', this.lastsearch.get('value'));

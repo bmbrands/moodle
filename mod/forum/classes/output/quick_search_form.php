@@ -63,11 +63,15 @@ class quick_search_form implements renderable, templatable {
     }
 
     public function export_for_template(renderer_base $output) {
+        $hiddenfields = [
+            (object) ['name' => 'id', 'value' => $this->courseid],
+        ];
         $data = [
-            'actionurl' => $this->actionurl->out(false),
-            'courseid' => $this->courseid,
-            'query' => $this->query,
+            'action' => $this->actionurl->out(false),
+            'hiddenfields' => $hiddenfields,
+            'value' => $this->query,
             'helpicon' => $this->helpicon->export_for_template($output),
+            'inputname' => 'search',
         ];
         return $data;
     }

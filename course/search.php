@@ -91,11 +91,13 @@ if (empty($searchcriteria)) {
     // this is search results page
     $PAGE->set_title("$site->fullname : $strsearchresults");
     // Link to manage search results should be visible if user have system or category level capability
+    // 
+    // CAN WE REMOVE THIS?
     if ((can_edit_in_category() || !empty($usercatlist))) {
         $aurl = new moodle_url('/course/management.php', $searchcriteria);
         $searchform = $OUTPUT->single_button($aurl, get_string('managecourses'), 'get');
     } else {
-        $searchform = $courserenderer->course_search_form($search, 'navbar');
+        $searchform = $courserenderer->course_search_form($search);
     }
     $PAGE->set_button($searchform);
 

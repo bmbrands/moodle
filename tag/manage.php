@@ -206,17 +206,22 @@ if (!$tagcoll) {
 // Tag collection is specified. Manage tags in this collection.
 echo $OUTPUT->heading(core_tag_collection::display_name($tagcoll));
 
-// Form to filter tags.
-print('<form class="tag-filter-form" method="get" action="'.$CFG->wwwroot.'/tag/manage.php">');
-print('<div class="tag-management-form generalbox"><label class="accesshide" for="id_tagfilter">'. get_string('search') .'</label>'.
-    '<input type="hidden" name="tc" value="'.$tagcollid.'" />'.
-    '<input type="hidden" name="perpage" value="'.$perpage.'" />'.
-    '<input id="id_tagfilter" name="filter" type="text" value=' . s($filter) . '>'.
-    '<input value="'. s(get_string('search')) .'" type="submit" class="btn btn-secondary"> '.
-    ($filter !== '' ? html_writer::link(new moodle_url($PAGE->url, array('filter' => null)),
-        get_string('resetfilter', 'tag'), array('class' => 'resetfilterlink')) : '').
-    '</div>');
-print('</form>');
+
+$hiddenfields = [
+    (object) ['type' => 'hidden', 'name' => 'tc', 'value' => $tagcollid],
+    (object) ['type' => 'hidden', 'name' => 'perpage', 'value' => $perpage]
+];
+
+$data = [
+    'action' => new moodle_url('/tag/manage.php'),
+    'hiddenfields' => $hiddenfields,
+    'inputname' => 'filter',
+    'searchstring' => get_string('search'),
+    'value' => s($filter),
+    'cancel' => true,
+    'extraclasses' => 'mb-2'
+];
+echo $OUTPUT->render_from_template('core/search_input', $data);
 
 // Link to add an standard tags.
 $img = $OUTPUT->pix_icon('t/add', '');

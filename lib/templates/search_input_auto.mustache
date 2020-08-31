@@ -15,31 +15,49 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_search_forums/search_form
+    @template core/search_input
 
-    This template renders the search form.
+    Chooser search template.
 
     Example context (json):
     {
         "action": "https://moodle.local/admin/search.php",
+        "extraclasses": "my-2",
         "inputname": "search",
         "searchstring": "Search settings",
+        "sesskey": "sesskey",
         "value": "policy",
+        "btnclass": "primary"
         "hiddenfields": [
             {
                 "name": "course",
                 "value": "11"
             }
         ]
-        "helpicon": "<a class='btn'><i class='icon fa fa-question-circle'></i></a>"
     }
 }}
-<div class="searchform">
-    {{>core/search_input}}
-    <div class="mt-3">
-        <a href="{{action}}">{{#str}}advancedsearch, block_search_forums{{/str}}</a>
-        {{#helpicon}}
-            {{>core/help_icon}}
-        {{/helpicon}}
+<div id="searchform-auto" class="form-inline simplesearchform">
+    <div class="input-group searchbar" role="search">
+        <label for="searchinput">
+            <span class="sr-only">{{$label}}{{#str}} search, core {{/str}}{{/label}}</span>
+        </label>
+        <input
+           type="text"
+           data-region="input"
+           data-action="search"
+           id="searchinput"
+           class="form-control withclear"
+           placeholder="{{$placeholder}}{{#str}} search, core {{/str}}{{/placeholder}}"
+           name="search"
+           autocomplete="off"
+        >
+        <button
+            class="btn btn-clear d-none"
+            data-action="clearsearch"
+            type="button"
+        >
+           {{#pix}} e/cancel, core {{/pix}}
+            <span class="sr-only">{{#str}} clearsearch, core {{/str}}</span>
+        </button>
     </div>
 </div>
