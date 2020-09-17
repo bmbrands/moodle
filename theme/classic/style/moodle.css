@@ -11876,6 +11876,9 @@ input[disabled] {
 .fade.in {
   opacity: 1; }
 
+.img-muted {
+  opacity: 0.2; }
+
 .clamp-2 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -19435,133 +19438,74 @@ input[type="month"].form-control {
 
 #page-admin-tool-behat-index .steps-definitions {
   margin: 1rem auto; }
-
-#page-admin-tool-behat-index .steps-definitions .step {
-  margin: 1rem 0 0 0;
-  border: 1px solid #eee;
-  padding: 1rem; }
-
-#page-admin-tool-behat-index .steps-definitions .stepdescription {
-  font-style: italic; }
-
-#page-admin-tool-behat-index .steps-definitions .stepcontent {
-  margin: 1rem 0; }
-
-#page-admin-tool-behat-index .steps-definitions .steptype {
-  color: #1467a6;
-  margin-right: 1ex; }
-
-#page-admin-tool-behat-index .steps-definitions .stepapipath {
-  font-family: monospace;
-  font-size: smaller; }
-
-#page-admin-tool-behat-index .steps-definitions .stepregex {
-  color: #060; }
+  #page-admin-tool-behat-index .steps-definitions .step {
+    margin: 1rem 0 0 0;
+    border: 1px solid #dee2e6;
+    padding: 1rem; }
+  #page-admin-tool-behat-index .steps-definitions .stepdescription {
+    font-style: italic; }
+  #page-admin-tool-behat-index .steps-definitions .stepcontent {
+    margin: 1rem 0; }
+  #page-admin-tool-behat-index .steps-definitions .steptype {
+    color: #1177d1;
+    margin-right: 0.5rem; }
+  #page-admin-tool-behat-index .steps-definitions .stepapipath {
+    font-family: monospace;
+    font-size: smaller; }
+  #page-admin-tool-behat-index .steps-definitions .stepregex {
+    color: #398439; }
 
 .path-admin-tool-capability .comparisontable {
   margin-top: 150px; }
+  .path-admin-tool-capability .comparisontable th {
+    vertical-align: middle;
+    padding: 0.4em 0.5em 0.3em; }
+  .path-admin-tool-capability .comparisontable td {
+    vertical-align: middle;
+    padding: 0.4em 0.5em 0.3em; }
+  .path-admin-tool-capability .comparisontable tbody th {
+    background-color: #f8f9fa;
+    text-align: right;
+    border: 1px solid #dee2e6; }
+    .path-admin-tool-capability .comparisontable tbody th span {
+      display: block;
+      color: #495057;
+      font-size: 80%; }
+  .path-admin-tool-capability .comparisontable tbody td {
+    border: 1px solid #dee2e6; }
+  .path-admin-tool-capability .comparisontable .inherit {
+    color: #495057; }
+  .path-admin-tool-capability .comparisontable .allow {
+    background-color: #398439;
+    font-weight: bold;
+    color: #fff; }
+  .path-admin-tool-capability .comparisontable .prevent {
+    background-color: #f0ad4e;
+    font-weight: bold;
+    color: #fff; }
+  .path-admin-tool-capability .comparisontable .prohibit {
+    background-color: #d43f3a;
+    font-weight: bold;
+    color: #fff; }
+  .path-admin-tool-capability .comparisontable thead th {
+    vertical-align: bottom;
+    background: none; }
+    .path-admin-tool-capability .comparisontable thead th div {
+      position: relative; }
+      .path-admin-tool-capability .comparisontable thead th div > a {
+        position: absolute;
+        top: -1.75em;
+        left: 1em;
+        width: 150px;
+        text-align: left;
+        margin-bottom: 1em;
+        text-indent: -1.45em;
+        transform-origin: top left;
+        transform: rotate(315deg); }
 
-.path-admin-tool-capability .comparisontable th,
-.path-admin-tool-capability .comparisontable td {
-  vertical-align: middle;
-  padding: 0.4em 0.5em 0.3em; }
-
-.path-admin-tool-capability .comparisontable thead th {
-  vertical-align: bottom;
-  background: none; }
-
-.path-admin-tool-capability .comparisontable thead th div {
-  position: relative; }
-
-.path-admin-tool-capability .comparisontable thead th div > a {
-  position: absolute;
-  top: -1.75em;
-  left: 1em;
-  width: 150px;
-  text-align: left;
-  margin-bottom: 1em;
-  text-indent: -1.45em;
-  -webkit-transform-origin: top left;
-  -moz-transform-origin: top left;
-  -ms-transform-origin: top left;
-  -o-transform-origin: top left;
-  -webkit-transform: rotate(315deg);
-  -moz-transform: rotate(315deg);
-  -ms-transform: rotate(315deg);
-  -o-transform: rotate(315deg); }
-
-.path-admin-tool-capability .comparisontable tbody th {
-  background-color: #eee;
-  text-align: right;
-  border: 1px solid #dfdfdf; }
-
-.path-admin-tool-capability .comparisontable tbody th span {
-  display: block;
-  color: #666;
-  font-size: 80%; }
-
-.path-admin-tool-capability .comparisontable tbody td {
-  border: 1px solid #dfdfdf; }
-
-.path-admin-tool-capability .comparisontable .inherit {
-  color: #666; }
-
-.path-admin-tool-capability .comparisontable .allow {
-  background-color: #060;
-  font-weight: bold;
-  color: white; }
-
-.path-admin-tool-capability .comparisontable .prevent {
-  background-color: #ad6704;
-  font-weight: bold;
-  color: white; }
-
-.path-admin-tool-capability .comparisontable .prohibit {
-  background-color: #800;
-  font-weight: bold;
-  color: white; }
-
-.nav-pills .nav-pills {
-  margin-left: 1rem; }
-
-.data-registry > .top-nav > * {
-  margin-right: 0.5rem; }
-
-/*Extra attribute selection to have preference over bs2's .moodle-actionmenu[data-enhance] */
-.data-registry > .top-nav > .singlebutton,
-.data-registry > .top-nav > .moodle-actionmenu[data-owner='dataregistry-actions'] {
-  display: inline-block; }
-
-.data-registry .context-tree {
+.path-admin-tool-dataprivacy .data-registry .context-tree {
   height: 70vh;
   overflow-y: scroll; }
-
-[data-region="data-requests-table"] .moodle-actionmenu {
-  min-width: 150px; }
-
-.context-level-view {
-  margin: 1em; }
-
-/**
- * Styles for admin tool page.
- */
-/* Fix bad default table wrap (caused by the long mimetype field). */
-.path-admin-tool-filetypes .generaltable .c0,
-.path-admin-tool-filetypes .generaltable .c1,
-.path-admin-tool-filetypes .generaltable .c2,
-.path-admin-tool-filetypes .generaltable th {
-  white-space: nowrap; }
-
-/* Formatting for deleted lines. */
-.path-admin-tool-filetypes .generaltable .deleted .c0 img {
-  opacity: 0.2; }
-
-.path-admin-tool-filetypes .generaltable .deleted .c0 span {
-  text-decoration: line-through; }
-
-/* Custom types show bold */
-.path-admin-tool-filetypes .generaltable .nonstandard {
-  font-weight: bold; }
 
 .path-admin-tool-health div#healthnoproblemsfound {
   width: 60%;
