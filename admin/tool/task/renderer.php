@@ -101,7 +101,7 @@ class tool_task_renderer extends plugin_renderer_base {
             }
 
             $namecell = new html_table_cell($task->get_name() . "\n" .
-                    html_writer::span('\\' . $classname, 'task-class text-ltr'));
+                    html_writer::div('\\' . $classname, 'small'));
             $namecell->header = true;
 
             $plugininfo = core_plugin_manager::instance()->get_plugin_info($task->get_component());
@@ -185,7 +185,7 @@ class tool_task_renderer extends plugin_renderer_base {
             $componentname .= ' ' . html_writer::span(
                             get_string('disabled', 'tool_task'), 'badge badge-secondary');
         }
-        $componentname .= "\n" . html_writer::span($plugininfo->component, 'task-class text-ltr');
+        $componentname .= html_writer::div($plugininfo->component, 'small');
 
         return $componentname;
     }
@@ -256,8 +256,8 @@ class tool_task_renderer extends plugin_renderer_base {
 
         // Otherwise, highlight and show the default.
         $cell->attributes['class'] .= ' table-warning';
-        $cell->text .= ' ' . html_writer::span(
-                get_string('defaultx', 'tool_task', $default), 'task-class');
+        $cell->text .= ' ' . html_writer::div(
+                get_string('defaultx', 'tool_task', $default), 'small');
         return $cell;
     }
 
