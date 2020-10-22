@@ -86,7 +86,7 @@ class block_online_users extends block_base {
             $usercount = get_string('numusers', 'block_online_users', $usercount);
         }
 
-        $this->content->text = '<div class="info">'.$usercount.' ('.$periodminutes.')</div>';
+        $this->content->text = '<div class="info text-center">'.$usercount.' ('.$periodminutes.')</div>';
 
         // Verify if we can see the list of users, if not just print number of users
         if (!has_capability('block/online_users:viewlist', $this->page->context)) {
@@ -116,7 +116,7 @@ class block_online_users extends block_base {
                 $canshowicon = false;
             }
             foreach ($users as $user) {
-                $this->content->text .= '<li class="listentry">';
+                $this->content->text .= '<li class="listentry d-flex align-items-center">';
                 $timeago = format_time($now - $user->lastaccess); //bruno to calculate correctly on frontpage
 
                 if (isguestuser($user)) {
@@ -137,7 +137,7 @@ class block_online_users extends block_base {
                                 array('title' => get_string('online_status:' . $action, 'block_online_users'),
                                     'data-action' => $action, 'data-userid' => $user->id, 'id' => 'change-user-visibility'));
 
-                            $this->content->text .= '<div class="uservisibility">' . $anchortag . '</div>';
+                            $this->content->text .= '<div class="ml-auto uservisibility">' . $anchortag . '</div>';
                         }
                     } else {
                         if ($canshowicon) {  // Only when logged in and messaging active etc.
@@ -146,7 +146,7 @@ class block_online_users extends block_base {
                             $anchortag = html_writer::link($anchorurl, $anchortagcontents,
                                 array('title' => get_string('messageselectadd')));
 
-                            $this->content->text .= '<div class="message">'.$anchortag.'</div>';
+                            $this->content->text .= '<div class="ml-auto message">'.$anchortag.'</div>';
                         }
                     }
                 }
