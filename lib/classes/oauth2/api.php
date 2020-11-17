@@ -142,7 +142,6 @@ class api {
             'email' => 'email',
             'first_name' => 'firstname',
             'picture-data-url' => 'picture',
-            'link' => 'url',
         ];
         foreach ($mapping as $external => $internal) {
             $record = (object) [
@@ -595,7 +594,6 @@ class api {
             'middle_name' => 'middlename',
             'family_name' => 'lastname',
             'email' => 'email',
-            'website' => 'url',
             'nickname' => 'alternatename',
             'picture' => 'picture',
             'address' => 'address',
