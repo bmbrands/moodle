@@ -124,6 +124,15 @@ if (empty($categories)) {
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('profilefields', 'admin'));
 
+$networks = [
+    'icq' => get_string('icqnumber', 'moodle'),
+    'msn' => get_string('msnid', 'moodle'),
+    'aim' => get_string('aimid', 'moodle'),
+    'yahoo' => get_string('yahooid', 'moodle'),
+    'skype' => get_string('skypeid', 'moodle'),
+    'url' => get_string('webpage', 'moodle'),
+];
+
 foreach ($categories as $category) {
     $table = new html_table();
     $table->head  = array(get_string('profilefield', 'admin'), get_string('edit'));
@@ -134,7 +143,11 @@ foreach ($categories as $category) {
 
     if ($fields = $DB->get_records('user_info_field', array('categoryid' => $category->id), 'sortorder ASC')) {
         foreach ($fields as $field) {
-            $table->data[] = array(format_string($field->name), profile_field_icons($field));
+            $fieldname = format_string($field->name);
+            if ($field->datatype == 'social') {
+                $fieldname = $networks[$field->name];
+            }
+            $table->data[] = array($fieldname, profile_field_icons($field));
         }
     }
 

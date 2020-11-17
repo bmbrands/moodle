@@ -3012,5 +3012,23 @@ function xmldb_main_upgrade($oldversion) {
         upgrade_main_savepoint(true, 2021052500.42);
     }
 
+    if ($oldversion < 2021052500.43) {
+        require_once($CFG->dirroot . '/user/profile/field/social/upgradelib.php');
+        $table = new xmldb_table('user');
+        $tablecolumns = ['icq', 'skype', 'aim', 'yahoo', 'msn', 'url'];
+
+        foreach ($tablecolumns as $column) {
+            $field = new xmldb_field($column);
+            if ($dbman->field_exists($table, $field)) {
+                user_profile_social_moveto_profilefield($column);
+                if (user_profile_social_allmoved($column)) {
+                    $dbman->drop_field($table, $field);
+                }
+            }
+        }
+        // Monitor savepoint reached.
+        upgrade_main_savepoint(true, 2021052500.43);
+    }
+
     return true;
 }
