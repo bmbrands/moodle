@@ -125,3 +125,14 @@ sitebackpackverify,core_badges
 filetypesnotwhitelisted,core_form
 modeloutputdirinfo,core_analytics
 backpackneedsupdate,core_badges
+privacy:metadata:mnet_external:aim,auth_mnet
+privacy:metadata:mnet_external:icq,auth_mnet
+privacy:metadata:mnet_external:msn,auth_mnet
+privacy:metadata:mnet_external:skype,auth_mnet
+privacy:metadata:mnet_external:url,auth_mnet
+privacy:metadata:mnet_external:yahoo,auth_mnet
+display_icq,block_myprofile
+display_skype,block_myprofile
+display_yahoo,block_myprofile
+display_aim,block_myprofile
+display_msn,block_myprofile

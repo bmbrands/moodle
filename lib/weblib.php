@@ -96,6 +96,9 @@ function s($var) {
         return '0';
     }
 
+    if (is_array($var)) {
+       echo print_r($var,true);
+    }
     return preg_replace('/&amp;#(\d+|x[0-9a-f]+);/i', '&#$1;',
             htmlspecialchars($var, ENT_QUOTES | ENT_HTML401 | ENT_SUBSTITUTE));
 }

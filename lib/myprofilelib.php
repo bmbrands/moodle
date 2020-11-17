@@ -213,17 +213,6 @@ function core_myprofile_navigation(core_user\output\myprofile\tree $tree, $user,
         $tree->add_node($node);
     }
 
-    if ($user->url && !isset($hiddenfields['webpage'])) {
-        $url = $user->url;
-        if (strpos($user->url, '://') === false) {
-            $url = 'http://'. $url;
-        }
-        $webpageurl = new moodle_url($url);
-        $node = new core_user\output\myprofile\node('contact', 'webpage', get_string('webpage'), null, null,
-            html_writer::link($url, $webpageurl));
-        $tree->add_node($node);
-    }
-
     // Printing tagged interests. We want this only for full profile.
     if (empty($course) && ($interests = core_tag_tag::get_item_tags('core', 'user', $user->id))) {
         $node = new core_user\output\myprofile\node('contact', 'interests', get_string('interests'), null, null,
@@ -326,53 +315,6 @@ function core_myprofile_navigation(core_user\output\myprofile\tree $tree, $user,
                 $tree->add_node($node);
             }
         }
-    }
-
-    if ($user->icq && !isset($hiddenfields['icqnumber'])) {
-        $imurl = new moodle_url('http://web.icq.com/wwp', array('uin' => $user->icq) );
-        $iconurl = new moodle_url('http://web.icq.com/whitepages/online', array('icq' => $user->icq, 'img' => '5'));
-        $statusicon = html_writer::tag('img', '',
-                array('src' => $iconurl, 'class' => 'icon icon-post', 'alt' => get_string('status')));
-        $node = new core_user\output\myprofile\node('contact', 'icqnumber', get_string('icqnumber'), null, null,
-            html_writer::link($imurl, s($user->icq) . $statusicon));
-        $tree->add_node($node);
-    }
-
-    if ($user->skype && !isset($hiddenfields['skypeid'])) {
-        $imurl = 'skype:'.urlencode($user->skype).'?call';
-        $iconurl = new moodle_url('http://mystatus.skype.com/smallicon/'.urlencode($user->skype));
-        if (is_https()) {
-            // Bad luck, skype devs are lazy to set up SSL on their servers - see MDL-37233.
-            $statusicon = '';
-        } else {
-            $statusicon = html_writer::empty_tag('img',
-                array('src' => $iconurl, 'class' => 'icon icon-post', 'alt' => get_string('status')));
-        }
-
-        $node = new core_user\output\myprofile\node('contact', 'skypeid', get_string('skypeid'), null, null,
-            html_writer::link($imurl, s($user->skype) . $statusicon));
-        $tree->add_node($node);
-    }
-    if ($user->yahoo && !isset($hiddenfields['yahooid'])) {
-        $imurl = new moodle_url('http://edit.yahoo.com/config/send_webmesg', array('.target' => $user->yahoo, '.src' => 'pg'));
-        $iconurl = new moodle_url('http://opi.yahoo.com/online', array('u' => $user->yahoo, 'm' => 'g', 't' => '0'));
-        $statusicon = html_writer::tag('img', '',
-            array('src' => $iconurl, 'class' => 'iconsmall icon-post', 'alt' => get_string('status')));
-
-        $node = new core_user\output\myprofile\node('contact', 'yahooid', get_string('yahooid'), null, null,
-            html_writer::link($imurl, s($user->yahoo) . $statusicon));
-        $tree->add_node($node);
-    }
-    if ($user->aim && !isset($hiddenfields['aimid'])) {
-        $imurl = 'aim:goim?screenname='.urlencode($user->aim);
-        $node = new core_user\output\myprofile\node('contact', 'aimid', get_string('aimid'), null, null,
-            html_writer::link($imurl, s($user->aim)));
-        $tree->add_node($node);
-    }
-    if ($user->msn && !isset($hiddenfields['msnid'])) {
-        $node = new core_user\output\myprofile\node('contact', 'msnid', get_string('msnid'), null, null,
-            s($user->msn));
-        $tree->add_node($node);
     }
 
     $categories = profile_get_user_fields_with_data_by_category($user->id);

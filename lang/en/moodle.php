@@ -1300,6 +1300,7 @@ $string['modvisiblehiddensection_help'] = 'If the availability is set to \'Hide 
 
 If the course contains many activities or resources, the course page may be simplified by setting the availability to \'Make available but not shown on course page\'. In this case, a link to the activity or resource must be provided from elsewhere, such as from a page resource. The activity would still be listed in the gradebook and other reports.';
 $string['moodlelogo'] = 'Moodle logo';
+$string['moodlenetprofile'] = 'MoodleNet profile';
 $string['month'] = 'Month';
 $string['months'] = 'Months';
 $string['modified'] = 'Modified';

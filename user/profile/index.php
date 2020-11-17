@@ -134,7 +134,11 @@ foreach ($categories as $category) {
 
     if ($fields = $DB->get_records('user_info_field', array('categoryid' => $category->id), 'sortorder ASC')) {
         foreach ($fields as $field) {
-            $table->data[] = array(format_string($field->name), profile_field_icons($field));
+            $fieldname = format_string($field->name);
+            if ($field->datatype == 'social') {
+               $fieldname = get_string($field->name, 'profilefield_social');
+            }
+            $table->data[] = array($fieldname, profile_field_icons($field));
         }
     }
 
