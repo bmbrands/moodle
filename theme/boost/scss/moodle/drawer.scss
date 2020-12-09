@@ -115,10 +115,10 @@ $right-drawer-width: 320px;
         z-index: $zindex-sticky;
         position: fixed;
         top: $navbar-height;
-        right: 0;
+        right: 0.5rem;
         height: calc(100% - #{$navbar-height});
         width: $right-drawer-width;
-        box-shadow: -2px 2px 4px rgba(0, 0, 0, .08);
+        box-shadow: -2px 2px 4px rgba(0, 0, 0, .08), 2px 2px 4px rgba(0, 0, 0, .08);
         padding: 0;
         visibility: visible;
         opacity: 1;
@@ -142,6 +142,7 @@ $right-drawer-width: 320px;
             top: 0;
             height: 100%;
             z-index: $zindex-fixed;
+            right: 0;
         }
     }
     body.drawer-open-left,

@@ -14382,10 +14382,10 @@ body.drawer-ease {
     z-index: 1020;
     position: fixed;
     top: 50px;
-    right: 0;
+    right: 0.5rem;
     height: calc(100% - 50px);
     width: 320px;
-    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08), 2px 2px 4px rgba(0, 0, 0, 0.08);
     padding: 0;
     visibility: visible;
     opacity: 1; }
@@ -14403,7 +14403,8 @@ body.drawer-ease {
   [data-region=right-hand-drawer].drawer {
     top: 0;
     height: 100%;
-    z-index: 1030; }
+    z-index: 1030;
+    right: 0; }
   body.drawer-open-left,
   body.drawer-open-right {
     overflow: hidden; } }
