@@ -1,0 +1,265 @@
+.navbar.navbar-secure {
+    justify-content: start;
+}
+
+
+/** Navbar logo. */
+@mixin customnavlink-lg() {
+    color: $navbar-light-color;
+    padding: 0 0.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    &.disabled {
+        color: $navbar-light-disabled-color;
+    }
+    &:hover,
+    &:focus {
+        box-shadow: none;
+        outline: 0;
+        border-bottom: 3px solid $warning;
+    }
+}
+
+@mixin customnavlink-sm() {
+    color: $navbar-light-color;
+    padding: 0.75rem 1.25rem;
+    background-color: $white;
+    border: $border-width solid $border-color;
+    border-left: 5px solid transparent;
+    width: 100%;
+    &:hover,
+    &:focus {
+        border-left: 5px solid $warning;
+    }
+}
+
+#moodlenavbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $zindex-fixed;
+    flex-wrap: nowrap;
+    background-color: $white;
+    display: flex;
+    padding: 0 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    align-items: stretch;
+    height: $navbar-height;
+
+    .primary-nav-toggler {
+        display: none;
+        .navbar-toggler-icon {
+            background-image: escape-svg($navbar-light-toggler-icon-bg);
+        }
+    }
+
+    .brand {
+        color: rgba(0, 0, 0, 0.9);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        @include font-size($navbar-brand-font-size);
+        @include customnavlink-lg();
+    }
+
+    .logo img {
+        max-height: 50px;
+    }
+
+    .language-menu {
+        display: flex;
+        align-items: stretch;
+        .nav-link {
+            @include customnavlink-lg();
+        }
+    }
+
+    .usernav {
+        flex-wrap: nowrap;
+        align-items: center;
+        .nav-link {
+            @include customnavlink-lg();
+        }
+    }
+
+    .simplesearchform {
+        display: flex;
+        align-items: center;
+        .btn-open {
+            @include customnavlink-lg();
+        }
+    }
+
+    .popover-region {
+        .nav-link {
+            @include customnavlink-lg();
+        }
+    }
+
+    .usermenu  {
+        display: flex;
+        .action-menu,
+        .action-menu-trigger {
+            display: flex;
+        }
+        .dropdown-toggle {
+            @include customnavlink-lg();
+        }
+        .login {
+            display: flex;
+            white-space: nowrap;
+            align-items:center;
+        }
+    }
+
+    .navbar-primary-wrapper {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        overflow-x: hidden;
+        display: flex;
+        align-items: stretch;
+        margin-right: auto;
+        @include media-breakpoint-up(lg) {
+            .primary-nav {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                & > .nav-item {
+                    align-items: center;
+                    &.dropdown {
+                        position: inherit;
+                        .dropdown-menu {
+                            margin-top: -10px;
+                            left: auto;
+                        }
+                    }
+                    & > .nav-link {
+                        @include customnavlink-lg();
+                    }
+                }
+            }
+        }
+    }
+
+    .moremenu_popup {
+        // Nav links need to be styled like dropdown items here.
+        .nav-link {
+            display: block;
+            width: 100%;
+            color: $body-color;
+            &:active,
+            &:hover,
+            &:focus,
+            &:focus-within {
+                color: $white;
+                outline: 0;
+                background-color: $dropdown-link-hover-bg;
+            }
+        }
+        // The dropdown menu needs to be static to show inline.
+        .dropdown-menu {
+            position: static;
+            border: 0;
+            .dropdown-item {
+                padding-left: 2rem;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        .brand {
+            margin-right: auto;
+        }
+        .primary-nav-toggler {
+            border-left: 0;
+            border-right: 0;
+            background-color: $white;
+            @include customnavlink-lg();
+        }
+        .morenav {
+            display: none;
+        }
+        .navbar-primary-wrapper {
+            transition: right 0s ease, left 0s ease;
+            position: fixed;
+            width: 285px;
+            top: 60px;
+            height: calc(100% - #{$navbar-height});
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            z-index: $zindex-dropdown - 1;
+            background-color: $white;
+            left: -(285px + 20px);
+            &.collapse.show {
+                left: 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                border: 0;
+                border-left: $border-width solid $border-color;
+                padding: 0;
+                margin: 0 0 0 0.25rem;
+                width: calc(100% - 0.25rem);
+                .dropdown-item {
+                    margin-top: -1px;
+                    @include customnavlink-sm();
+                }
+                .dropdown-divider {
+                    display: none;
+                }
+            }
+            .primary-nav {
+                overflow: auto;
+                flex-wrap: nowrap;
+                margin: 0;
+                flex-direction: column;
+                border-left: $border-width solid $border-color;
+                .nav-item {
+                    margin-bottom: -1px;
+                    visibility: visible;
+                    .nav-link {
+                        @include customnavlink-sm();
+                    }
+                }
+            }
+        }
+    }
+}
+
+// General moremenu styles
+nav.moremenu {
+    .listitems {
+        flex: 1 1 auto;
+        display: flex;
+        overflow-x: auto;
+        opacity: 0;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        &.observed {
+            overflow: hidden;
+            opacity: 1;
+        }
+        .itemoverflow {
+            visibility: hidden;
+        }
+        .nav-link {
+            white-space: nowrap;
+        }
+    }
+}
+
+.moremenu_popup {
+    left: auto;
+    ul {
+        padding: 0;
+        margin:0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

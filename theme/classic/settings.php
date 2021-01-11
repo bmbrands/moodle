@@ -28,13 +28,6 @@ if ($ADMIN->fulltree) {
     $settings = new theme_boost_admin_settingspage_tabs('themesettingclassic', get_string('configtitle', 'theme_classic'));
     $page = new admin_settingpage('theme_classic_general', get_string('generalsettings', 'theme_boost'));
 
-    $name = 'theme_classic/navbardark';
-    $title = get_string('navbardark', 'theme_classic');
-    $description = get_string('navbardarkdesc', 'theme_classic');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $page->add($setting);
-
     // Preset.
     $name = 'theme_classic/preset';
     $title = get_string('preset', 'theme_classic');

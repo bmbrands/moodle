@@ -3486,8 +3486,7 @@ EOD;
      */
     public function secure_layout_language_menu() {
         if (get_config('core', 'langmenuinsecurelayout')) {
-            $custommenu = new custom_menu('', current_language());
-            return $this->render_custom_menu($custommenu);
+            return $this->language_menu();
         } else {
             return '';
         }
@@ -3697,25 +3696,13 @@ EOD;
     }
 
     /**
-     * Renders a custom menu object (located in outputcomponents.php)
-     *
-     * The custom menu this method produces makes use of the YUI3 menunav widget
-     * and requires very specific html elements and classes.
-     *
-     * @staticvar int $menucount
-     * @param custom_menu $menu
-     * @return string
+     * Renders a language menu for the page navbar.
      */
-    protected function render_custom_menu(custom_menu $menu) {
-        global $CFG;
-
+    public function language_menu() {
         $langs = get_string_manager()->get_list_of_translations();
         $haslangmenu = $this->lang_menu() != '';
 
-        if (!$menu->has_children() && !$haslangmenu) {
-            return '';
-        }
-
+        $menu = new custom_menu();
         if ($haslangmenu) {
             $strlang = get_string('language');
             $currentlang = current_language();
@@ -3728,6 +3715,33 @@ EOD;
             foreach ($langs as $langtype => $langname) {
                 $this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
             }
+        }
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('core/custom_menu_item', $context);
+        }
+
+        return $content;
+    }
+
+    /**
+     * Renders a custom menu object (located in outputcomponents.php)
+     *
+     * The custom menu this method produces makes use of the YUI3 menunav widget
+     * and requires very specific html elements and classes.
+     *
+     * @staticvar int $menucount
+     * @param custom_menu $menu
+     * @return string
+     */
+    protected function render_custom_menu(custom_menu $menu) {
+        global $CFG;
+
+
+
+        if (!$menu->has_children()) {
+            return '';
         }
 
         $content = '';
