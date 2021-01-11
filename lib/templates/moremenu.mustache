@@ -1,0 +1,66 @@
+{{!
+        This file is part of Moodle - http://moodle.org/
+
+        Moodle is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.
+
+        Moodle is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+
+        You should have received a copy of the GNU General Public License
+        along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+        @template core/image_editable
+
+        Simple search input.
+
+        Example context (json):
+        {
+            listitems: [
+                {
+                    url: '/index.php?redirect=0',
+                    name: 'Home'
+                },
+                {
+                    url: '/my',
+                    name: 'Dashboard'
+                },
+                {
+                    url: '/course/',
+                    name: 'My Courses'
+                },
+                {
+                    url: '/admin/search.php',
+                    name: 'Site administration'
+                }
+            ]
+        }
+}}
+<nav id="moremenu-{{uniqid}}" class="moremenu navbar-expand d-block" data-region="moremenu" aria-labelledby="filter-label">
+    <div class="d-flex">
+        <ul class="navbar-nav listitems" data-region="moremenulistitems">
+        {{#navitems}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{{ url }}}">
+                    {{{name}}}
+                </a>
+            </li>
+        {{/navitems}}
+        </ul>
+        <button class="btn btn-secondary d-none" data-action="moremenumore" aria-expanded="false">
+            {{#str}}more, core{{/str}}
+        </button>
+    </div>
+    <div class="moremenu_popup d-none" data-region="moremenupopup"></div>
+</nav>
+{{#js}}
+require(['core/moremenu'], function(moremenu) {
+    var moreMenu = document.querySelector('#moremenu-{{uniqid}}');
+    moremenu.init(moreMenu);
+});
+{{/js}}
