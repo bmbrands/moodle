@@ -62,8 +62,21 @@
 
     <div id="page" class="container-fluid d-print-block">
         {{{ output.full_header }}}
-
-
+        {{#secondarynavigation}}
+        <nav id="moremenu-secondary" class="moremenu navbar-expand d-block" data-region="moremenu">
+            <div class="d-flex">
+                <ul class="navbar-nav listitems" data-region="moremenulistitems" style="opacity: 1">
+                    {{#children}}
+                    {{> theme_boost/secondarynav}}
+                    {{/children}}
+                </ul>
+                <button class="btn btn-secondary d-none" data-action="moremenumore" aria-expanded="false">
+                    {{#str}}more, core{{/str}}
+                </button>
+            </div>
+            <div class="moremenu_popup d-none" data-region="moremenupopup"></div>
+        </nav>
+        {{/secondarynavigation}}
         <div id="page-content" class="row pb-3 d-print-block">
             <div id="region-main-box" class="col-12">
                 {{#hasregionmainsettingsmenu}}
@@ -97,6 +110,10 @@
 </body>
 </html>
 {{#js}}
+<!-- require(['core/moremenu'], function(moremenu) {
+    var moreMenu = document.querySelector('#moremenu-secondary');
+    moremenu.init(moreMenu);
+}); -->
 M.util.js_pending('theme_boost/loader');
 require(['theme_boost/loader'], function() {
     M.util.js_complete('theme_boost/loader');

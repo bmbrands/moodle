@@ -1,0 +1,20 @@
+
+{{#has_children}}
+<li class="nav-item">
+    <a class="nav-link dropdown-toggle {{#classes}}{{.}} {{/classes}}" {{#action}}href="{{{action}}}"{{/action}} data-key="{{key}}" data-isexpandable="{{isexpandable}}" data-indent="{{get_indent}}" data-showdivider="{{showdivider}}" data-type="{{type}}" data-nodetype="{{nodetype}}" data-collapse="{{collapse}}" data-forceopen="{{forceopen}}" data-isactive="{{isactive}}" data-hidden="{{hidden}}" data-preceedwithhr="{{preceedwithhr}}" {{#parent.key}}data-parent-key="{{.}}"{{/parent.key}}>
+        {{{text}}}
+    </a>
+</li>
+<ul class="d-block">
+{{#children}}
+    {{> theme_boost/secondarynav }}
+{{/children}}
+</ul>
+{{/has_children}}
+{{^has_children}}
+<li class="nav-item">
+    <a class="nav-link {{#classes}}{{.}} {{/classes}}" {{#action}}href="{{{action}}}"{{/action}} data-key="{{key}}" data-isexpandable="{{isexpandable}}" data-indent="{{get_indent}}" data-showdivider="{{showdivider}}" data-type="{{type}}" data-nodetype="{{nodetype}}" data-collapse="{{collapse}}" data-forceopen="{{forceopen}}" data-isactive="{{isactive}}" data-hidden="{{hidden}}" data-preceedwithhr="{{preceedwithhr}}" {{#parent.key}}data-parent-key="{{.}}"{{/parent.key}}>
+        {{{text}}}
+    </a>
+</li>
+{{/has_children}}
