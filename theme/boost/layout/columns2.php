@@ -55,6 +55,8 @@ $templatecontext = [
 
 $nav = $PAGE->flatnav;
 $templatecontext['flatnavigation'] = $nav;
+$renderer = $PAGE->get_renderer('block_settings');
+$templatecontext['secondarynavigation'] = $PAGE->secondarynav->children;
 $templatecontext['firstcollectionlabel'] = $nav->get_collectionlabel();
 echo $OUTPUT->render_from_template('theme_boost/columns2', $templatecontext);
 

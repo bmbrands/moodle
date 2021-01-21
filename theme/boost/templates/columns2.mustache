@@ -58,12 +58,29 @@
     {{{ output.standard_top_of_body_html }}}
 
     {{> theme_boost/navbar }}
-    {{> theme_boost/nav-drawer }}
 
     <div id="page" class="container-fluid d-print-block">
         {{{ output.full_header }}}
-
-
+        {{#secondarynavigation}}
+        <nav class="navbar moremenu p-0 static">
+            <div id="secondarynavnav" class="navbar-moremenu-wrapper collapse">
+                <ul class="nav primary-nav listitems" data-region="moremenulistitems">
+                    {{#children}}
+                    {{> theme_boost/secondarynav}}
+                    {{/children}}
+                </ul>
+                <ul class="nav primary-nav morenav">
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link d-none mr-1" data-action="moremenumore" aria-expanded="false" href="#">
+                            {{#str}}more, core{{/str}}
+                        </a>
+                        <ul class="moremenu_popup right dropdown-menu menu align-tr-br show d-none" data-region="moremenupopup" role="menu">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {{/secondarynavigation}}
         <div id="page-content" class="row pb-3 d-print-block">
             <div id="region-main-box" class="col-12">
                 {{#hasregionmainsettingsmenu}}
@@ -97,6 +114,12 @@
 </body>
 </html>
 {{#js}}
+{{#secondarynavigation}}
+require(['core/moremenu'], function(moremenu) {
+    var moreMenu = document.querySelector('#secondarynavnav');
+    moremenu.init(moreMenu);
+});
+{{/secondarynavigation}}
 M.util.js_pending('theme_boost/loader');
 require(['theme_boost/loader'], function() {
     M.util.js_complete('theme_boost/loader');
