@@ -1,0 +1,61 @@
+<nav id="secondarynavnav" class="navbar navbar-expand navbar-dark bg-info">
+    <div class="container-fluid">
+    <a class="navbar-brand pb-2" href="#">Bootstrap 4</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav align-self-end flex-wrap" id="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item10</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item11</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item12</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item13</a>
+            </li>
+            <li class="nav-item dropdown d-none">
+                <a class="nav-link" href="#" id="navbarDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="navbar-toggler-icon"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdownMenu">
+                </ul>
+            </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+{{#js}}
+require(['core/moremenu'], function(moremenu) {
+    var moreMenu = document.querySelector('#secondarynavnav #nav');
+    moremenu.init(moreMenu);
+});
+{{/js}}

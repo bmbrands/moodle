@@ -62,19 +62,17 @@
     <div id="page" class="container-fluid d-print-block">
         {{{ output.full_header }}}
         {{#secondarynavigation}}
-        <nav class="navbar moremenu p-0 static">
-            <div id="secondarynavnav" class="navbar-moremenu-wrapper collapse">
-                <ul class="nav primary-nav listitems" data-region="moremenulistitems">
+        <nav class="navbar p-0">
+            <div id="secondarynavnav" class="w-100">
+                <ul class="nav">
                     {{#children}}
-                    {{> theme_boost/secondarynav}}
+                        {{> theme_boost/secondarynav}}
                     {{/children}}
-                </ul>
-                <ul class="nav primary-nav morenav">
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link d-none mr-1" data-action="moremenumore" aria-expanded="false" href="#">
+                    <li class="nav-item dropdown dropdownmoremenu d-none" data-region="moremenu">
+                        <a class="dropdown-toggle nav-link" href="#" id="secondaryNavDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{#str}}more, core{{/str}}
                         </a>
-                        <ul class="moremenu_popup right dropdown-menu menu align-tr-br show d-none" data-region="moremenupopup" role="menu">
+                        <ul class="dropdown-menu dropdown-menu-right" data-region="moredropdown" aria-labelledby="secondaryNavDropdown">
                         </ul>
                     </li>
                 </ul>
@@ -125,9 +123,7 @@ require(['theme_boost/loader'], function() {
     M.util.js_complete('theme_boost/loader');
 });
 
-M.util.js_pending('theme_boost/drawer');
-require(['theme_boost/drawer'], function(drawer) {
-    drawer.init();
-    M.util.js_complete('theme_boost/drawer');
+require(['theme_boost/primarynav'], function(primarynav) {
+    primarynav.togglenavigation();
 });
 {{/js}}

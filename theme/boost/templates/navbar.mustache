@@ -38,8 +38,9 @@
     }
 }}
 <nav id="moodlenavbar" class="navbar moremenu responsive" aria-label="{{#str}}sitemenubar, admin{{/str}}">
-    <button class="primary-nav-toggler" data-toggle="collapse" data-target="#primarynav" aria-controls="primarynav" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="primarynavtoggle" class="primary-nav-toggler" data-action="toggle-drawer" aria-controls="primarynav" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
+        <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
     </button>
     <a href="{{{ config.wwwroot }}}" class="brand">
         {{# output.should_display_navbar_logo }}
@@ -52,23 +53,25 @@
         {{/ output.should_display_navbar_logo }}
     </a>
 
-    <div id="primarynav" class="navbar-moremenu-wrapper collapse">
-        <ul class="nav primary-nav listitems" role="menu" data-region="moremenulistitems">
+    <nav id="primarynav">
+        <ul class="nav" role="menu">
             <!-- custom_menu -->
             {{{ output.custom_menu }}}
             <!-- page_heading_menu -->
             {{{ output.page_heading_menu }}}
-        </ul>
-        <ul class="nav primary-nav morenav">
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link d-none mr-1" href="#" data-action="moremenumore" aria-expanded="false">
+
+            <li class="nav-item dropdown dropdownmoremenu d-none" data-region="moremenu">
+                <a class="dropdown-toggle nav-link" href="#" id="primaryNavDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{#str}}more, core{{/str}}
                 </a>
-                <ul class="moremenu_popup dropdown-menu menu align-tr-br show d-none" role="menu" data-region="moremenupopup">
+                <ul class="dropdown-menu dropdown-menu-left" data-region="moredropdown" aria-labelledby="primaryNavDropdown">
                 </ul>
             </li>
         </ul>
-    </div>
+        <button id="primarynavclose" class="btn btn-dark primary-nav-close d-none icon-no-margin">
+            {{#pix}}e/cancel, core, {{#str}}closebuttontitle, core{{/str}}{{/pix}}
+        </button>
+    </nav>
 
     <ul class="nav language-menu">
         {{{ output.language_menu }}}
@@ -83,7 +86,7 @@
 </nav>
 {{#js}}
 require(['core/moremenu'], function(moremenu) {
-    var moreMenu = document.querySelector('#moodlenavbar');
+    var moreMenu = document.querySelector('#primarynav');
     moremenu.init(moreMenu);
 });
 {{/js}}
