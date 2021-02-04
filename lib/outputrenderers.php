@@ -3314,7 +3314,7 @@ EOD;
             return html_writer::div(
                 html_writer::span(
                     $returnstr,
-                    'login'
+                    'login nav-link'
                 ),
                 $usermenuclasses
             );
@@ -3331,7 +3331,7 @@ EOD;
             return html_writer::div(
                 html_writer::span(
                     $returnstr,
-                    'login'
+                    'login nav-link'
                 ),
                 $usermenuclasses
             );
@@ -3403,7 +3403,8 @@ EOD;
 
         $am = new action_menu();
         $am->set_menu_trigger(
-            $returnstr
+            $returnstr,
+            'nav-link'
         );
         $am->set_action_label(get_string('usermenu'));
         $am->set_alignment(action_menu::TR, action_menu::BR);
@@ -3699,12 +3700,14 @@ EOD;
     /**
      * Transforms a normal navigation bar into the more menu navigation bar
      *
-     * @param object $content
+     * @param string/object $content
      * @return string
      */
     public function more_menu($content) {
         if (is_object($content)) {
             $template = (object) ['nodecollection' => $content];
+        } else {
+            $template = (object) ['rawmenu' => $content];
         }
         return $this->render_from_template('core/moremenu', $template);
     }
