@@ -75,7 +75,20 @@
 
     <div class="d-flex h-100 align-items-center">
     {{{output.page_heading_button }}}
-</div>
+    </div>
 
 </div>
-
+{{#js}}
+require(
+[
+    'jquery',
+    'theme_boost/navbar',
+],
+function(
+    $,
+    Navbar
+) {
+    var root = $('#arup-top-nav');
+    Navbar.init(root);
+});
+{{/js}}

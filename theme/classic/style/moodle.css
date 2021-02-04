@@ -9847,8 +9847,6 @@ a.text-dark:hover, a.text-dark:focus {
 
 @media (min-width: 576px) {
   #region-main {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
     padding: 1.25rem; } }
 
 @media (min-width: 576px) {
@@ -12746,18 +12744,6 @@ input[disabled] {
   #region-main-settings-menu .menubar {
     justify-content: flex-end; } }
 
-#region-main-settings-menu.has-blocks,
-#region-main.has-blocks {
-  display: inline-block;
-  width: calc(100% - 375px); }
-  @media (max-width: 1199.98px) {
-    #region-main-settings-menu.has-blocks,
-    #region-main.has-blocks {
-      width: 100%;
-      /* MDL-63102 - Remove extra space at bottom.
-        If modifying make sure block-region is horizontally stacked when in full screen */
-      display: block; } }
-
 .header-action #region-main-settings-menu {
   position: unset;
   float: none;
@@ -14310,113 +14296,6 @@ span.editinstructions {
   /* negative fixed header height */
   width: 1px;
   pointer-events: none; }
-
-.pagelayout-embedded :target {
-  padding-top: initial;
-  margin-top: initial; }
-
-#nav-drawer.closed {
-  left: -305px; }
-
-#nav-drawer[aria-hidden=true] .list-group-item {
-  display: none; }
-
-/* Use a variable for the drawer background colors. */
-[data-region="drawer"] {
-  position: fixed;
-  width: 285px;
-  top: 60px;
-  height: calc(100% - 60px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  z-index: 999;
-  background-color: #f2f2f2;
-  -webkit-transition: right 0.5s ease, left 0.5s ease;
-  -moz-transition: right 0.5s ease, left 0.5s ease;
-  transition: right 0.5s ease, left 0.5s ease; }
-
-@media (min-width: 576px) {
-  [data-region="drawer"] {
-    padding: 20px 20px; } }
-
-#nav-drawer {
-  right: auto;
-  left: 0;
-  /* Override the z-indexes defined in bootstrap/_list-group.scss that
-       lead to side effects on the user tours positioning. */ }
-  #nav-drawer .list-group-item-action.active,
-  #nav-drawer .list-group-item.active {
-    z-index: inherit; }
-  #nav-drawer .list-group-item-action.active + .list-group-item,
-  #nav-drawer .list-group-item.active + .list-group-item {
-    border-top: none; }
-  #nav-drawer .list-group ul {
-    list-style: none;
-    padding: 0;
-    margin: 0; }
-  #nav-drawer .list-group li {
-    margin-bottom: -1px; }
-  #nav-drawer .list-group li:last-child {
-    margin-bottom: 0; }
-
-#page {
-  margin-top: 60px; }
-
-.pagelayout-embedded #page {
-  margin-top: 0; }
-
-body.drawer-ease {
-  -webkit-transition: margin-left 0.5s ease, margin-right 0.5s ease;
-  -moz-transition: margin-left 0.5s ease, margin-right 0.5s ease;
-  transition: margin-left 0.5s ease, margin-right 0.5s ease; }
-
-@media (min-width: 768px) {
-  body.drawer-open-left {
-    margin-left: 285px; } }
-
-@media (min-width: 768px) {
-  body.drawer-open-right {
-    margin-right: 285px; } }
-
-[data-region=right-hand-drawer] {
-  display: flex;
-  flex-direction: column;
-  transition: right 0.2s ease-in-out; }
-  @media (prefers-reduced-motion: reduce) {
-    [data-region=right-hand-drawer] {
-      transition: none; } }
-  [data-region=right-hand-drawer].drawer {
-    z-index: 1020;
-    position: fixed;
-    top: 60px;
-    right: 0;
-    height: calc(100% - 60px);
-    width: 320px;
-    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
-    padding: 0;
-    visibility: visible;
-    opacity: 1; }
-  [data-region=right-hand-drawer].hidden {
-    display: block;
-    right: -320px;
-    visibility: hidden;
-    opacity: 0;
-    transition: right 0.2s ease-in-out, visibility 0s ease-in-out 0.2s, opacity 0s ease-in-out 0.2s; }
-    @media (prefers-reduced-motion: reduce) {
-      [data-region=right-hand-drawer].hidden {
-        transition: none; } }
-
-@media (max-width: 767.98px) {
-  [data-region=right-hand-drawer].drawer {
-    top: 0;
-    height: 100%;
-    z-index: 1030; }
-  body.drawer-open-left,
-  body.drawer-open-right {
-    overflow: hidden; } }
-
-.dir-rtl [data-region=right-hand-drawer] {
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08); }
 
 #page-my-index {
   background-color: #f7f7f7; }
@@ -19893,6 +19772,204 @@ div.editor_atto_toolbar button .icon {
       border: 0; }
       #primarynav .dropdown-menu .dropdown-divider {
         display: none; } }
+
+.courseindex {
+  position: fixed;
+  overflow-y: scroll;
+  height: calc(100vh - 60px);
+  top: 100px;
+  padding-top: 20px; }
+
+.blockdrawer {
+  position: fixed;
+  overflow-y: scroll;
+  height: calc(100vh - 60px);
+  top: 100px;
+  right: 0;
+  padding-top: 20px; }
+
+#page-wrapper #page {
+  position: fixed;
+  overflow-y: scroll;
+  height: calc(100vh - 60px);
+  top: 100px;
+  padding-top: 20px; }
+
+.courseindex .pagination,
+.courseindex .allpagination {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: table; }
+
+.courseindex .pagination .sectionname,
+.courseindex .allpagination .sectionname,
+.courseindex .pagination .allsectionames,
+.courseindex .allpagination .allsectionames {
+  width: 90%;
+  border-radius: 0;
+  border: 0; }
+
+.courseindex .pagination .expand-arrow,
+.courseindex .allpagination .expand-arrow {
+  width: 18px;
+  float: right; }
+
+.courseindex .pagination > li,
+.courseindex .allpagination > li {
+  display: table-cell; }
+
+.courseindex .pagination > li a,
+.courseindex .allpagination > li a {
+  color: #212529;
+  padding: 0;
+  float: none;
+  display: block;
+  background-color: transparent;
+  border-radius: 0;
+  border: 0; }
+
+.courseindex .section-title a {
+  color: #212529; }
+
+.courseindex ul.activities {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  .courseindex ul.activities li {
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    display: block; }
+    .courseindex ul.activities li a {
+      color: #212529; }
+  .courseindex ul.activities .completionbox {
+    position: relative;
+    display: table-cell;
+    width: 18px; }
+  .courseindex ul.activities .activityname {
+    display: table-cell; }
+  .courseindex ul.activities .completioncheck {
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    display: inline-block; }
+    .courseindex ul.activities .completioncheck.incomplete {
+      border: 1px solid #ccc; }
+    .courseindex ul.activities .completioncheck.completed {
+      border: 1px solid #5cb85c;
+      background-color: #5cb85c; }
+  .courseindex ul.activities .modulenavigationlabel {
+    pointer-events: none;
+    cursor: default; }
+
+.courseindex .section {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 0; }
+
+.courseindex .section-body {
+  padding: 0; }
+
+.courseindex .module-navigation-section-heading {
+  padding: 10px 15px 10px 5px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+  .courseindex .module-navigation-section-heading > .dropdown .dropdown-toggle {
+    color: inherit; }
+
+.courseindex .tocourse {
+  display: block;
+  padding: 10px 15px 10px 5px;
+  background-color: #fff;
+  border: 1px solid #FFF;
+  margin-bottom: 3px; }
+  .courseindex .tocourse:hover {
+    text-decoration: none; }
+
+.courseindex .onesection .module-navigation-section-heading {
+  padding: 0; }
+
+.courseindex .section-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: inherit; }
+  .courseindex .section-title > a,
+  .courseindex .section-title > .small,
+  .courseindex .section-title > .small > a {
+    color: inherit; }
+
+.courseindex .section-footer {
+  padding: 10px 15px 10px 5px;
+  background-color: #fff;
+  border-top: 1px solid #FFF;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+
+.courseindex .section > .list-group,
+.courseindex .section > .section-collapse > .list-group {
+  margin-bottom: 0; }
+
+.courseindex .section > .list-group .list-group-item,
+.courseindex .section > .section-collapse > .list-group .list-group-item {
+  border-width: 1px 0;
+  border-radius: 0; }
+
+.courseindex .section > .list-group:first-child .list-group-item:first-child,
+.courseindex .section > .section-collapse > .list-group:first-child .list-group-item:first-child {
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+
+.courseindex .section > .list-group:last-child .list-group-item:last-child,
+.courseindex .section > .section-collapse > .list-group:last-child .list-group-item:last-child {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+
+.courseindex .section > .module-navigation-section-heading + .section-collapse > .list-group .list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+
+.courseindex .module-navigation-section-heading + .list-group .list-group-item:first-child,
+.courseindex .list-group + .section-footer {
+  border-top-width: 0; }
+
+.courseindex .section-group {
+  margin-bottom: 20px; }
+  .courseindex .section-group .section {
+    margin-bottom: 0;
+    border-radius: 0; }
+    .courseindex .section-group .section + .section {
+      margin-top: 5px;
+      margin-bottom: 15px; }
+  .courseindex .section-group .module-navigation-section-heading {
+    border-bottom: 0; }
+    .courseindex .section-group .module-navigation-section-heading + .section-collapse > .section-body,
+    .courseindex .section-group .module-navigation-section-heading + .section-collapse > .list-group {
+      border-top: 1px solid #FFF; }
+  .courseindex .section-group .section-footer {
+    border-top: 0; }
+    .courseindex .section-group .section-footer + .section-collapse .section-body {
+      border-bottom: 1px solid #FFF; }
+
+.courseindex .section-default {
+  border-color: #FFF; }
+  .courseindex .section-default > .module-navigation-section-heading {
+    color: #333;
+    background-color: #fff;
+    border-color: #FFF; }
+    .courseindex .section-default > .module-navigation-section-heading + .section-collapse > .section-body {
+      border-top-color: #FFF; }
+    .courseindex .section-default > .module-navigation-section-heading .badge {
+      color: #fff;
+      background-color: #333; }
+  .courseindex .section-default > .section-footer + .section-collapse > .section-body {
+    border-bottom-color: #FFF; }
 
 body {
   -webkit-font-smoothing: antialiased;

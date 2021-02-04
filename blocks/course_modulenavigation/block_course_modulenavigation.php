@@ -127,12 +127,12 @@ class block_course_modulenavigation extends block_base {
         $course = $format->get_course(); // Needed to have numsections property available.
 
         if (!$format->uses_sections()) {
-            if (debugging()) {
-                $this->content->text = get_string(
-                        'notusingsections',
-                        'block_course_modulenavigation'
-                );
-            }
+            // if (debugging()) {
+            //     $this->content->text = get_string(
+            //             'notusingsections',
+            //             'block_course_modulenavigation'
+            //     );
+            // }
             return $this->content;
         }
 

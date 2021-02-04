@@ -1,22 +1,46 @@
-.courseindex {
-	position: fixed;
-	overflow-y: scroll;
-	height: calc(100vh - 60px);
-	top: 60px;
-	padding-top: 60px;
+
+.scroller {
+    position: fixed;
+    overflow-y: auto;
+    height: calc(100vh - 150px);
+    top: 150px;
+    padding-top: 20px;
 }
 
 .blockdrawer {
-	position: fixed;
-	overflow-y: scroll;
-	height: calc(100vh - 60px);
-	top: 60px;
-	right: 0;
-	padding-top: 60px;
+    transition: all .2s ease-in-out;
+    right: -30%;
+    &.open {
+        right: 0;
+    }
 }
 
-#page-header {
-	padding-top: 60px;
+.courseindex {
+    transition: all .2s ease-in-out;
+    left: -30%;
+    &.open {
+        left: 0;
+    }
+}
+
+#page-wrapper #page.scroller {
+    top: 70px;
+    height: calc(100vh - 70px);
+    max-width: 75%;
+    flex: 0 0 75%;
+    padding-right: 25%;
+    &.hascourseindex {
+        margin-left: 25%;
+    }
+    &.blocksshown {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-right: 0;
+    }
+}
+
+.drawercontrolbuttons {
+    margin-top: 92px;
 }
 
 $section-bg: #fff;
@@ -31,6 +55,9 @@ $section-content-bg: #fff;
 $section-default-text: $body-color;
 $section-default-color: #FFF;
 
+.p-r-25 {
+    padding-right: 25%;
+}
 .courseindex {
 
     .pagination,
@@ -63,7 +90,7 @@ $section-default-color: #FFF;
 
     .pagination > li a,
     .allpagination > li a {
-    	color: $body-color;
+        color: $body-color;
         padding: $section-body-padding;
         float: none;
         display: block;
@@ -73,7 +100,7 @@ $section-default-color: #FFF;
     }
 
     .section-title a {
-    	color: $body-color;
+        color: $body-color;
     }
 
     ul.activities {
@@ -82,10 +109,13 @@ $section-default-color: #FFF;
         list-style: none;
 
         li {
-            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            padding: 0.5rem 1rem 0.5rem 3rem;
             display: block;
             a {
-            	color: $body-color;
+                color: $body-color;
+            }
+            &.active {
+                background-color: $gray-300;
             }
         }
 
@@ -231,6 +261,7 @@ $section-default-color: #FFF;
 
             + .section {
                 margin-top: 5px;
+                margin-bottom: 15px;
             }
         }
 

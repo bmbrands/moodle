@@ -40,14 +40,16 @@ $enable-responsive-font-sizes: true !default;
 $body-color:    $gray-900 !default;
 
 // Fonts
-$font-size-base: 0.9375rem !default;
+$font-size-base: 1rem !default;
 $rfs-base-font-size: 0.9rem !default;
 $headings-font-weight:   300 !default;
 
 // Navbar
 $navbar-dark-hover-color:           rgba($white, 1) !default;
-$navbar-light-color:                rgba($black, 0.6) !default;
-$navbar-light-hover-color:          rgba($black, .9) !default;
+
+$navbar-nav-link-padding-x: 1rem !default;
+$navbar-light-color: #212529 !default;
+$navbar-light-hover-color: #212529 !default;
 
 // Breadcrumbs
 $breadcrumb-padding-y:              .25rem !default;
@@ -120,6 +122,36 @@ body {
     border-radius: 50%;
 }
 
+#moodlenavbar {
+    padding-top: 0;
+    padding-bottom: 0;
+    #primarynav {
+        .navbar-nav {
+            margin-top: 1px;
+            .nav-link {
+                height: calc(#{$navbar-height} - 1px);
+            }
+        }
+    }
+}
+
+#secondarynavnav .nav-link {
+    height: calc(#{$secondarynav-height} - 1px);
+}
+#secondarynavnav {
+    border-bottom: 1px solid $body-color;
+}
+.navbar-expand .navbar-nav .nav-link {
+    font-weight: bold;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    @include hover-focus() {
+        border-bottom: 3px solid $body-color;
+    }
+}
+.breadcrumb-item a {
+    color: $body-color;
+}
 // Reset the default styling back to the bootstrap defaults for
 // the secondary outline button because gray-200 is much too light
 // for an outline button.

@@ -59,14 +59,30 @@
 
     {{> theme_boost/navbar }}
 
+    <div class="container-fluid">
+        <div class="drawercontrolbuttons row">
+            {{#courseindex}}
+            <div class="col-md-3 d-flex">
+                <button class="btn" data-action="toggleindex">{{#pix}}e/align_left, core{{/pix}}</button>
+            </div>
+            {{/courseindex}}
+            <div class="{{#hasblocks}}col-md-6{{/hasblocks}} {{^courseindex}}offset-md-3{{/courseindex}}">
+            </div>
+            {{#hasblocks}}
+            <div class="col-md-3 d-flex">
+                <button class="btn ml-auto" data-action="toggleblocks" style="z-index: 10000;">{{#pix}}i/categoryevent, core{{/pix}}</button>
+            </div>
+            {{/hasblocks}}
+        </div>
+    </div>
+
     {{#courseindex}}
-        <div class="courseindex col-md-3">
-            <h3 class="h4"> Course Index </h3>
+        <div data-region="courseindex" class="courseindex col-md-3 scroller">
             {{{courseindex}}}
         </div>
     {{/courseindex}}
 
-    <div id="page" class="col-md-6 offset-md-3 container-fluid d-print-block">
+    <div id="page" data-region="mainpage" class="scroller {{#hasblocks}}hasblocks{{/hasblocks}} {{#courseindex}}hascourseindex{{/courseindex}} container-fluid d-print-block">
         {{{ output.full_header }}}
         {{#secondarynavigation}}
             <nav id="secondarynavnav" class="navbar navbar-light navbar-expand w-100 p-0">
@@ -85,15 +101,16 @@
                 </section>
             </div>
         </div>
+            {{> theme_boost/footer }}
     </div>
     {{#hasblocks}}
-    <section data-region="blocks-column" class="d-print-none col-md-3 blockdrawer" aria-label="{{#str}}blocks{{/str}}">
+    <section data-region="blocks-column" class="d-print-none col-md-3 scroller blockdrawer" aria-label="{{#str}}blocks{{/str}}">
         {{{ sidepreblocks }}}
     </section>
     {{/hasblocks}}
 
     {{{ output.standard_after_main_region_html }}}
-    {{> theme_boost/footer }}
+
 </div>
 
 </body>
@@ -106,5 +123,20 @@ require(['theme_boost/loader'], function() {
 
 require(['theme_boost/primarynav'], function(primarynav) {
     primarynav.togglenavigation();
+});
+
+require(['jquery'], function($) {
+    $('[data-action="toggleindex"]').on('click', function() {
+        window.console.log('toggleindex');
+        $(this).toggleClass('open');
+        $('[data-region="courseindex"]').toggleClass('open');
+        $('[data-region="mainpage"]').toggleClass('indexshown');
+    });
+    $('[data-action="toggleblocks"]').on('click', function() {
+        window.console.log('toggleindex');
+        $(this).toggleClass('open');
+        $('[data-region="blocks-column"]').toggleClass('open');
+        $('[data-region="mainpage"]').toggleClass('blocksshown');
+    });
 });
 {{/js}}

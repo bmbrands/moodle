@@ -68,7 +68,7 @@
                             <div class="d-flex align-items-center">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}"
                                aria-expanded="true" aria-controls="collapse{{number}}" class="btn mr-1 p-1 icon-size-2 d-flex justify-content-center"><i class="icon fa fa-chevron-right"></i></a>
-                               <a href="{{{url}}}"><h4 class="h5 mb-0">{{{title}}}</h4></a>
+                               <a href="{{{url}}}">{{{title}}}</a>
                            </div>
                             {{/onlytitles}}
                     {{/collapse}}
@@ -80,18 +80,24 @@
                     <ul class="activities">
                         {{#modules}}
                             {{^onlytitles}}
-                                <li>
+                                <li class="{{active}}">
                                     {{#url}}
-                                    <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}" onclick="{{{onclick}}}">
+                                    <a href="{{{url}}}">
                                         <div class="activityname">
                                             {{{name}}}
+
                                         </div>
                                     </a>
                                     {{/url}}
                                     {{^url}}
                                     <div class="{{#label}}modulenavigationlabel{{/label}}" onclick="{{{onclick}}}">
                                         <div class="activityname">
-                                            {{{name}}}
+                                            {{#label}}
+                                                Label
+                                            {{/label}}
+                                            {{^label}}
+                                                {{{name}}}
+                                            {{/label}}
                                         </div>
                                     </div>
                                     {{/url}}
