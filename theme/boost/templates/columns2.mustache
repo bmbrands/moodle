@@ -59,7 +59,14 @@
 
     {{> theme_boost/navbar }}
 
-    <div id="page" class="container-fluid d-print-block">
+    {{#courseindex}}
+        <div class="courseindex col-md-3">
+            <h3 class="h4"> Course Index </h3>
+            {{{courseindex}}}
+        </div>
+    {{/courseindex}}
+
+    <div id="page" class="col-md-6 offset-md-3 container-fluid d-print-block">
         {{{ output.full_header }}}
         {{#secondarynavigation}}
             <nav id="secondarynavnav" class="navbar navbar-light navbar-expand w-100 p-0">
@@ -68,30 +75,23 @@
         {{/secondarynavigation}}
         <div id="page-content" class="row pb-3 d-print-block">
             <div id="region-main-box" class="col-12">
-                {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
-                    <div> {{{ output.region_main_settings_menu }}} </div>
-                </div>
-                {{/hasregionmainsettingsmenu}}
-                <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}} aria-label="{{#str}}content{{/str}}">
+                <section id="region-main" aria-label="{{#str}}content{{/str}}">
 
-                    {{#hasregionmainsettingsmenu}}
-                        <div class="region_main_settings_menu_proxy"></div>
-                    {{/hasregionmainsettingsmenu}}
                     {{{ output.course_content_header }}}
                     {{{ output.main_content }}}
                     {{{ output.activity_navigation }}}
                     {{{ output.course_content_footer }}}
 
                 </section>
-                {{#hasblocks}}
-                <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
-                    {{{ sidepreblocks }}}
-                </section>
-                {{/hasblocks}}
             </div>
         </div>
     </div>
+    {{#hasblocks}}
+    <section data-region="blocks-column" class="d-print-none col-md-3 blockdrawer" aria-label="{{#str}}blocks{{/str}}">
+        {{{ sidepreblocks }}}
+    </section>
+    {{/hasblocks}}
+
     {{{ output.standard_after_main_region_html }}}
     {{> theme_boost/footer }}
 </div>

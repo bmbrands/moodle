@@ -26,6 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 require_once($CFG->libdir . '/behat/lib.php');
+require_once($CFG->dirroot . '/blocks/course_modulenavigation/block_course_modulenavigation.php');
 
 if (isloggedin()) {
     $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
@@ -44,6 +45,9 @@ $buildregionmainsettings = !$PAGE->include_region_main_settings_in_header_action
 $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settings_menu() : false;
 $primarymenu = $OUTPUT->custom_menu();
 $secondarymenu = $PAGE->secondarynav;
+
+$courseindex = new block_course_modulenavigation();
+$courseindex->instance = -1;
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -55,6 +59,7 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'primarynavigation' => $OUTPUT->more_menu($primarymenu),
     'secondarynavigation' => $OUTPUT->more_menu($secondarymenu),
+    'courseindex' => $courseindex->get_content()->text
 ];
 
 $nav = $PAGE->flatnav;
