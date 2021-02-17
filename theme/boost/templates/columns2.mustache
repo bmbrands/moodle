@@ -59,38 +59,45 @@
 
     {{> theme_boost/navbar }}
 
-    <div class="container-fluid">
-        <div class="drawercontrolbuttons row">
-            {{#courseindex}}
-            <div class="col-md-3 d-flex">
-                <button class="btn" data-action="toggleindex">{{#pix}}e/align_left, core{{/pix}}</button>
-            </div>
-            {{/courseindex}}
-            <div class="{{#hasblocks}}col-md-6{{/hasblocks}} {{^courseindex}}offset-md-3{{/courseindex}}">
-            </div>
-            {{#hasblocks}}
-            <div class="col-md-3 d-flex">
-                <button class="btn ml-auto" data-action="toggleblocks" style="z-index: 10000;">{{#pix}}i/categoryevent, core{{/pix}}</button>
-            </div>
-            {{/hasblocks}}
+    <div class="d-flex drawercontrolbuttons">
+        <div class="ml-auto mr-3 buttons">
+
         </div>
     </div>
 
     {{#courseindex}}
         <div data-region="courseindex" class="courseindex col-md-3 scroller">
+            <div class="d-flex">
+                <button class="btn ml-auto regiontoggle" data-action="toggleindex" style="z-index: 10000;">
+                {{#pix}}e/cancel, core{{/pix}}
+                </button>
+            </div>
+            <div class="mb-3">Course index</div>
             {{{courseindex}}}
         </div>
     {{/courseindex}}
 
-    <div id="page" data-region="mainpage" class="scroller {{#hasblocks}}hasblocks{{/hasblocks}} {{#courseindex}}hascourseindex{{/courseindex}} container-fluid d-print-block">
+    <div id="page" data-region="mainpage" class="scroller {{#hasblocks}}hasblocks{{/hasblocks}} {{#courseindex}}hascourseindex{{/courseindex}}">
         {{{ output.full_header }}}
         {{#secondarynavigation}}
-            <nav id="secondarynavnav" class="navbar navbar-light navbar-expand w-100 p-0">
+            <nav id="secondarynavnav" class="navbar navbar-light navbar-expand w-100 p-0 bg-white mb-3">
                 {{{ secondarynavigation }}}
+                {{/secondarynavigation}}
+                <div class="togglecontainer">
+                    {{#courseindex}}
+                        <button class="btn regiontoggle courseindextoggle" data-action="toggleindex">{{#pix}}e/align_left, core{{/pix}}</button>
+                    {{/courseindex}}
+                    {{#hasblocks}}
+                        <button class="btn regiontoggle blockregiontoggle mr-1" data-action="toggleblocks">{{#pix}}i/categoryevent, core{{/pix}}</button>
+                    {{/hasblocks}}
+                </div>
+                {{#secondarynavigation}}
             </nav>
         {{/secondarynavigation}}
-        <div id="page-content" class="row pb-3 d-print-block">
-            <div id="region-main-box" class="col-12">
+
+        <div id="navwatch" class="sticky-top"></div>
+        <div id="page-content" class="pb-3 d-print-block">
+            <div id="region-main-box" class="">
                 <section id="region-main" aria-label="{{#str}}content{{/str}}">
 
                     {{{ output.course_content_header }}}
@@ -101,10 +108,15 @@
                 </section>
             </div>
         </div>
-            {{> theme_boost/footer }}
+        {{> theme_boost/footer }}
     </div>
     {{#hasblocks}}
     <section data-region="blocks-column" class="d-print-none col-md-3 scroller blockdrawer" aria-label="{{#str}}blocks{{/str}}">
+        <div class="d-flex justify-content-end">
+            <button class="btn ml-auto regiontoggle" data-action="toggleblocks" style="z-index: 10000;">
+                {{#pix}}e/left_to_right, core{{/pix}}
+            </button>
+        </div>
         {{{ sidepreblocks }}}
     </section>
     {{/hasblocks}}
@@ -125,18 +137,54 @@ require(['theme_boost/primarynav'], function(primarynav) {
     primarynav.togglenavigation();
 });
 
+require(['theme_boost/navbar'], function(navbar) {
+    navbar.autohidenav();
+});
+
 require(['jquery'], function($) {
+    function toggleIndex(close) {
+        if (close) {
+            $('[data-action="toggleindex"]').removeClass('open');
+            $('[data-region="courseindex"]').removeClass('open');
+            $('[data-region="mainpage"]').removeClass('indexshown');
+        } else {
+            $('[data-action="toggleindex"]').toggleClass('open');
+            $('[data-region="courseindex"]').toggleClass('open');
+            $('[data-region="mainpage"]').toggleClass('indexshown');
+        }
+    }
+
+    function toggleBlocks(close) {
+        if (close) {
+            $('[data-action="toggleblocks"]').removeClass('open');
+            $('[data-region="blocks-column"]').removeClass('open');
+            $('[data-region="mainpage"]').removeClass('blocksshown');
+        } else {
+            $('[data-action="toggleblocks"]').toggleClass('open');
+            $('[data-region="blocks-column"]').toggleClass('open');
+            $('[data-region="mainpage"]').toggleClass('blocksshown');
+        }
+        window.dispatchEvent(new Event('resize'));
+    }
+
     $('[data-action="toggleindex"]').on('click', function() {
-        window.console.log('toggleindex');
-        $(this).toggleClass('open');
-        $('[data-region="courseindex"]').toggleClass('open');
-        $('[data-region="mainpage"]').toggleClass('indexshown');
+        toggleIndex(false);
+        var body = $('body');
+        window.console.log('hi');
+        if (! body.hasClass('editing')) {
+            toggleBlocks(true);
+        }
     });
+
     $('[data-action="toggleblocks"]').on('click', function() {
-        window.console.log('toggleindex');
-        $(this).toggleClass('open');
-        $('[data-region="blocks-column"]').toggleClass('open');
-        $('[data-region="mainpage"]').toggleClass('blocksshown');
+        toggleBlocks(false);
+        var body = $('body');
+        if (! body.hasClass('editing')) {
+            toggleIndex(true);
+        }
+    });
+    $('#editingswitch').on('change', function() {
+        $(this).closest('form').submit();
     });
 });
 {{/js}}

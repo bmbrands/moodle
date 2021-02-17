@@ -66,6 +66,8 @@
     {{/primarynavigation}}
 
     <nav id="usernavigation" class="navbar-nav ml-auto">
+        {{{ output.render_language_menu }}}
+        <span class="divider align-self-center"></span>
         {{{ output.search_box }}}
 
         {{{ output.navbar_plugin_output }}}
@@ -74,21 +76,8 @@
     </nav>
 
     <div class="d-flex h-100 align-items-center">
-    {{{output.page_heading_button }}}
+        <span class="divider align-self-center mr-3"></span>
+        {{{output.editing_button }}}
     </div>
 
 </div>
-{{#js}}
-require(
-[
-    'jquery',
-    'theme_boost/navbar',
-],
-function(
-    $,
-    Navbar
-) {
-    var root = $('#arup-top-nav');
-    Navbar.init(root);
-});
-{{/js}}

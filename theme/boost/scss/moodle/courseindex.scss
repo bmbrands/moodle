@@ -2,45 +2,110 @@
 .scroller {
     position: fixed;
     overflow-y: auto;
-    height: calc(100vh - 150px);
-    top: 150px;
-    padding-top: 20px;
+    height: 100vh;
+    top: 0;
+    width: 100%;
 }
-
 .blockdrawer {
-    transition: all .2s ease-in-out;
-    right: -30%;
+    box-shadow: -2px 2px 4px rgb(0 0 0 / 8%);
+    background-color: $white;
+    right: -100%;
+    z-index: 1060;
+    padding-top: 35px;
     &.open {
         right: 0;
     }
 }
-
 .courseindex {
-    transition: all .2s ease-in-out;
-    left: -30%;
+    background-color: $white;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 8%);
+    left: -100%;
+    z-index: 1060;
+    padding-top: 35px;
     &.open {
         left: 0;
     }
 }
-
 #page-wrapper #page.scroller {
-    top: 70px;
-    height: calc(100vh - 70px);
-    max-width: 75%;
-    flex: 0 0 75%;
-    padding-right: 25%;
-    &.hascourseindex {
-        margin-left: 25%;
+    top: 60px;
+}
+#page-header {
+    padding-top: 30px;
+    .page-header-headings {
+        margin: 1rem 0;
+        h1 {
+        font-weight: 500;
+        }
     }
-    &.blocksshown {
-        flex: 0 0 50%;
-        max-width: 50%;
-        padding-right: 0;
+}
+@include media-breakpoint-up(md) {
+    .scroller {
+        height: calc(100vh - 60px);
+        top: 60px;
+    }
+    .blockdrawer {
+        transition: all .2s ease-in-out;
+        right: -30%;
+        z-index: 1040;
+    }
+    .courseindex {
+        transition: all .2s ease-in-out;
+        z-index: 1040;
+    }
+    .togglecontainer {
+        width: 0px;
+    }
+    .courseindextoggle {
+        position: fixed;
+        top: 100px;
+        left: 25px;
+    }
+    .blockregiontoggle {
+        position: fixed;
+        top: 100px;
+        right: 25px;
+    }
+    #page-wrapper #page.scroller {
+        max-width: percentage(9 / 12);
+        flex: 0 0 percentage(9 / 12);
+        padding-right: percentage(3 / 12);
+        margin-left: percentage(3 / 12);
+        left:0;
+        &.blocksshown {
+            padding-right: percentage(1 / 12);
+            max-width: percentage(7 / 12);
+            flex: 0 0 percentage(7 / 12);
+            margin-right: percentage(3 / 12);
+            margin-left: percentage(2 / 12);
+        }
+        &.indexshown {
+            padding-right: percentage(2 / 12);
+            margin-left: percentage(4 / 12);
+        }
+        &.blocksshown.indexshown {
+            padding-right: 0;
+            max-width: percentage(6 / 12);
+            flex: 0 0 percentage(6 / 12);
+            margin-right: percentage(3 / 12);
+            margin-left: percentage(3 / 12);
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .blockdrawer {
+        box-shadow: none;
+    }
+    #page-wrapper #page.scroller {
+
     }
 }
 
 .drawercontrolbuttons {
     margin-top: 92px;
+    .buttons {
+        z-index: 1;
+    }
 }
 
 $section-bg: #fff;

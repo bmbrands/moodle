@@ -7,6 +7,15 @@
     .nav-link {
         height: calc(#{$secondarynav-height} - 1px - 0.5rem);
     }
+    @include media-breakpoint-up(md) {
+        .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+    }
+    .togglecontainer {
+        margin-left: auto;
+    }
 }
 
 #moodlenavbar {
@@ -14,11 +23,27 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: $zindex-fixed;
-    padding: 0.25rem 0.5rem;
+    z-index: 1050;
+    padding: $primary-nav-padding-y $primary-nav-padding-x;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     align-items: stretch;
     height: $navbar-height;
+    .logo,
+    .popover-region,
+    .usermenu,
+    .navbar-brand.nav-link,
+    .usertext,
+    .usermenu .dropdown-toggle::after {
+        display: none;
+    }
+    @include media-breakpoint-up(md) {
+        .logo,
+        .popover-region,
+        .usermenu,
+        .navbar-brand.nav-link {
+            display: block;
+        }
+    }
     .logo img {
         max-height: calc(#{$navbar-height} - 10px);
     }
@@ -28,17 +53,22 @@
         display: flex;
         align-items: center;
     }
+    .divider {
+        width: 1px;
+        height: 28px;
+        background-color: $gray-300;
+    }
 }
 
 #primarynav {
     opacity: 0;
-    height: calc(#{$navbar-height} - 0.5rem);
+    height: calc(#{$navbar-height} - #{$primary-nav-padding-y} * 2);
     flex: 1 1 auto;
     &.observed {
         opacity: 1;
     }
     .nav-link {
-        height: calc(#{$navbar-height} - 1px - 0.5rem);
+        height: calc(#{$navbar-height} - 1px - #{$primary-nav-padding-y} * 2);
     }
     .primary-nav-close {
         display: none;

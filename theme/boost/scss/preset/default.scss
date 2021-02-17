@@ -78,6 +78,9 @@ $input-border-color: $gray-500 !default;
 $dropdown-link-hover-color: $white;
 $dropdown-link-hover-bg: $primary;
 
+$primary-nav-padding-y: 0rem;
+$primary-nav-padding-x: 0.5rem;
+
 // stylelint-disable
 $theme-colors: () !default;
 $theme-colors: map-merge((
@@ -121,18 +124,10 @@ body {
 .userpicture {
     border-radius: 50%;
 }
-
-#moodlenavbar {
-    padding-top: 0;
-    padding-bottom: 0;
-    #primarynav {
-        .navbar-nav {
-            margin-top: 1px;
-            .nav-link {
-                height: calc(#{$navbar-height} - 1px);
-            }
-        }
-    }
+.navbar-expand #usernavigation.navbar-nav .nav-link {
+    padding-right: 0.7rem;
+    padding-left: 0.7rem;
+    font-weight: normal;
 }
 
 #secondarynavnav .nav-link {
@@ -141,11 +136,15 @@ body {
 #secondarynavnav {
     border-bottom: 1px solid $body-color;
 }
+
 .navbar-expand .navbar-nav .nav-link {
     font-weight: bold;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
     @include hover-focus() {
+        border-bottom: 3px solid $body-color;
+    }
+    &.active {
         border-bottom: 3px solid $body-color;
     }
 }

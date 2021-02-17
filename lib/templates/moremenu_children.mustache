@@ -1,5 +1,13 @@
 <li class="nav-item">
-    <a class="nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" {{#action}}href="{{{action}}}"{{/action}} role="menuitem" {{#isactive}}aria-current="true"{{/isactive}}>
+	{{#tab}}
+		<a class="nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" href="{{tab}}" role="tab" aria-selected="false" tabindex="-1">{{{text}}}
+		</a>
+
+	{{/tab}}
+	{{#action}}
+	    	<a class="nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" href="{{{action}}}" role="menuitem"  {{#isactive}}aria-current="true"{{/isactive}}>
         {{{text}}}
     </a>
+	{{/action}}
+
 </li>

@@ -3705,6 +3705,9 @@ EOD;
      */
     public function more_menu($content) {
         if (is_object($content)) {
+            if (!isset($content->children) || count($content->children) == 0) {
+                return '';
+            }
             $template = (object) ['nodecollection' => $content];
         } else {
             $template = (object) ['rawmenu' => $content];
@@ -3731,6 +3734,51 @@ EOD;
         if (!$menu->has_children() && !$haslangmenu) {
             return '';
         }
+
+        // if ($haslangmenu) {
+        //     $strlang = get_string('language');
+        //     $currentlang = current_language();
+        //     if (isset($langs[$currentlang])) {
+        //         $currentlang = $langs[$currentlang];
+        //     } else {
+        //         $currentlang = $strlang;
+        //     }
+        //     $this->language = $menu->add($currentlang, new moodle_url('#'), $strlang, 10000);
+        //     foreach ($langs as $langtype => $langname) {
+        //         $this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
+        //     }
+        // }
+
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('core/custom_menu_item', $context);
+        }
+
+        return $content;
+    }
+
+    /**
+     * Renders a custom menu object (located in outputcomponents.php)
+     *
+     * The custom menu this method produces makes use of the YUI3 menunav widget
+     * and requires very specific html elements and classes.
+     *
+     * @staticvar int $menucount
+     * @param custom_menu $menu
+     * @return string
+     */
+    public function render_language_menu() {
+        global $CFG;
+
+        $langs = get_string_manager()->get_list_of_translations();
+        $haslangmenu = $this->lang_menu() != '';
+
+        if (!$haslangmenu) {
+            return '';
+        }
+
+        $menu = new custom_menu('', current_language());
 
         if ($haslangmenu) {
             $strlang = get_string('language');

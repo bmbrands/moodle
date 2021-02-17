@@ -14,77 +14,30 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Arup Search
  *
- * @package    theme_arupboost
- * @copyright  2019 Bas Brands <bas@sonsbeekmedia.nl>
+ * @package    theme_boost
+ * @copyright  2021 Bas Brands <bas@sonsbeekmedia.nl>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-define(
-[
-    'jquery'
-],
-function(
-    $,
-) {
+let prevScroll = 0;
+let currentScroll = 0;
 
-    var SELECTORS = {
-        NAVBAR: '#secondarynavnav',
-    };
+export const autohidenav = () => {
+    const scroller = document.querySelector('#page.scroller');
+    const nav = document.querySelector('#secondarynavnav');
+    const watch = document.querySelector('#navwatch');
 
-    var previousScroll = 0;
-
-    var currentScroll = 0;
-
-    var hideNav = function() {
-        $(SELECTORS.NAVBAR).addClass("is-hidden");
-    };
-
-    var showNav = function() {
-        $(SELECTORS.NAVBAR).removeClass("is-hidden");
-    };
-
-    var watchScroll = function() {
-        $(window).scroll(function(){
-            currentScroll = $(this).scrollTop();
-            /*
-            If the current scroll position is greater than 0 (the top) AND the current scroll position is
-            less than the document height minus the window height (the bottom) run the navigation if/else statement.
-            */
-            if (currentScroll > 80 && currentScroll < $(document).height() - $(window).height()){
-
-                /*
-                  If the current scroll is greater than the previous scroll (i.e we're scrolling down the page), hide the nav.
-                  Else we are scrolling up (i.e the previous scroll is greater than the current scroll), so show the nav.
-                */
-                if (currentScroll > previousScroll) {
-                    window.setTimeout(hideNav, 300);
-                } else {
-                    window.setTimeout(showNav, 300);
-                }
-                /*
-                  Set the previous scroll value equal to the current scroll.
-                */
-                previousScroll = currentScroll;
+    scroller.addEventListener('scroll', function () {
+        currentScroll = watch.offsetTop;
+        window.console.log(currentScroll);
+        if (currentScroll > 200) {
+            if (currentScroll > prevScroll) {
+                nav.classList.remove('sticky-top');
+            } else {
+                nav.classList.add('sticky-top');
             }
-
-        });
-    };
-    /**
-     * Intialise the search modal.
-     *
-     * @param {object} root The root element containing the timezone modal.
-     */
-    var init = function(root) {
-
-        if (!root.attr('data-init-scroll')) {
-            watchScroll(root);
-            root.attr('data-init-scroll', true);
+            prevScroll = currentScroll;
         }
-    };
-
-    return {
-        init: init
-    };
-});
+    });
+};

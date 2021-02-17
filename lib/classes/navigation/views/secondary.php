@@ -272,9 +272,24 @@ class secondary extends navigation_node {
     protected function load_admin_navigation() {
         $settingsnav = $this->page->settingsnav;
         $node = $settingsnav->find('root', self::TYPE_SITE_ADMIN);
+        $tabs = ($this->page->bodyid == 'page-admin-search') ? 1 : 0;
         if ($node) {
+
             $siteadminnode = $this->add($node->text, "#link$node->key");
+            if ($tabs) {
+                $siteadminnode->action = false;
+                $siteadminnode->tab = "#link$node->key";
+            } else {
+                $siteadminnode->action = new \moodle_url("/admin/search.php#link$node->key");
+            }
             foreach ($node->children as $child) {
+                if ($tabs) {
+                    $child->action = false;
+                    $child->tab = "#link$child->key";
+                } else {
+                    $child->action = new \moodle_url("/admin/search.php#link$child->key");
+                }
+                // Mimic the current boost behaviour and pass down anchors for the tabs.
                 if ($child->display && !$child->is_short_branch()) {
                     $this->add_node($child);
                 } else {

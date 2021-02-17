@@ -14,12 +14,6 @@ $font-size-xs: ($font-size-base * .75) !default;
 }
 
 @include media-breakpoint-up(sm) {
-    #region-main {
-        padding: $card-spacer-x;
-    }
-}
-
-@include media-breakpoint-up(sm) {
     .context-header-settings-menu,
     .region-main-settings-menu {
         float: right;
