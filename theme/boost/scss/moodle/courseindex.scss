@@ -30,13 +30,28 @@
     top: 60px;
 }
 #page-header {
-    padding-top: 30px;
+    padding-top: 38px;
     .page-header-headings {
         margin: 1rem 0;
         h1 {
         font-weight: 500;
         }
     }
+}
+
+div.custom-control-right {
+    padding-right: 24px;
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: 24px;
+}
+div.custom-control-right .custom-control-label::after{
+    right: -1.3rem;
+    left: auto;
+}
+div.custom-control-right .custom-control-label::before {
+    right: -2.35rem;
+    left: auto;
 }
 @include media-breakpoint-up(md) {
     .scroller {
@@ -57,12 +72,12 @@
     }
     .courseindextoggle {
         position: fixed;
-        top: 100px;
+        top: 90px;
         left: 25px;
     }
     .blockregiontoggle {
         position: fixed;
-        top: 100px;
+        top: 90px;
         right: 25px;
     }
     #page-wrapper #page.scroller {

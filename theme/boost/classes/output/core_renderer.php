@@ -57,7 +57,7 @@ class core_renderer extends \core_renderer {
         <input type="hidden" name="sesskey" value="' . sesskey() . '">
         <input type="hidden" name="edit" value="' . $edit . '">
         <input type="hidden" name="adminedit" value="' . $adminedit . '">
-        <div class="custom-control custom-switch text-nowrap">
+        <div class="custom-control custom-control-right custom-switch text-nowrap">
             <input type="checkbox" class="custom-control-input" ' . $checked . ' id="editingswitch">
             <label class="custom-control-label" for="editingswitch">
                 <span class="d-none d-sm-inline">Edit mode</span>

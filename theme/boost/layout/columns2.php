@@ -25,13 +25,17 @@
 defined('MOODLE_INTERNAL') || die();
 
 user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
+user_preference_allow_ajax_update('drawer-open-block', PARAM_ALPHA);
+
 require_once($CFG->libdir . '/behat/lib.php');
 require_once($CFG->dirroot . '/blocks/course_modulenavigation/block_course_modulenavigation.php');
 
 if (isloggedin()) {
     $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
+    $blockdraweropen = (get_user_preferences('drawer-open-block', 'true') == 'true');
 } else {
     $navdraweropen = false;
+    $blockdraweropen = false;
 }
 $extraclasses = [];
 if ($navdraweropen) {
@@ -55,6 +59,7 @@ $templatecontext = [
     'hasblocks' => $hasblocks,
     'bodyattributes' => $bodyattributes,
     'navdraweropen' => $navdraweropen,
+    'blockdraweropen' => $blockdraweropen,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'primarynavigation' => $OUTPUT->more_menu($primarymenu),
