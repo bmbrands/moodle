@@ -87,7 +87,7 @@ function user_profile_social_create_profilefield($social) {
         'aim' => 'aimid',
         'msn' => 'msnid',
     ];
-    $visible = (in_array($confignames[$social], $hiddenfields)) ? 1 : 2;
+    $visible = (in_array($confignames[$social], $hiddenfields)) ? 3 : 2;
 
     $newfield = (object)[
         'shortname' => $social,
@@ -108,12 +108,18 @@ function user_profile_social_create_profilefield($social) {
 
     user_profile_social_create_info_category();
 
-    $profilefield = $DB->get_record('user_info_field', array('param1' => $social));
+    $profilefield = $DB->get_record_sql(' SELECT * FROM {user_info_field} WHERE ' .
+        $DB->sql_compare_text('param1') . ' = ' . $DB->sql_compare_text(':social', 40),
+        ['social' => $social]);
+
     if (!$profilefield) {
         $profileclass = new profile_define_base();
         $profileclass->define_save($newfield);
         profile_reorder_fields();
-        $profilefield = $DB->get_record('user_info_field', array('param1' => $social));
+
+        $profilefield = $DB->get_record_sql(' SELECT * FROM {user_info_field} WHERE ' .
+            $DB->sql_compare_text('param1') . ' = ' . $DB->sql_compare_text(':social', 40),
+            ['social' => $social]);
     }
     if (!$profilefield) {
         throw new moodle_exception('upgradeerror', 'admin', 'could not create new social profile field');
