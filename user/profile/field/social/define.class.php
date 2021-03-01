@@ -91,7 +91,9 @@ class profile_define_social extends profile_define_base {
      */
     public function define_save_preprocess($data) {
         global $DB;
-        if ($field = $DB->get_record('user_info_field', array('param1' => $data->network))) {
+        if ($field = $DB->get_record_sql(' SELECT * FROM {user_info_field} WHERE ' .
+            $DB->sql_compare_text('param1') . ' = ' . $DB->sql_compare_text(':social', 40),
+            ['social' => $social])) {
             if ($field and $field->id <> $data->id) {
                 $err['network'] = get_string('networkinuse', 'profilefield_social');
             }
@@ -102,7 +104,9 @@ class profile_define_social extends profile_define_base {
         // Get an unused param1 for this social network.
         $count = 0;
         $network = $data->network;
-        while ($field = $DB->get_record('user_info_field', array('param1' => $network))) {
+        while ($field = $DB->get_record_sql(' SELECT * FROM {user_info_field} WHERE ' .
+            $DB->sql_compare_text('param1') . ' = ' . $DB->sql_compare_text(':social', 40),
+            ['social' => $social])) {
             if ($field->id == $data->id) {
                 break;
             }
