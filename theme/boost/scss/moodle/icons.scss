@@ -100,3 +100,27 @@ $iconsizes: map-merge((
 .helplink .icon {
     margin-left: 0.5rem;
 }
+
+.iconcross {
+    width: 30px;
+    height: 30px;
+    & > i {
+        display: block;
+        height: 30px;
+        width: 2px;
+        margin-left: 12px;
+        background-color: black;
+        transform: rotate(45deg);
+        z-index: 1;
+        & > i {
+            display: block;
+            height: 30px;
+            width: 2px;
+            background-color: black;
+            transform: rotate(90deg);
+            z-index: 2;
+        }
+    }
+}
+
+

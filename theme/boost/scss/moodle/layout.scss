@@ -32,3 +32,109 @@
         }
     }
 }
+
+$page-content-width: 550px;
+$page-content-width-lg: 620px;
+
+#page-wrapper #page.drawers {
+    margin-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    .main-inner {
+        max-width: $page-content-width;
+        margin: 0 auto;
+    }
+}
+#page-header {
+    padding-top: 38px;
+    .page-header-headings {
+        margin: 1rem 0;
+        h1 {
+            font-weight: 500;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .drawer-left-toggle {
+        position: fixed;
+        top: 90px;
+        left: 20px;
+    }
+    .drawer-right-toggle {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+    }
+    .drawer-left,
+    .drawer-right {
+        width: 37.7%;
+        top: calc(#{$navbar-height} + 1px);
+        height: calc(100vh - #{$navbar-height});
+    }
+    // stylelint-disable
+
+    #page-wrapper #page.drawers {
+        position: fixed;
+        overflow-y: auto;
+        height: 100vh;
+        top: 60px;
+        margin-top: 0;
+        left: 0;
+        right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        &.show-drawer-left {
+            margin-left: 37.7%;
+            margin-right: 0;
+            padding-right: 100px;
+            padding-left: 25px;
+        }
+        &.show-drawer-right {
+            margin-left: 0;
+            padding-left: 100px;
+            padding-right: 25px;
+            margin-right: 37.7%;
+        }
+         &.show-drawer-left.show-drawer-right {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+    }
+}
+@include media-breakpoint-up(lg) {
+    .drawer-left,
+    .drawer-right {
+        width: 350px;
+    }
+    #page-wrapper #page.drawers {
+        &.show-drawer-left {
+            margin-left: 350px;
+        }
+        &.show-drawer-right {
+            margin-right: 350px;
+        }
+        .drawer-left,
+        .drawer-right {
+            width: 350px;
+            top: calc(#{$navbar-height} + 1px);
+            height: calc(100vh - #{$navbar-height});
+        }
+    }
+}
+@include media-breakpoint-up(xl) {
+    #page-wrapper #page.drawers {
+        .main-inner {
+            max-width: $page-content-width-lg;
+        }
+    }
+}
+
+// stylelint-enable
+
+.drawercontrolbuttons {
+    margin-top: 92px;
+    .buttons {
+        z-index: 1;
+    }
+}
